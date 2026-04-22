@@ -3,151 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miami Family Trip 2026</title>
+    <title>Union Jack to Ocean Drive 2026</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             min-height: 100vh;
             font-family: 'Inter', -apple-system, sans-serif;
-            background: #000 url('https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?q=80&w=2000') no-repeat center center fixed;
+            background: #000 url('miami.jpg') no-repeat center center fixed;
             background-size: cover;
-            color: #fff;
+            color: #333;
         }
 
-        /* Navigation Menu */
+        /* Navigation Bar */
         nav {
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
-            padding: 1rem;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 1.2rem;
             position: fixed;
             top: 0;
             width: 100%;
-            z-index: 1000;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         nav a {
             color: #fff;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
             cursor: pointer;
-            transition: color 0.3s;
+            transition: 0.3s;
         }
 
-        nav a:hover { color: #ff007f; }
+        nav a:hover { color: #FF1493; }
 
-        /* Main Container */
-        .container {
-            padding-top: 80px; /* Space for Nav */
+        /* Content Container */
+        .main-content {
+            padding: 100px 20px 60px;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.45);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             padding: 3rem;
             border-radius: 30px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 750px;
             text-align: center;
-            width: 90%;
-            max-width: 700px;
+            display: none;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            display: none; /* Hidden by default */
         }
 
-        .active { display: block; } /* Show active section */
+        .active { display: block; animation: fadeIn 0.4s ease-out; }
 
-        /* Countdown Specifics */
-        h1 { color: #ff007f; font-size: 3rem; margin-bottom: 0.5rem; letter-spacing: 5px; }
-        .countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 2rem; }
-        .time-segment { background: rgba(255, 255, 255, 0.4); padding: 15px; border-radius: 15px; }
-        .number { display: block; font-size: 2.2rem; font-weight: 900; color: #005f5f; }
-        .label { font-size: 0.7rem; color: #111; font-weight: 700; text-transform: uppercase; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Itinerary Styling */
-        .itinerary-list { text-align: left; color: #111; margin-top: 1rem; }
-        .day { margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(0,0,0,0.1); }
-        .day h3 { color: #005f5f; margin-bottom: 5px; }
+        /* Typography */
+        h1 { color: #FF1493; font-size: 2.8rem; margin-bottom: 5px; letter-spacing: 4px; }
+        .subtitle { color: #0077b6; font-weight: 800; text-transform: uppercase; margin-bottom: 2rem; font-size: 0.9rem; }
+
+        /* Countdown Grid */
+        .countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .time-box { background: rgba(255,255,255,0.5); padding: 25px 10px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); }
+        .num { display: block; font-size: 2.8rem; font-weight: 900; color: #005f5f; line-height: 1; }
+        .lab { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #555; margin-top: 8px; }
+
+        /* Interactive Sections */
+        .section-title { color: #005f5f; border-bottom: 2px solid #FF1493; display: inline-block; margin-bottom: 1.5rem; padding-bottom: 5px; }
+        .itinerary-day { text-align: left; background: rgba(255,255,255,0.3); padding: 1.5rem; border-radius: 15px; margin-bottom: 1rem; }
+        .itinerary-day h3 { color: #FF1493; font-size: 1.1rem; margin-bottom: 5px; }
+
+        /* Footer Links */
+        .footer-links { margin-top: 2rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1.5rem; display: flex; justify-content: center; gap: 20px; }
+        .footer-links a { color: #0077b6; text-decoration: none; font-size: 0.85rem; font-weight: 600; }
     </style>
 </head>
 <body>
 
     <nav>
-        <a onclick="showSection('home')">Home</a>
-        <a onclick="showSection('itinerary')">Itinerary</a>
-        <a onclick="showSection('packing')">Packing List</a>
+        <a onclick="showPage('home')">Countdown</a>
+        <a onclick="showPage('plan')">The Plan</a>
+        <a onclick="showPage('pack')">Packing</a>
     </nav>
 
-    <div class="container">
-        <section id="home" class="glass-card active">
+    <div class="main-content">
+        <section id="home" class="glass-panel active">
             <h1>MIAMI 2026</h1>
-            <p style="color: #111; font-weight: 700;">JUNE 26 @ 3:00 PM</p>
+            <p class="subtitle">Union Jack to Ocean Drive 🇬🇧☀️</p>
             <div class="countdown-grid">
-                <div class="time-segment"><span class="number" id="days">00</span><span class="label">Days</span></div>
-                <div class="time-segment"><span class="number" id="hours">00</span><span class="label">Hours</span></div>
-                <div class="time-segment"><span class="number" id="minutes">00</span><span class="label">Mins</span></div>
-                <div class="time-segment"><span class="number" id="seconds">00</span><span class="label">Secs</span></div>
+                <div class="time-box"><span class="num" id="d">00</span><span class="lab">Days</span></div>
+                <div class="time-box"><span class="num" id="h">00</span><span class="lab">Hours</span></div>
+                <div class="time-box"><span class="num" id="m">00</span><span class="lab">Mins</span></div>
+                <div class="time-box"><span class="num" id="s">00</span><span class="lab">Secs</span></div>
+            </div>
+            <p style="margin-top: 2rem; font-weight: 700; color: #444;">Friday, June 26 @ 15:00</p>
+        </section>
+
+        <section id="plan" class="glass-panel">
+            <h2 class="section-title">The Itinerary</h2>
+            <div class="itinerary-day">
+                <h3>Day 1: Welcome to the 305</h3>
+                <p>Arrival, car rental, and sunset dinner on South Beach.</p>
+            </div>
+            <div class="itinerary-day">
+                <h3>Day 2: Wynwood Walls & ATVs</h3>
+                <p>Exploring the world-famous street art followed by an ATV tour.</p>
+            </div>
+            <div class="itinerary-day">
+                <h3>Day 3: Ocean & Boat Day</h3>
+                <p>Jet skis and a private boat tour around Biscayne Bay.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Full Calendar →</a>
             </div>
         </section>
 
-        <section id="itinerary" class="glass-card">
-            <h2 style="color:#ff007f; margin-bottom: 1rem;">THE PLAN</h2>
-            <div class="itinerary-list">
-                <div class="day">
-                    <h3>Friday: Arrival</h3>
-                    <p>3:00 PM - Check-in & Beach Cocktails</p>
-                </div>
-                <div class="day">
-                    <h3>Saturday: Wynwood</h3>
-                    <p>Art Walk & South Beach Dinner</p>
-                </div>
-                <div class="day">
-                    <h3>Sunday: Adventure</h3>
-                    <p>Jet Skis & Boat Rental</p>
-                </div>
+        <section id="pack" class="glass-panel">
+            <h2 class="section-title">Don't Forget</h2>
+            <div style="text-align: left; columns: 2; color: #444; line-height: 2;">
+                • Passport/ESTA<br>• US Power Adapter<br>• SPF 50 Sunscreen<br>• Light Linen Wear<br>
+                • Swimsuits<br>• Polarized Shades<br>• Comfortable Trainers<br>• Night-out Outfits
             </div>
-        </section>
-
-        <section id="packing" class="glass-card">
-            <h2 style="color:#ff007f; margin-bottom: 1rem;">DON'T FORGET</h2>
-            <ul style="text-align: left; color: #111; padding-left: 20px; line-height: 2;">
-                <li>Sunscreen (SPF 50+)</li>
-                <li>Swimwear</li>
-                <li>Sunglasses & Hats</li>
-                <li>Comfortable Walking Shoes</li>
-            </ul>
         </section>
     </div>
 
     <script>
-        // NAVIGATION LOGIC
-        function showSection(id) {
-            document.querySelectorAll('.glass-card').forEach(card => card.classList.remove('active'));
+        function showPage(id) {
+            document.querySelectorAll('.glass-panel').forEach(p => p.classList.remove('active'));
             document.getElementById(id).classList.add('active');
         }
 
-        // COUNTDOWN LOGIC
-        const targetDate = new Date("June 26, 2026 15:00:00").getTime();
-        function update() {
+        const target = new Date("June 26, 2026 15:00:00").getTime();
+        setInterval(() => {
             const now = new Date().getTime();
-            const gap = targetDate - now;
-            document.getElementById("days").innerText = Math.floor(gap / (1000 * 60 * 60 * 24));
-            document.getElementById("hours").innerText = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            document.getElementById("minutes").innerText = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
-            document.getElementById("seconds").innerText = Math.floor((gap % (1000 * 60)) / 1000);
-        }
-        setInterval(update, 1000);
-        update();
+            const diff = target - now;
+            document.getElementById('d').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById('h').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById('m').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById('s').innerText = Math.floor((diff % (1000 * 60)) / 1000);
+        }, 1000);
     </script>
 </body>
 </html>
