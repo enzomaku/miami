@@ -3,24 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miami Trip 2026</title>
+    <title>Miami Family Trip 2026</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            height: 100vh;
+            min-height: 100vh;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #000 url('https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?q=80&w=2000') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        /* Navigation Menu */
+        nav {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: #ff007f; }
+
+        /* Main Container */
+        .container {
+            padding-top: 80px; /* Space for Nav */
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            
-            /* STABLE, PERMANENT MIAMI BEACH IMAGE */
-            background: #000 url('https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?q=80&w=2000') no-repeat center center fixed;
-            background-size: cover;
+            min-height: 100vh;
         }
 
-        .glass-container {
-            /* High blur and semi-transparent white for readability */
+        .glass-card {
             background: rgba(255, 255, 255, 0.45);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
@@ -29,96 +60,92 @@
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
             text-align: center;
             width: 90%;
-            max-width: 650px;
+            max-width: 700px;
             border: 1px solid rgba(255, 255, 255, 0.3);
+            display: none; /* Hidden by default */
         }
 
-        h1 { 
-            color: #ff007f; /* Neon Miami Pink */
-            font-size: 3rem; 
-            margin-bottom: 0.5rem; 
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
+        .active { display: block; } /* Show active section */
 
-        .subtitle { 
-            color: #004d4d; /* Dark Teal for contrast */
-            font-weight: 700; 
-            margin-bottom: 2.5rem; 
-            text-transform: uppercase;
-            font-size: 1rem;
-            letter-spacing: 2px;
-        }
+        /* Countdown Specifics */
+        h1 { color: #ff007f; font-size: 3rem; margin-bottom: 0.5rem; letter-spacing: 5px; }
+        .countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 2rem; }
+        .time-segment { background: rgba(255, 255, 255, 0.4); padding: 15px; border-radius: 15px; }
+        .number { display: block; font-size: 2.2rem; font-weight: 900; color: #005f5f; }
+        .label { font-size: 0.7rem; color: #111; font-weight: 700; text-transform: uppercase; }
 
-        .countdown-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-        }
-
-        .time-segment {
-            background: rgba(255, 255, 255, 0.4);
-            padding: 20px 10px;
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .number {
-            display: block;
-            font-size: 2.8rem;
-            font-weight: 900;
-            color: #005f5f; /* Deep Ocean Teal */
-            line-height: 1;
-        }
-
-        .label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            color: #111;
-            font-weight: 700;
-            margin-top: 10px;
-        }
-
-        @media (max-width: 500px) {
-            h1 { font-size: 2rem; }
-            .number { font-size: 1.8rem; }
-            .glass-container { padding: 2rem 1rem; }
-        }
+        /* Itinerary Styling */
+        .itinerary-list { text-align: left; color: #111; margin-top: 1rem; }
+        .day { margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .day h3 { color: #005f5f; margin-bottom: 5px; }
     </style>
 </head>
 <body>
 
-    <div class="glass-container">
-        <h1>MIAMI 2026</h1>
-        <p class="subtitle">Family Arrival: June 26 @ 3:00 PM</p>
-        
-        <div class="countdown-grid">
-            <div class="time-segment"><span class="number" id="days">00</span><span class="label">Days</span></div>
-            <div class="time-segment"><span class="number" id="hours">00</span><span class="label">Hours</span></div>
-            <div class="time-segment"><span class="number" id="minutes">00</span><span class="label">Min</span></div>
-            <div class="time-segment"><span class="number" id="seconds">00</span><span class="label">Sec</span></div>
-        </div>
+    <nav>
+        <a onclick="showSection('home')">Home</a>
+        <a onclick="showSection('itinerary')">Itinerary</a>
+        <a onclick="showSection('packing')">Packing List</a>
+    </nav>
+
+    <div class="container">
+        <section id="home" class="glass-card active">
+            <h1>MIAMI 2026</h1>
+            <p style="color: #111; font-weight: 700;">JUNE 26 @ 3:00 PM</p>
+            <div class="countdown-grid">
+                <div class="time-segment"><span class="number" id="days">00</span><span class="label">Days</span></div>
+                <div class="time-segment"><span class="number" id="hours">00</span><span class="label">Hours</span></div>
+                <div class="time-segment"><span class="number" id="minutes">00</span><span class="label">Mins</span></div>
+                <div class="time-segment"><span class="number" id="seconds">00</span><span class="label">Secs</span></div>
+            </div>
+        </section>
+
+        <section id="itinerary" class="glass-card">
+            <h2 style="color:#ff007f; margin-bottom: 1rem;">THE PLAN</h2>
+            <div class="itinerary-list">
+                <div class="day">
+                    <h3>Friday: Arrival</h3>
+                    <p>3:00 PM - Check-in & Beach Cocktails</p>
+                </div>
+                <div class="day">
+                    <h3>Saturday: Wynwood</h3>
+                    <p>Art Walk & South Beach Dinner</p>
+                </div>
+                <div class="day">
+                    <h3>Sunday: Adventure</h3>
+                    <p>Jet Skis & Boat Rental</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="packing" class="glass-card">
+            <h2 style="color:#ff007f; margin-bottom: 1rem;">DON'T FORGET</h2>
+            <ul style="text-align: left; color: #111; padding-left: 20px; line-height: 2;">
+                <li>Sunscreen (SPF 50+)</li>
+                <li>Swimwear</li>
+                <li>Sunglasses & Hats</li>
+                <li>Comfortable Walking Shoes</li>
+            </ul>
+        </section>
     </div>
 
     <script>
-        const targetDate = new Date("June 26, 2026 15:00:00").getTime();
+        // NAVIGATION LOGIC
+        function showSection(id) {
+            document.querySelectorAll('.glass-card').forEach(card => card.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
 
+        // COUNTDOWN LOGIC
+        const targetDate = new Date("June 26, 2026 15:00:00").getTime();
         function update() {
             const now = new Date().getTime();
             const gap = targetDate - now;
-
-            const d = Math.floor(gap / (1000 * 60 * 60 * 24));
-            const h = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((gap % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerText = d > 0 ? d : 0;
-            document.getElementById("hours").innerText = h > 0 ? h : 0;
-            document.getElementById("minutes").innerText = m > 0 ? m : 0;
-            document.getElementById("seconds").innerText = s > 0 ? s : 0;
+            document.getElementById("days").innerText = Math.floor(gap / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("minutes").innerText = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("seconds").innerText = Math.floor((gap % (1000 * 60)) / 1000);
         }
-
         setInterval(update, 1000);
         update();
     </script>
