@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miami Trip 2026</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            
+            /* STABLE, PERMANENT MIAMI BEACH IMAGE */
+            background: #000 url('https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?q=80&w=2000') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .glass-container {
+            /* High blur and semi-transparent white for readability */
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 90%;
+            max-width: 650px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        h1 { 
+            color: #ff007f; /* Neon Miami Pink */
+            font-size: 3rem; 
+            margin-bottom: 0.5rem; 
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .subtitle { 
+            color: #004d4d; /* Dark Teal for contrast */
+            font-weight: 700; 
+            margin-bottom: 2.5rem; 
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .time-segment {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 20px 10px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .number {
+            display: block;
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #005f5f; /* Deep Ocean Teal */
+            line-height: 1;
+        }
+
+        .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #111;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 500px) {
+            h1 { font-size: 2rem; }
+            .number { font-size: 1.8rem; }
+            .glass-container { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glass-container">
+        <h1>MIAMI 2026</h1>
+        <p class="subtitle">Family Arrival: June 26 @ 3:00 PM</p>
+        
+        <div class="countdown-grid">
+            <div class="time-segment"><span class="number" id="days">00</span><span class="label">Days</span></div>
+            <div class="time-segment"><span class="number" id="hours">00</span><span class="label">Hours</span></div>
+            <div class="time-segment"><span class="number" id="minutes">00</span><span class="label">Min</span></div>
+            <div class="time-segment"><span class="number" id="seconds">00</span><span class="label">Sec</span></div>
+        </div>
+    </div>
+
+    <script>
+        const targetDate = new Date("June 26, 2026 15:00:00").getTime();
+
+        function update() {
+            const now = new Date().getTime();
+            const gap = targetDate - now;
+
+            const d = Math.floor(gap / (1000 * 60 * 60 * 24));
+            const h = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((gap % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = d > 0 ? d : 0;
+            document.getElementById("hours").innerText = h > 0 ? h : 0;
+            document.getElementById("minutes").innerText = m > 0 ? m : 0;
+            document.getElementById("seconds").innerText = s > 0 ? s : 0;
+        }
+
+        setInterval(update, 1000);
+        update();
+    </script>
+</body>
+</html>
