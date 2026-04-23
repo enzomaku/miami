@@ -8,6 +8,8 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
+        html { scroll-behavior: smooth; }
+
         body {
             min-height: 100vh;
             font-family: 'Poppins', sans-serif;
@@ -47,9 +49,9 @@
         }
 
         nav a:hover { 
-            color: #000;
-            text-shadow: none;
+            color: #000; 
             transform: translateY(-2px);
+            text-shadow: none;
         }
 
         /* --- MAIN CONTAINER --- */
@@ -63,108 +65,148 @@
 
         .glass-card {
             background: transparent; 
-            padding: 3rem;
+            padding: 3rem 1rem;
             text-align: center;
             width: 95%;
-            max-width: 800px;
+            max-width: 1100px; 
             display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .active { display: block; }
 
-        /* --- TYPOGRAPHY --- */
         .vice-text {
             font-family: 'Orbitron', sans-serif;
             text-transform: uppercase;
-            text-shadow: 2px 2px 0px #ff007f, -1px -1px 0px #00ffff;
+            text-shadow: 2px 2px 0px #ff007f;
             letter-spacing: 2px;
         }
 
         h1 { 
             font-family: 'Orbitron', sans-serif;
-            color: #fff;
+            color: #00ffff;
             font-size: 3.2rem; 
             margin-bottom: 0.5rem; 
             letter-spacing: 4px;
-            text-shadow: 3px 3px 0px #ff007f, -2px -2px 0px #00ffff;
+            text-shadow: 3px 3px 0px #ff007f;
         }
 
-        .subtitle {
-            display: inline-flex;
-            align-items: center;
-            gap: 15px; /* Increased gap for visual balance with image */
-            font-weight: 800;
-            font-size: 0.85rem;
-            padding: 12px 24px;
-            border-radius: 4px;
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid #00ffff;
-            color: #fff;
-            box-shadow: 4px 4px 0px #ff007f;
-            margin-bottom: 2.5rem;
-        }
-
-        /* Styling for the embedded flag image */
-        .uk-flag {
-            height: 1.1rem; /* Scale to match subtitle text height */
-            width: auto;
-            border-radius: 2px; /* Subtle rounded corners */
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Slight glow */
-        }
-
-        /* --- NUMBERS & WEATHER --- */
-        .number, .weather-data { 
-            display: block; 
+        .number-styled { 
+            font-family: 'Poppins', sans-serif;
             font-weight: 800; 
             color: #fff;
-            -webkit-text-stroke: 1.5px #ff007f;
-            filter: drop-shadow(0 0 8px rgba(255, 0, 127, 0.6));
+            text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f, 2px 4px 0px rgba(0, 0, 0, 0.3);
+            line-height: 1;
         }
 
-        .number { font-size: 2.5rem; }
-        .weather-data { font-size: 2.2rem; line-height: 1.2; margin-bottom: 5px; }
+        /* --- MAP SECTION --- */
+        .map-wrapper {
+            position: relative;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 40px;
+            padding: 120px 40px; 
+            border: 2px solid #00ffff;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+            margin-top: 20px;
+        }
 
-        .weather-hub { display: flex; gap: 15px; margin-bottom: 25px; }
-        .weather-box {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 15px;
-            border-radius: 12px;
-            flex: 1;
-            text-align: left;
-            border-left: 4px solid #ff007f;
+        .route-path {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            height: 300px; 
+        }
+
+        .route-line {
+            position: absolute;
+            top: 50%;
+            left: 2%;
+            width: 96%;
+            height: 6px;
+            background: repeating-linear-gradient(90deg, #ff007f, #ff007f 15px, transparent 15px, transparent 30px);
+            z-index: 1;
+            filter: drop-shadow(0 0 5px #ff007f);
+        }
+
+        .city-stop {
+            position: relative;
+            z-index: 2;
+            background: #fff;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #00ffff;
+        }
+
+        /* POLAROID STYLING */
+        .polaroid {
+            position: absolute;
+            background: white;
+            padding: 12px 12px 35px 12px;
+            width: 220px; 
+            box-shadow: 10px 10px 25px rgba(0,0,0,0.7);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: #222;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .polaroid img { 
+            width: 100%; 
+            height: 160px; 
+            object-fit: cover; 
+            border: 1px solid #eee;
+        }
+
+        .polaroid span { 
+            font-size: 0.85rem; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            margin-top: 12px; 
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.2;
+        }
+
+        .stop-top .polaroid { bottom: 60px; transform: translateX(-50%) rotate(-3deg); }
+        .stop-bottom .polaroid { top: 60px; transform: translateX(-50%) rotate(3deg); }
+
+        .city-stop:hover .polaroid { 
+            transform: translateX(-50%) scale(1.15) rotate(0deg); 
+            z-index: 100; 
+            border: 3px solid #ff007f;
+            box-shadow: 0 0 30px #ff007f;
+        }
+
+        .city-name {
+            position: absolute;
+            white-space: nowrap;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            color: #00ffff;
+            font-weight: 700;
         }
         
-        .weather-info { font-size: 0.75rem; color: #fff; font-weight: 700; }
+        .stop-top .city-name { top: 35px; left: 50%; transform: translateX(-50%); }
+        .stop-bottom .city-name { bottom: 35px; left: 50%; transform: translateX(-50%); }
 
-        /* --- COUNTDOWN --- */
-        .countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-        .time-segment { 
-            background: rgba(0, 0, 0, 0.4); 
-            padding: 15px; 
-            border-radius: 8px; 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-        }
+        .miles-container { margin-top: 50px; }
+        .miles-highlight { font-size: 4rem; }
 
-        .label { 
-            font-size: 0.7rem; 
-            color: #fff; 
-            letter-spacing: 1px; 
-            text-transform: uppercase; 
-            margin-top: 5px; 
-            font-weight: 600;
-        }
-
-        /* --- LISTS --- */
-        .list-area { text-align: left; color: #fff; }
-        .day { margin-bottom: 1.5rem; border-left: 3px solid #00ffff; padding-left: 15px; }
-        .day h3 { color: #ff007f; letter-spacing: 1px; margin-bottom: 5px; }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; letter-spacing: 2px; }
-            nav { gap: 15px; padding: 1rem; }
-            nav a { font-size: 0.7rem; }
-            .countdown-grid { grid-template-columns: repeat(2, 1fr); }
-            .weather-hub { flex-direction: column; }
+        /* MOBILE OPTIMIZATION */
+        @media (max-width: 900px) {
+            .map-wrapper { padding: 40px; height: auto; }
+            .route-path { flex-direction: column; height: 1200px; }
+            .route-line { width: 6px; height: 90%; left: 50%; transform: translateX(-50%); top: 5%; }
+            .polaroid { width: 180px; left: 110px; transform: translateY(-50%) !important; }
+            .stop-top .polaroid, .stop-bottom .polaroid { top: 50%; bottom: auto; left: 120px; }
+            .city-name { left: -100px !important; top: 50% !important; transform: translateY(-50%) !important; }
         }
     </style>
 </head>
@@ -172,56 +214,89 @@
 
     <nav>
         <a onclick="showSection('home')">Home</a>
+        <a onclick="showSection('map')">Route</a>
         <a onclick="showSection('itinerary')">Itinerary</a>
-        <a onclick="showSection('packing')">Packing</a>
     </nav>
 
     <div class="container">
         <section id="home" class="glass-card active">
             <h1>UK MIAMI VICE '26</h1>
-            
-            <div class="subtitle vice-text">
-                <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="Union Jack" class="uk-flag" />
+            <div class="subtitle vice-text" style="display:inline-flex; align-items:center; gap:15px; background:rgba(0,0,0,0.6); padding:12px 24px; border:1px solid #00ffff; box-shadow:4px 4px 0 #ff007f; margin-bottom:2.5rem;">
+                <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK" style="height:1.1rem; border-radius:2px;"/>
                 Union Jack to Ocean Drive 🏖️
             </div>
-
-            <div class="weather-hub">
-                <div class="weather-box">
-                    <div class="weather-data">74°F</div>
-                    <div class="weather-info vice-text">Current</div>
+            
+            <div style="display:flex; gap:15px; justify-content:center; margin-bottom:25px;">
+                <div style="background:rgba(0,0,0,0.5); padding:15px; border-radius:12px; flex:1; max-width:200px; text-align:left; border-left:4px solid #ff007f;">
+                    <div style="font-size:2.2rem; font-weight:800;">74°F</div><div style="font-size:0.75rem;">Current</div>
                 </div>
-                <div class="weather-box">
-                    <div class="weather-data">89°F</div>
-                    <div class="weather-info vice-text">June Forecast</div>
+                <div style="background:rgba(0,0,0,0.5); padding:15px; border-radius:12px; flex:1; max-width:200px; text-align:left; border-left:4px solid #ff007f;">
+                    <div style="font-size:2.2rem; font-weight:800;">89°F</div><div style="font-size:0.75rem;">June Forecast</div>
                 </div>
             </div>
 
-            <div class="countdown-grid">
-                <div class="time-segment"><span class="number" id="days">00</span><span class="label">Days</span></div>
-                <div class="time-segment"><span class="number" id="hours">00</span><span class="label">Hours</span></div>
-                <div class="time-segment"><span class="number" id="minutes">00</span><span class="label">Mins</span></div>
-                <div class="time-segment"><span class="number" id="seconds">00</span><span class="label">Secs</span></div>
+            <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px;">
+                <div style="background:rgba(0,0,0,0.4); padding:20px 10px; border-radius:25px; border:2px solid rgba(255,0,127,0.2);"><span class="number-styled" id="days" style="font-size:3.2rem; display:block;">00</span><span style="font-size:0.7rem; color:#00ffff; text-transform:uppercase;">Days</span></div>
+                <div style="background:rgba(0,0,0,0.4); padding:20px 10px; border-radius:25px; border:2px solid rgba(255,0,127,0.2);"><span class="number-styled" id="hours" style="font-size:3.2rem; display:block;">00</span><span style="font-size:0.7rem; color:#00ffff; text-transform:uppercase;">Hours</span></div>
+                <div style="background:rgba(0,0,0,0.4); padding:20px 10px; border-radius:25px; border:2px solid rgba(255,0,127,0.2);"><span class="number-styled" id="minutes" style="font-size:3.2rem; display:block;">00</span><span style="font-size:0.7rem; color:#00ffff; text-transform:uppercase;">Mins</span></div>
+                <div style="background:rgba(0,0,0,0.4); padding:20px 10px; border-radius:25px; border:2px solid rgba(255,0,127,0.2);"><span class="number-styled" id="seconds" style="font-size:3.2rem; display:block;">00</span><span style="font-size:0.7rem; color:#00ffff; text-transform:uppercase;">Secs</span></div>
+            </div>
+        </section>
+
+        <section id="map" class="glass-card">
+            <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 2rem;">The VICE Route</h2>
+            
+            <div class="map-wrapper">
+                <div class="route-path">
+                    <div class="route-line"></div>
+                    
+                    <div class="city-stop stop-top">
+                        <div class="polaroid">
+                            <img src="austin.jpg" alt="Austin Skyline">
+                            <span>Austin: Blue Skies, Boots & BBQ 🤠</span>
+                        </div>
+                        <div class="city-name">Austin, TX</div>
+                    </div>
+
+                    <div class="city-stop stop-bottom">
+                        <div class="polaroid">
+                            <img src="nola.jpg" alt="New Orleans Corner Store">
+                            <span>NOLA: French Quarter & Bourbon Street 🎷</span>
+                        </div>
+                        <div class="city-name">New Orleans, LA</div>
+                    </div>
+
+                    <div class="city-stop stop-top">
+                        <div class="polaroid">
+                            <img src="bradenton.jpg" alt="Bradenton Waterfront">
+                            <span>Aunty Gladys & Waterfront Sunsets 🌅</span>
+                        </div>
+                        <div class="city-name">Bradenton, FL</div>
+                    </div>
+
+                    <div class="city-stop stop-bottom" style="background:#ff007f;">
+                        <div class="polaroid" style="border: 3px solid #ff007f;">
+                            <img src="southbeach.jpg" alt="Miami South Beach">
+                            <span>Miami: South Beach Vacay🌴🏖️</span>
+                        </div>
+                        <div class="city-name">South Beach, FL</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="miles-container">
+                <span class="number-styled miles-highlight">1,350</span>
+                <p style="font-family: 'Orbitron', sans-serif; font-weight: 700; color: #00ffff; letter-spacing: 6px; font-size: 1rem; margin-top: 10px;">MILES OF VICE</p>
             </div>
         </section>
 
         <section id="itinerary" class="glass-card">
             <h2 class="vice-text" style="color:#00ffff; font-size: 2rem; margin-bottom: 2rem;">The Dossier</h2>
-            <div class="list-area">
-                <div class="day"><h3>FRI: THE ARRIVAL</h3><p>3:00 PM Check-in. Sunset cocktails on the strip.</p></div>
-                <div class="day"><h3>SAT: DISTRICT 305</h3><p>Wynwood Arts morning. South Beach VIP dinner.</p></div>
-                <div class="day"><h3>SUN: VICE WATERFRONT</h3><p>Jet Skis and Private Boat Charter.</p></div>
-            </div>
-        </section>
-
-        <section id="packing" class="glass-card">
-            <h2 class="vice-text" style="color:#00ffff; font-size: 2rem; margin-bottom: 2rem;">Kit List</h2>
-            <div class="list-area">
-                <ul style="list-style: none; line-height: 2.2;">
-                    <li><span style="color:#ff007f;">▶</span> PASSPORT & ESTA</li>
-                    <li><span style="color:#ff007f;">▶</span> LINEN SUITS & WAYFARERS</li>
-                    <li><span style="color:#ff007f;">▶</span> SUNSCREEN (SPF 50+)</li>
-                    <li><span style="color:#ff007f;">▶</span> US POWER ADAPTERS</li>
-                </ul>
+            <div style="text-align: left; max-width: 600px; margin: auto;">
+                <div style="border-left:4px solid #00ffff; padding-left:20px; margin-bottom:2rem;">
+                    <h3 style="color:#ff007f; font-family:'Orbitron';">FRI: THE ARRIVAL</h3>
+                    <p>3:00 PM Check-in. Sunset cocktails on the strip.</p>
+                </div>
             </div>
         </section>
     </div>
@@ -233,18 +308,15 @@
         }
 
         const targetDate = new Date("June 26, 2026 15:00:00").getTime();
-        
         function update() {
             const now = new Date().getTime();
             const gap = targetDate - now;
             if (gap < 0) return;
-
-            document.getElementById("days").innerText = Math.floor(gap / 86400000);
-            document.getElementById("hours").innerText = Math.floor((gap % 86400000) / 3600000);
-            document.getElementById("minutes").innerText = Math.floor((gap % 3600000) / 60000);
-            document.getElementById("seconds").innerText = Math.floor((gap % 60000) / 1000);
+            document.getElementById("days").innerText = Math.floor(gap / 86400000).toString().padStart(2, '0');
+            document.getElementById("hours").innerText = Math.floor((gap % 86400000) / 3600000).toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = Math.floor((gap % 3600000) / 60000).toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = Math.floor((gap % 60000) / 1000).toString().padStart(2, '0');
         }
-
         setInterval(update, 1000);
         update();
     </script>
