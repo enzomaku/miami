@@ -30,7 +30,7 @@
             z-index: 1000;
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 25px; /* Reduced gap to fit 4 items on mobile */
             border-bottom: 3px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
@@ -40,9 +40,9 @@
             color: #fff;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -232,6 +232,8 @@
 
         /* MOBILE OPTIMIZATION */
         @media (max-width: 900px) {
+            nav { gap: 15px; padding: 1rem 0.5rem; }
+            nav a { font-size: 0.7rem; }
             .map-wrapper { padding: 40px; height: auto; }
             .route-path { flex-direction: column; height: 1200px; }
             .route-line { width: 6px; height: 90%; left: 50%; transform: translateX(-50%); top: 5%; }
@@ -247,6 +249,7 @@
         <a onclick="showSection('home')">Home</a>
         <a onclick="showSection('map')">Route</a>
         <a onclick="showSection('itinerary')">Itinerary</a>
+        <a onclick="showSection('soccer')">World Cup</a>
     </nav>
 
     <div class="container">
@@ -350,11 +353,10 @@
                     </div>
 
                     <div class="day-block">
-                        <h3>SUN JUNE 28: SAN ANTONIO & SOCCER</h3>
+                        <h3>SUN JUNE 28: SAN ANTONIO VISIT</h3>
                         <ul>
                             <li><strong>Morning:</strong> Drive to San Antonio (Esther & Gert Visit)</li>
                             <li><strong>Afternoon:</strong> The Alamo & Riverwalk</li>
-                            <li><strong>Sports:</strong> Find a park/bar for 🏴󠁧󠁢󠁥󠁮󠁧󠁿 <strong>England Match</strong></li>
                             <li><strong>Dinner:</strong> Mexican Food in San Antonio (The Best!)</li>
                             <li><strong>Evening:</strong> Drive back to Austin</li>
                         </ul>
@@ -449,6 +451,7 @@
                         <ul>
                             <li><strong>Afternoon:</strong> 3pm Houston Check-in</li>
                             <li><strong>Dinner:</strong> Agas</li>
+                            <li><strong>Evening:</strong> Hookah Bar / Main Street Bars</li>
                         </ul>
                     </div>
                     <div class="day-block">
@@ -470,6 +473,67 @@
 
             </div>
         </section>
+
+        <section id="soccer" class="glass-card">
+            <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 2rem;">🏆 World Cup '26</h2>
+            <p style="margin-bottom: 2rem; color: #ff007f; font-weight: 800;">North America Group Stage & Knockouts</p>
+            
+            <div style="max-width: 900px; margin: auto;">
+                <div class="itinerary-phase" style="border-color: #00ffff;">
+                    <div class="day-block">
+                        <h3>FRI JUNE 26</h3>
+                        <ul>
+                            <li><strong>Houston (NRG Stadium):</strong> Group Stage Match</li>
+                            <li><strong>Guadalajara / Mexico City:</strong> Group Stage Match</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h3>SAT JUNE 27</h3>
+                        <ul>
+                            <li><strong>Miami (Hard Rock Stadium):</strong> Group Stage Match</li>
+                            <li><strong>New York / New Jersey:</strong> Group Stage Match</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h3>SUN JUNE 28</h3>
+                        <ul>
+                            <li><strong>Round of 32 Begins:</strong> (Various US Locations)</li>
+                        </ul>
+                    </div>
+                    <div class="day-block" style="background:rgba(255,0,127,0.1); padding: 10px;">
+                        <h3>MON JUNE 29 - WED JULY 1</h3>
+                        <ul>
+                            <li><strong>Round of 32:</strong> Continues across US/Mexico/Canada</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h3>SAT JULY 4 (INDEPENDENCE DAY)</h3>
+                        <ul>
+                            <li><strong>Round of 16 Match:</strong> Likely in Philadelphia or New York</li>
+                        </ul>
+                    </div>
+                    <div class="day-block" style="border-color:#00ffff;">
+                        <h3>TUE JULY 7</h3>
+                        <ul>
+                            <li><strong>Quarter-Final 1:</strong> (Location TBD)</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h3>WED JULY 8</h3>
+                        <ul>
+                            <li><strong>Quarter-Final 2:</strong> (Location TBD)</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h3>SAT JULY 11 (TRAVEL DAY)</h3>
+                        <ul>
+                            <li><strong>Semi-Final 1:</strong> (Major US Hub)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div>
 
     <script>
