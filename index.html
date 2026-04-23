@@ -30,7 +30,7 @@
             z-index: 1000;
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 25px; /* Reduced gap to fit 4 items on mobile */
             border-bottom: 3px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
@@ -40,9 +40,9 @@
             color: #fff;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -199,8 +199,41 @@
         .miles-container { margin-top: 50px; }
         .miles-highlight { font-size: 4rem; }
 
+        /* ITINERARY STYLING */
+        .itinerary-phase {
+            text-align: left;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .day-block {
+            border-left: 3px solid #ff007f;
+            padding-left: 20px;
+            margin-bottom: 1.5rem;
+        }
+
+        .day-block h3 {
+            color: #00ffff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .day-block ul {
+            list-style: none;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .day-block strong { color: #ff007f; }
+
         /* MOBILE OPTIMIZATION */
         @media (max-width: 900px) {
+            nav { gap: 15px; padding: 1rem 0.5rem; }
+            nav a { font-size: 0.7rem; }
             .map-wrapper { padding: 40px; height: auto; }
             .route-path { flex-direction: column; height: 1200px; }
             .route-line { width: 6px; height: 90%; left: 50%; transform: translateX(-50%); top: 5%; }
@@ -216,6 +249,7 @@
         <a onclick="showSection('home')">Home</a>
         <a onclick="showSection('map')">Route</a>
         <a onclick="showSection('itinerary')">Itinerary</a>
+        <a onclick="showSection('soccer')">World Cup</a>
     </nav>
 
     <div class="container">
@@ -291,14 +325,215 @@
         </section>
 
         <section id="itinerary" class="glass-card">
-            <h2 class="vice-text" style="color:#00ffff; font-size: 2rem; margin-bottom: 2rem;">The Dossier</h2>
-            <div style="text-align: left; max-width: 600px; margin: auto;">
-                <div style="border-left:4px solid #00ffff; padding-left:20px; margin-bottom:2rem;">
-                    <h3 style="color:#ff007f; font-family:'Orbitron';">FRI: THE ARRIVAL</h3>
-                    <p>3:00 PM Check-in. Sunset cocktails on the strip.</p>
+            <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 2rem;">The Dossier</h2>
+            
+            <div style="max-width: 900px; margin: auto;">
+                
+                <div class="itinerary-phase">
+                    <h2 class="vice-text" style="color: #ff007f; margin-bottom: 1.5rem;">📍 Phase 1: Texas Warm-up</h2>
+                    
+                    <div class="day-block">
+                        <h3>FRI JUNE 26: ARRIVAL</h3>
+                        <ul>
+                            <li><strong>Afternoon:</strong> Arrival, Airport Pickup, Settle In</li>
+                            <li><strong>Dinner:</strong> Texas Steakhouse / Torchys / Moreno BBQ / Ramen Tatsuya</li>
+                            <li><strong>Night:</strong> Chill or East/West 6th Bar Crawl / Elsewhere</li>
+                        </ul>
+                    </div>
+
+                    <div class="day-block">
+                        <h3>SAT JUNE 27: AUSTIN TX</h3>
+                        <ul>
+                            <li><strong>Morning:</strong> Zilker Park, Lake Travis</li>
+                            <li><strong>Lunch:</strong> Cava / Cabo Bob</li>
+                            <li><strong>Afternoon:</strong> Downtown Austin</li>
+                            <li><strong>Dinner:</strong> Korean BBQ / GangNam / Ramen Tatsuya</li>
+                            <li><strong>Night:</strong> Riviere / Luna Rooftop Bar / Busy Signal / Elsewhere / Zola Hookah</li>
+                        </ul>
+                    </div>
+
+                    <div class="day-block">
+                        <h3>SUN JUNE 28: SAN ANTONIO VISIT</h3>
+                        <ul>
+                            <li><strong>Morning:</strong> Drive to San Antonio (Esther & Gert Visit)</li>
+                            <li><strong>Afternoon:</strong> The Alamo & Riverwalk</li>
+                            <li><strong>Dinner:</strong> Mexican Food in San Antonio (The Best!)</li>
+                            <li><strong>Evening:</strong> Drive back to Austin</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="itinerary-phase" style="border-color: #ff007f;">
+                    <h2 class="vice-text" style="color: #00ffff; margin-bottom: 1.5rem;">🏎️ Phase 2: Road Trip</h2>
+                    <div class="day-block">
+                        <h3>MON JUNE 29: NOLA BOUND</h3>
+                        <ul>
+                            <li><strong>Early:</strong> 8am Depart ATX (8hr drive). Check-in 4pm.</li>
+                            <li><strong>Day:</strong> Bourbon Street & French Quarter Exploration</li>
+                            <li><strong>Night:</strong> Bourbon Street Bar Crawl</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h3>TUE JUNE 30: THE FAMILY STOP</h3>
+                        <ul>
+                            <li><strong>Morning:</strong> NOLA Breakfast. Leave for Bradenton (10hr drive).</li>
+                            <li><strong>Afternoon:</strong> Arrive before 8pm at Gladys’ place.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="itinerary-phase">
+                    <h2 class="vice-text" style="color: #ff007f; margin-bottom: 1.5rem;">🌴 Phase 3: Miami Main Event</h2>
+                    <div class="day-block">
+                        <h3>WED JULY 1: TOUCHDOWN MIAMI</h3>
+                        <ul>
+                            <li><strong>Morning:</strong> Breakfast with Gladys. Leave for SoBe at 11am.</li>
+                            <li><strong>Afternoon:</strong> 3pm Check-in. Grocery & Supplies run.</li>
+                            <li><strong>Evening:</strong> Dinner in Brickell / Wynwood</li>
+                            <li><strong>Night:</strong> Voodoo / Clevelander / "We Are Here" Drinks</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h3>THU JULY 2: DESIGN & ARTS</h3>
+                        <ul>
+                            <li><strong>Day:</strong> Design District & Wynwood Art / Superblue Immersive</li>
+                            <li><strong>Lunch:</strong> Wynwood Food Crawl</li>
+                            <li><strong>Night:</strong> Blackbird / Las Olas</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h3>FRI JULY 3: FT. LAUDERDALE</h3>
+                        <ul>
+                            <li><strong>Day:</strong> Beach / Jet Skis / Speed Boats</li>
+                            <li><strong>Night:</strong> Las Olas Strip / E11EVEN or Booby Trap</li>
+                        </ul>
+                    </div>
+                    <div class="day-block" style="border-color: #00ffff; background: rgba(0,255,255,0.1); padding: 15px;">
+                        <h3>SAT JULY 4: INDEPENDENCE DAY 🇺🇸</h3>
+                        <ul>
+                            <li><strong>Afternoon:</strong> ⚪ <strong>ALL WHITE BOAT PARTY</strong></li>
+                            <li><strong>Evening:</strong> South Beach Fireworks</li>
+                            <li><strong>Dinner:</strong> Mondrian / Mayami Wynwood</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h3>SUN JULY 5: SUNDAY RITUAL</h3>
+                        <ul>
+                            <li><strong>Day:</strong> Rise & Toast / Setai / SLS Day Party</li>
+                            <li><strong>Night:</strong> Kiki on the River / LIV Sundays</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h3>MON JULY 6: SIDE QUESTS</h3>
+                        <ul>
+                            <li><strong>Day:</strong> Souvenir Shopping / Bal Harbour / Aventura Mall</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="itinerary-phase" style="border-color: #ff007f;">
+                    <h2 class="vice-text" style="color: #00ffff; margin-bottom: 1.5rem;">🍹 Phase 4: Wind Down</h2>
+                    <div class="day-block">
+                        <h3>TUE JULY 7: FAREWELL MIAMI</h3>
+                        <ul>
+                            <li><strong>Evening:</strong> Drive to Gladys. Topgolf & Dinner.</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h3>WED JULY 8: PANHANDLE DRIVE</h3>
+                        <ul>
+                            <li><strong>Route:</strong> Destin / Panama City / Baton Rouge (13hr drive)</li>
+                            <li><strong>Night:</strong> Dinner & Casino</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h3>THU JULY 9: HOUSTON</h3>
+                        <ul>
+                            <li><strong>Afternoon:</strong> 3pm Houston Check-in</li>
+                            <li><strong>Dinner:</strong> Agas</li>
+                            <li><strong>Evening:</strong> Hookah Bar / Main Street Bars</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h3>FRI JULY 10: BACK TO BASE</h3>
+                        <ul>
+                            <li><strong>12pm:</strong> Return Rental to Hertz (Austin)</li>
+                            <li><strong>Afternoon:</strong> Final Shopping Run (Target/Ross/Marshalls)</li>
+                            <li><strong>Night:</strong> Domain / 6th St Final Crawl</li>
+                        </ul>
+                    </div>
+                    <div class="day-block" style="border-left: 5px solid white;">
+                        <h3>SAT JULY 11: DEPARTURE</h3>
+                        <ul>
+                            <li><strong>7pm:</strong> Airport Goodbyes</li>
+                            <li><strong>10:30pm:</strong> UK Return Flight ✈️</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="soccer" class="glass-card">
+            <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 2rem;">🏆 World Cup '26</h2>
+            <p style="margin-bottom: 2rem; color: #ff007f; font-weight: 800;">North America Group Stage & Knockouts</p>
+            
+            <div style="max-width: 900px; margin: auto;">
+                <div class="itinerary-phase" style="border-color: #00ffff;">
+                    <div class="day-block">
+                        <h3>FRI JUNE 26</h3>
+                        <ul>
+                            <li><strong>Houston (NRG Stadium):</strong> Group Stage Match</li>
+                            <li><strong>Guadalajara / Mexico City:</strong> Group Stage Match</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h3>SAT JUNE 27</h3>
+                        <ul>
+                            <li><strong>Miami (Hard Rock Stadium):</strong> Group Stage Match</li>
+                            <li><strong>New York / New Jersey:</strong> Group Stage Match</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h3>SUN JUNE 28</h3>
+                        <ul>
+                            <li><strong>Round of 32 Begins:</strong> (Various US Locations)</li>
+                        </ul>
+                    </div>
+                    <div class="day-block" style="background:rgba(255,0,127,0.1); padding: 10px;">
+                        <h3>MON JUNE 29 - WED JULY 1</h3>
+                        <ul>
+                            <li><strong>Round of 32:</strong> Continues across US/Mexico/Canada</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h3>SAT JULY 4 (INDEPENDENCE DAY)</h3>
+                        <ul>
+                            <li><strong>Round of 16 Match:</strong> Likely in Philadelphia or New York</li>
+                        </ul>
+                    </div>
+                    <div class="day-block" style="border-color:#00ffff;">
+                        <h3>TUE JULY 7</h3>
+                        <ul>
+                            <li><strong>Quarter-Final 1:</strong> (Location TBD)</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h3>WED JULY 8</h3>
+                        <ul>
+                            <li><strong>Quarter-Final 2:</strong> (Location TBD)</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h3>SAT JULY 11 (TRAVEL DAY)</h3>
+                        <ul>
+                            <li><strong>Semi-Final 1:</strong> (Major US Hub)</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
+
     </div>
 
     <script>
