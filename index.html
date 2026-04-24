@@ -57,8 +57,9 @@
             padding-top: 100px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 100vh;
+            padding-bottom: 50px;
         }
 
         .glass-card {
@@ -90,8 +91,8 @@
             color: #00ffff;
             font-size: 3.2rem; 
             margin-bottom: 0.5rem; 
-            letter-spacing: 4px;
             text-shadow: 3px 3px 0px #ff007f;
+            letter-spacing: 4px;
         }
 
         .number-styled { 
@@ -142,7 +143,6 @@
             box-shadow: 0 0 20px #00ffff;
         }
 
-        /* POLAROID STYLING */
         .polaroid {
             position: absolute;
             background: white;
@@ -228,6 +228,17 @@
 
         .day-block strong { color: #ff007f; }
 
+        /* --- WORLD CUP TABLE --- */
+        .wc-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            text-align: left;
+            margin-top: 10px;
+        }
+        .wc-table th { color: #ff007f; padding-bottom: 10px; border-bottom: 1px solid #444; }
+        .wc-table td { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+
         /* --- FOOD GRID --- */
         .food-grid {
             display: grid;
@@ -285,16 +296,48 @@
             text-transform: uppercase;
         }
 
-        /* WC TABLE STYLE */
-        .wc-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.85rem;
+        /* --- PLAYGROUND GRID --- */
+        .playground-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
             text-align: left;
-            margin-top: 10px;
+            margin-top: 2rem;
         }
-        .wc-table th { color: #ff007f; padding-bottom: 10px; border-bottom: 1px solid #444; }
-        .wc-table td { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .playground-category {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: 0.3s;
+        }
+        .playground-category:hover { border-color: #ff007f; transform: translateY(-5px); }
+        .playground-category h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #ff007f;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid rgba(255, 0, 127, 0.3);
+            padding-bottom: 5px;
+        }
+        .activity-item {
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .activity-item strong {
+            display: block;
+            color: #00ffff;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        .activity-item p {
+            font-size: 0.8rem;
+            color: #ccc;
+            line-height: 1.4;
+            margin-top: 3px;
+        }
 
         /* MOBILE OPTIMIZATION */
         @media (max-width: 900px) {
@@ -317,6 +360,7 @@
         <a onclick="showSection('itinerary')">Itinerary</a>
         <a onclick="showSection('soccer')">World Cup</a>
         <a onclick="showSection('food')">Vice Eats</a>
+        <a onclick="showSection('playground')">Playground</a>
     </nav>
 
     <div class="container">
@@ -346,213 +390,78 @@
 
         <section id="map" class="glass-card">
             <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 2rem;">The VICE Route</h2>
-            
             <div class="map-wrapper">
                 <div class="route-path">
                     <div class="route-line"></div>
-                    
-                    <div class="city-stop stop-top">
-                        <div class="polaroid">
-                            <img src="austin.jpg" alt="Austin Skyline">
-                            <span>Austin: Blue Skies, Boots & BBQ 🤠</span>
-                        </div>
-                        <div class="city-name">Austin, TX</div>
-                    </div>
-
-                    <div class="city-stop stop-bottom">
-                        <div class="polaroid">
-                            <img src="nola.jpg" alt="New Orleans Corner Store">
-                            <span>NOLA: French Quarter & Bourbon Street 🎷</span>
-                        </div>
-                        <div class="city-name">New Orleans, LA</div>
-                    </div>
-
-                    <div class="city-stop stop-top">
-                        <div class="polaroid">
-                            <img src="bradenton.jpg" alt="Bradenton Waterfront">
-                            <span>Aunty Gladys & Waterfront Sunsets 🌅</span>
-                        </div>
-                        <div class="city-name">Bradenton, FL</div>
-                    </div>
-
-                    <div class="city-stop stop-bottom" style="background:#ff007f;">
-                        <div class="polaroid" style="border: 3px solid #ff007f;">
-                            <img src="southbeach.jpg" alt="Miami South Beach">
-                            <span>Miami: South Beach Vacay🌴🏖️</span>
-                        </div>
-                        <div class="city-name">South Beach, FL</div>
-                    </div>
+                    <div class="city-stop stop-top"><div class="polaroid"><img src="austin.jpg" alt="Austin Skyline"><span>Austin: Blue Skies, Boots & BBQ 🤠</span></div><div class="city-name">Austin, TX</div></div>
+                    <div class="city-stop stop-bottom"><div class="polaroid"><img src="nola.jpg" alt="NOLA"><span>NOLA: French Quarter & Bourbon Street 🎷</span></div><div class="city-name">New Orleans, LA</div></div>
+                    <div class="city-stop stop-top"><div class="polaroid"><img src="bradenton.jpg" alt="Bradenton"><span>Aunty Gladys & Waterfront Sunsets 🌅</span></div><div class="city-name">Bradenton, FL</div></div>
+                    <div class="city-stop stop-bottom" style="background:#ff007f;"><div class="polaroid" style="border: 3px solid #ff007f;"><img src="southbeach.jpg" alt="Miami"><span>Miami: South Beach Vacay🌴🏖️</span></div><div class="city-name">South Beach, FL</div></div>
                 </div>
             </div>
-            
             <div class="miles-container">
                 <span class="number-styled miles-highlight">1,350</span>
-                <p style="font-family: 'Orbitron', sans-serif; font-weight: 700; color: #00ffff; letter-spacing: 6px; font-size: 1rem; margin-top: 10px;">MILES OF VICE</p>
+                <p style="font-family:'Orbitron'; font-weight:700; color:#00ffff; letter-spacing:6px; font-size:1rem; margin-top:10px;">MILES OF VICE</p>
             </div>
         </section>
 
         <section id="itinerary" class="glass-card">
             <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 2rem;">The Dossier</h2>
-            
             <div style="max-width: 900px; margin: auto;">
                 
                 <div class="itinerary-phase">
                     <h2 class="vice-text" style="color: #ff007f; margin-bottom: 1.5rem;">📍 Phase 1: Texas Warm-up</h2>
-                    
-                    <div class="day-block">
-                        <h3>FRI JUNE 26: ARRIVAL</h3>
-                        <ul>
-                            <li><strong>Afternoon:</strong> Arrival, Airport Pickup, Settle In</li>
-                            <li><strong>Dinner:</strong> Texas Steakhouse / Torchys / Moreno BBQ / Ramen Tatsuya</li>
-                            <li><strong>Night:</strong> Chill or East/West 6th Bar Crawl</li>
-                        </ul>
-                    </div>
-
-                    <div class="day-block">
-                        <h3>SAT JUNE 27: AUSTIN TX</h3>
-                        <ul>
-                            <li><strong>Morning:</strong> Zilker Park, Lake Travis</li>
-                            <li><strong>Lunch:</strong> Cava / Cabo Bob</li>
-                            <li><strong>Dinner:</strong> Korean BBQ / GangNam / Ramen Tatsuya</li>
-                            <li><strong>Night:</strong> Riviere / Luna Rooftop / Busy Signal</li>
-                        </ul>
-                    </div>
-
-                    <div class="day-block">
-                        <h3>SUN JUNE 28: SAN ANTONIO VISIT</h3>
-                        <ul>
-                            <li><strong>Morning:</strong> Drive to San Antonio (Esther & Gert Visit)</li>
-                            <li><strong>Afternoon:</strong> The Alamo & Riverwalk</li>
-                            <li><strong>Dinner:</strong> Mexican Food in SA</li>
-                            <li><strong>Evening:</strong> Drive back to Austin</li>
-                        </ul>
-                    </div>
+                    <div class="day-block"><h3>FRI JUNE 26: ARRIVAL</h3><ul><li><strong>Afternoon:</strong> Arrival, Airport Pickup, Settle In </li><li><strong>Dinner:</strong> Texas Steakhouse / Torchys / Moreno BBQ / Ramen Tatsuya </li><li><strong>Night:</strong> Chill or East/West 6th Bar Crawl </li></ul></div>
+                    <div class="day-block"><h3>SAT JUNE 27: AUSTIN TX</h3><ul><li><strong>Morning:</strong> Zilker Park, Lake Travis </li><li><strong>Lunch:</strong> Cava / Cabo Bob </li><li><strong>Dinner:</strong> Korean BBQ / GangNam / Ramen Tatsuya </li><li><strong>Night:</strong> Riviere / Luna Rooftop / Busy Signal </li></ul></div>
+                    <div class="day-block"><h3>SUN JUNE 28: SAN ANTONIO VISIT</h3><ul><li><strong>Morning:</strong> Drive to San Antonio (Esther & Gert Visit) </li><li><strong>Afternoon:</strong> The Alamo & Riverwalk </li><li><strong>Dinner:</strong> Mexican Food in SA </li><li><strong>Evening:</strong> Drive back to Austin </li></ul></div>
                 </div>
 
                 <div class="itinerary-phase" style="border-color: #ff007f;">
                     <h2 class="vice-text" style="color: #00ffff; margin-bottom: 1.5rem;">🏎️ Phase 2: Road Trip</h2>
-                    <div class="day-block">
-                        <h3>MON JUNE 29: NOLA BOUND</h3>
-                        <ul>
-                            <li><strong>Early:</strong> 8am Depart ATX (8hr drive). Check-in 4pm.</li>
-                            <li><strong>Night:</strong> Bourbon Street Exploration & Bar Crawl</li>
-                        </ul>
-                    </div>
-                    <div class="day-block">
-                        <h3>TUE JUNE 30: THE FAMILY STOP</h3>
-                        <ul>
-                            <li><strong>Morning:</strong> Leave for Bradenton (10hr drive).</li>
-                            <li><strong>Evening:</strong> Arrive at Gladys’ place. Dinner & rest.</li>
-                        </ul>
-                    </div>
+                    <div class="day-block"><h3>MON JUNE 29: NOLA BOUND</h3><ul><li><strong>Early:</strong> 8am Depart ATX (8hr drive). Check-in 4pm. </li><li><strong>Night:</strong> Bourbon Street Exploration & Bar Crawl </li></ul></div>
+                    <div class="day-block"><h3>TUE JUNE 30: THE FAMILY STOP</h3><ul><li><strong>Morning:</strong> Leave for Bradenton (10hr drive). </li><li><strong>Evening:</strong> Arrive at Gladys’ place. Dinner & rest. </li></ul></div>
                 </div>
 
                 <div class="itinerary-phase">
                     <h2 class="vice-text" style="color: #ff007f; margin-bottom: 1.5rem;">🌴 Phase 3: Miami Main Event</h2>
-                    <div class="day-block">
-                        <h3>WED JULY 1: TOUCHDOWN MIAMI</h3>
-                        <ul>
-                            <li><strong>Morning:</strong> Breakfast with Gladys. Leave for SoBe 11am.</li>
-                            <li><strong>Afternoon:</strong> 3pm Check-in. Grocery & Supplies run.</li>
-                            <li><strong>Night:</strong> Brickell Dinner / Clevelander Drinks</li>
-                        </ul>
-                    </div>
-                    <div class="day-block">
-                        <h3>THU JULY 2: DESIGN & ARTS</h3>
-                        <ul>
-                            <li><strong>Day:</strong> Wynwood Art / Superblue Immersive</li>
-                            <li><strong>Night:</strong> Blackbird / Las Olas Strip</li>
-                        </ul>
-                    </div>
-                    <div class="day-block" style="border-color: #00ffff; background: rgba(0,255,255,0.1); padding: 15px;">
-                        <h3>SAT JULY 4: INDEPENDENCE DAY 🇺🇸</h3>
-                        <ul>
-                            <li><strong>Afternoon:</strong> ⚪ <strong>ALL WHITE BOAT PARTY</strong></li>
-                            <li><strong>Evening:</strong> South Beach Fireworks</li>
-                        </ul>
-                    </div>
+                    <div class="day-block"><h3>WED JULY 1: TOUCHDOWN MIAMI</h3><ul><li><strong>Morning:</strong> Breakfast with Gladys. Leave for SoBe 11am. </li><li><strong>Afternoon:</strong> 3pm Check-in. Grocery & Supplies run. </li><li><strong>Night:</strong> Brickell Dinner / Clevelander Drinks </li></ul></div>
+                    <div class="day-block"><h3>THU JULY 2: DESIGN & ARTS</h3><ul><li><strong>Day:</strong> Wynwood Art / Superblue Immersive </li><li><strong>Night:</strong> Blackbird / Las Olas Strip </li></ul></div>
+                    <div class="day-block" style="border-color: #00ffff; background: rgba(0,255,255,0.1); padding: 15px;"><h3>SAT JULY 4: INDEPENDENCE DAY 🇺🇸</h3><ul><li><strong>Afternoon:</strong> ⚪ <strong>ALL WHITE BOAT PARTY</strong> </li><li><strong>Evening:</strong> South Beach Fireworks </li></ul></div>
                 </div>
 
                 <div class="itinerary-phase" style="border-color: #ff007f;">
                     <h2 class="vice-text" style="color: #00ffff; margin-bottom: 1.5rem;">🍹 Phase 4: Wind Down</h2>
-                    <div class="day-block">
-                        <h3>WED JULY 8: PANHANDLE DRIVE</h3>
-                        <ul>
-                            <li><strong>Route:</strong> Destin / Panama City / Baton Rouge (13hr drive)</li>
-                            <li><strong>Night:</strong> Dinner & Casino stop</li>
-                        </ul>
-                    </div>
-                    <div class="day-block">
-                        <h3>THU JULY 9: HOUSTON</h3>
-                        <ul>
-                            <li><strong>Afternoon:</strong> 3pm Houston Check-in</li>
-                            <li><strong>Dinner:</strong> Aga's (Must do)</li>
-                        </ul>
-                    </div>
-                    <div class="day-block" style="border-left: 5px solid white;">
-                        <h3>SAT JULY 11: DEPARTURE</h3>
-                        <ul>
-                            <li><strong>7pm:</strong> Airport Goodbyes</li>
-                            <li><strong>10:30pm:</strong> UK Return Flight ✈️</li>
-                        </ul>
-                    </div>
+                    <div class="day-block"><h3>WED JULY 8: PANHANDLE DRIVE</h3><ul><li><strong>Route:</strong> Destin / Panama City / Baton Rouge (13hr drive) </li><li><strong>Night:</strong> Dinner & Casino stop </li></ul></div>
+                    <div class="day-block"><h3>THU JULY 9: HOUSTON</h3><ul><li><strong>Afternoon:</strong> 3pm Houston Check-in </li><li><strong>Dinner:</strong> Aga's (Must do) </li></ul></div>
+                    <div class="day-block" style="border-left: 5px solid white;"><h3>SAT JULY 11: DEPARTURE</h3><ul><li><strong>7pm:</strong> Airport Goodbyes </li><li><strong>10:30pm:</strong> UK Return Flight ✈️ </li></ul></div>
                 </div>
-
             </div>
         </section>
 
         <section id="soccer" class="glass-card">
             <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 1rem;">🏆 World Cup '26</h2>
             <p style="margin-bottom: 2rem; color: #ff007f; font-weight: 800;">HUB SCHEDULE: TX, FL, NJ</p>
-            
             <div style="max-width: 900px; margin: auto;">
                 <div class="itinerary-phase" style="border-color: #00ffff;">
-                    
                     <h3 style="color:#00ffff; font-family:'Orbitron'; font-size:1rem; margin-bottom:10px;">Group Stage Matches</h3>
                     <table class="wc-table">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Matchup Highlights</th>
-                                <th>Location</th>
-                            </tr>
-                        </thead>
+                        <thead><tr><th>Date</th><th>Matchup Highlights</th><th>Location</th></tr></thead>
                         <tbody>
-                            <tr><td>June 13</td><td>Brazil vs Morocco</td><td>NJ</td></tr>
-                            <tr><td>June 14</td><td>Germany vs Curaçao</td><td>Houston</td></tr>
-                            <tr><td>June 15</td><td>Saudi Arabia vs Uruguay</td><td>Miami</td></tr>
-                            <tr><td>June 16</td><td>France vs Senegal</td><td>NJ</td></tr>
-                            <tr><td>June 17</td><td>Portugal vs Congo DR</td><td>Houston</td></tr>
-                            <tr><td>June 21</td><td>Uruguay vs Cabo Verde</td><td>Miami</td></tr>
-                            <tr><td>June 23</td><td>Portugal vs Uzbekistan</td><td>Houston</td></tr>
-                            <tr><td>June 24</td><td>Brazil vs Scotland</td><td>Miami</td></tr>
-                            <tr><td>June 27</td><td>Panama vs England</td><td>NJ</td></tr>
+                            <tr><td>June 13</td><td>Brazil vs Morocco</td><td>NJ </td></tr>
+                            <tr><td>June 14</td><td>Germany vs Curaçao</td><td>Houston </td></tr>
+                            <tr><td>June 15</td><td>Saudi Arabia vs Uruguay</td><td>Miami </td></tr>
+                            <tr><td>June 16</td><td>France vs Senegal</td><td>NJ </td></tr>
+                            <tr><td>June 17</td><td>Portugal vs Congo DR</td><td>Houston </td></tr>
+                            <tr><td>June 21</td><td>Uruguay vs Cabo Verde</td><td>Miami </td></tr>
+                            <tr><td>June 23</td><td>Portugal vs Uzbekistan</td><td>Houston </td></tr>
+                            <tr><td>June 24</td><td>Brazil vs Scotland</td><td>Miami </td></tr>
+                            <tr><td>June 27</td><td>Panama vs England</td><td>NJ </td></tr>
                         </tbody>
                     </table>
-
                     <h3 style="color:#00ffff; font-family:'Orbitron'; font-size:1rem; margin-top:30px; margin-bottom:10px;">The Knockout Dossier</h3>
-                    <div class="day-block">
-                        <h3>JUNE 28 - JULY 3: ROUND OF 32</h3>
-                        <ul>
-                            <li><strong>June 30:</strong> Match in New York New Jersey</li>
-                            <li><strong>July 1-3:</strong> Matches across US host cities</li>
-                        </ul>
-                    </div>
-                    <div class="day-block">
-                        <h3>JULY 4 - JULY 7: ROUND OF 16</h3>
-                        <ul>
-                            <li><strong>July 4:</strong> Match in <strong>Houston (NRG)</strong></li>
-                            <li><strong>July 5:</strong> Match in <strong>NJ (MetLife)</strong></li>
-                        </ul>
-                    </div>
-                    <div class="day-block">
-                        <h3>JULY 9 - JULY 19: THE FINALS</h3>
-                        <ul>
-                            <li><strong>July 11:</strong> Quarter-Final in <strong>Miami</strong></li>
-                            <li><strong>July 18:</strong> 3rd Place Play-off in <strong>Miami</strong></li>
-                            <li><strong>JULY 19:</strong> 🏆 <strong>WORLD CUP FINAL (NJ)</strong></li>
-                        </ul>
-                    </div>
+                    <div class="day-block"><h3>JUNE 28 - JULY 3: ROUND OF 32</h3><ul><li><strong>June 30:</strong> Match in New York New Jersey </li><li><strong>July 1-3:</strong> Matches across US host cities </li></ul></div>
+                    <div class="day-block"><h3>JULY 4 - JULY 7: ROUND OF 16</h3><ul><li><strong>July 4:</strong> Match in <strong>Houston (NRG)</strong> </li><li><strong>July 5:</strong> Match in <strong>NJ (MetLife)</strong> </li></ul></div>
+                    <div class="day-block"><h3>JULY 9 - JULY 19: THE FINALS</h3><ul><li><strong>July 11:</strong> Quarter-Final in <strong>Miami</strong> </li><li><strong>July 18:</strong> 3rd Place Play-off in <strong>Miami</strong> </li><li><strong>JULY 19:</strong> 🏆 <strong>WORLD CUP FINAL (NJ)</strong> </li></ul></div>
                 </div>
             </div>
         </section>
@@ -560,48 +469,55 @@
         <section id="food" class="glass-card">
             <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 1rem;">🍔 VICE EATS</h2>
             <p style="color:#ff007f; font-weight: 800; font-size: 0.9rem; letter-spacing: 2px;">THE CULINARY HIT LIST</p>
-            
             <div class="food-grid">
-                <div class="food-card">
-                    <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=500" alt="Texas BBQ">
-                    <h4>Central Texas BBQ</h4>
-                    <p>Legendary oak-smoked brisket and beef ribs. Essential Austin experience.</p>
-                    <span class="tag">📍 Terry Black's / Moreno</span>
-                </div>
+                <div class="food-card"><img src="texas.jpg"><h4>Central Texas BBQ</h4><p>Legendary oak-smoked brisket and beef ribs. Essential Austin experience. </p><span class="tag">📍 Terry Black's / Moreno</span></div>
+                <div class="food-card"><img src="tacos.jpg"><h4>Birria & Tacos</h4><p>The only way to start a day in Texas. Migas, chorizo, and fresh salsa. </p><span class="tag">📍 Torchy's / Pepe's Tacos</span></div>
+                <div class="food-card"><img src="nolafoods.jpg"><h4>NOLA Beignets</h4><p>Deep-fried dough mountains covered in powdered sugar. Best at 2 AM. </p><span class="tag">📍 Café Du Monde / Oceana Grill</span></div>
+                <div class="food-card"><img src="cubansan.jpg"><h4>Cubano Sandwich</h4><p>The Miami classic. Roasted pork, ham, swiss, and pickles. Perfectly pressed. </p><span class="tag">📍 Versailles / Sanguich</span></div>
+                <div class="food-card"><img src="stonecrabs.jpg"><h4>Stone Crabs</h4><p>Florida’s premium seasonal luxury. Served cold with mustard sauce. </p><span class="tag">📍 Joe's Stone Crab</span></div>
+                <div class="food-card"><img src="agas.jpg"><h4>Houston's Aga's</h4><p>Non-negotiable stop. The world-famous Goat Chops are a must. </p><span class="tag">📍 Aga's Restaurant</span></div>
+            </div>
+        </section>
 
-                <div class="food-card">
-                    <img src="tacos.jpg" alt="Birria Tacos">
-                    <h4>Birria & Tacos</h4>
-                    <p>The only way to start a day in Texas. Migas, chorizo, and fresh salsa.</p>
-                    <span class="tag">📍 Torchy's / Pepe's Tacos </span>
+        <section id="playground" class="glass-card">
+            <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 0.5rem;">🕹️ PLAYGROUND</h2>
+            <p style="color:#ff007f; font-weight: 800; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 2rem;">THE VICE ACTIVITY COMPENDIUM</p>
+            <div class="playground-container">
+                <div class="playground-category">
+                    <h3>🌊 Water & Adventure</h3>
+                    <div class="activity-item"><strong>Jet Car Experience</strong><p>Drive floating supercars over the bay.</p></div>
+                    <div class="activity-item"><strong>Jet Ski Safaris</strong><p>High-speed guided tours circling Miami Beach.</p></div>
+                    <div class="activity-item"><strong>Everglades Airboat</strong><p>High-speed Gator spotting in the swamps.</p></div>
                 </div>
-
-                <div class="food-card">
-                    <img src="nolafoods.jpg" alt="Nola Food Tour">
-                    <h4>NOLA Beignets</h4>
-                    <p>Deep-fried dough mountains covered in powdered sugar. Best at 2 AM.</p>
-                    <span class="tag">📍 Café Du Monde / Oceana Grill </span>
+                <div class="playground-category">
+                    <h3>🏃 Active & Outdoors</h3>
+                    <div class="activity-item"><strong>Topgolf Doral</strong><p>High-tech driving range with skyline views.</p></div>
+                    <div class="activity-item"><strong>Venetian Pool</strong><p>Historic spring-fed coral rock pool in Coral Gables.</p></div>
+                    <div class="activity-item"><strong>South Pointe Pier</strong><p>Morning runs or sunset walks at the tip of SoBe.</p></div>
                 </div>
-
-                <div class="food-card">
-                    <img src="cubansan.jpg" alt="Cuban Sandwich">
-                    <h4>Cubano Sandwich</h4>
-                    <p>The Miami classic. Roasted pork, ham, swiss, and pickles. Perfectly pressed.</p>
-                    <span class="tag">📍 Versailles / Sanguich</span>
+                <div class="playground-category">
+                    <h3>🚤 Boats & Sandbars</h3>
+                    <div class="activity-item"><strong>Haulover Sandbar</strong><p>The ultimate floating party. Yacht central.</p></div>
+                    <div class="activity-item"><strong>Private Yacht Charters</strong><p>Cruise "Millionaire's Row" (Star Island).</p></div>
+                    <div class="activity-item"><strong>Nixon Beach Sandbar</strong><p>Local and chill vibes in Key Biscayne.</p></div>
                 </div>
-
-                <div class="food-card">
-                    <img src="stonecrabs.jpg" alt="Stone Crabs">
-                    <h4>Stone Crabs</h4>
-                    <p>Florida’s premium seasonal luxury. Served cold with mustard sauce.</p>
-                    <span class="tag">📍 Joe's Stone Crab</span>
+                <div class="playground-category">
+                    <h3>🌃 Elite Nightlife</h3>
+                    <div class="activity-item"><strong>E11EVEN Miami</strong><p>24/7 Ultraclub with aerialists and live acts.</p></div>
+                    <div class="activity-item"><strong>LIV / Club Space</strong><p>Quintessential clubs and legendary terraces.</p></div>
+                    <div class="activity-item"><strong>Kiki on the River</strong><p>Greek dining that turns into a riverside party.</p></div>
                 </div>
-
-                <div class="food-card">
-                    <img src="agas.jpg" alt="Houston's Best Indian Food">
-                    <h4>Houston's Aga's</h4>
-                    <p>Non-negotiable stop. The world-famous Goat Chops are a must.</p>
-                    <span class="tag">📍 Aga's Restaurant</span>
+                <div class="playground-category">
+                    <h3>🛍️ Lifestyle & Retail</h3>
+                    <div class="activity-item"><strong>Lincoln Road Mall</strong><p>Outdoor pedestrian strip for shopping and people watching.</p></div>
+                    <div class="activity-item"><strong>Bayside Marketplace</strong><p>Waterfront shopping and dining hub in Downtown.</p></div>
+                    <div class="activity-item"><strong>Bal Harbour Shops</strong><p>Ultra-luxury retail in an open-air tropical setting.</p></div>
+                </div>
+                <div class="playground-category">
+                    <h3>🎨 Art & Culture</h3>
+                    <div class="activity-item"><strong>Wynwood Walls</strong><p>The world’s premier street art museum.</p></div>
+                    <div class="activity-item"><strong>Superblue Miami</strong><p>Massive immersive digital art installations.</p></div>
+                    <div class="activity-item"><strong>Design District</strong><p>Architecture, fashion, and public art pieces.</p></div>
                 </div>
             </div>
         </section>
