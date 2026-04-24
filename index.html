@@ -30,7 +30,7 @@
             z-index: 1000;
             display: flex;
             justify-content: center;
-            gap: 25px; /* Reduced gap to fit 4 items on mobile */
+            gap: 25px; 
             border-bottom: 3px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
@@ -230,6 +230,63 @@
 
         .day-block strong { color: #ff007f; }
 
+        /* --- FOOD GRID --- */
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+
+        .food-card {
+            background: white;
+            padding: 12px 12px 40px 12px;
+            box-shadow: 10px 10px 25px rgba(0,0,0,0.5);
+            transition: 0.3s;
+            text-align: left;
+        }
+
+        .food-card:nth-child(even) { transform: rotate(2deg); }
+        .food-card:nth-child(odd) { transform: rotate(-2deg); }
+        
+        .food-card:hover { 
+            transform: scale(1.05) rotate(0deg); 
+            z-index: 10;
+            border: 2px solid #ff007f;
+        }
+
+        .food-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+        }
+
+        .food-card h4 {
+            color: #222;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            margin: 15px 0 5px 0;
+            text-transform: uppercase;
+        }
+
+        .food-card p {
+            color: #555;
+            font-size: 0.75rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .food-card .tag {
+            display: block;
+            margin-top: 10px;
+            color: #ff007f;
+            font-weight: 800;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+
         /* MOBILE OPTIMIZATION */
         @media (max-width: 900px) {
             nav { gap: 15px; padding: 1rem 0.5rem; }
@@ -250,6 +307,7 @@
         <a onclick="showSection('map')">Route</a>
         <a onclick="showSection('itinerary')">Itinerary</a>
         <a onclick="showSection('soccer')">World Cup</a>
+        <a onclick="showSection('food')">Vice Eats</a>
     </nav>
 
     <div class="container">
@@ -451,7 +509,7 @@
                         <ul>
                             <li><strong>Afternoon:</strong> 3pm Houston Check-in</li>
                             <li><strong>Dinner:</strong> Agas</li>
-                            <li><strong>Evening:</strong> Muna & Kuda Link Up /Hookah Bar / Main Street Bars</li>
+                            <li><strong>Evening:</strong> Hookah Bar / Main Street Bars</li>
                         </ul>
                     </div>
                     <div class="day-block">
@@ -534,12 +592,62 @@
             </div>
         </section>
 
+        <section id="food" class="glass-card">
+            <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 1rem;">🍔 VICE EATS</h2>
+            <p style="color:#ff007f; font-weight: 800; font-size: 0.9rem; letter-spacing: 2px;">THE CULINARY HIT LIST</p>
+            
+            <div class="food-grid">
+                <div class="food-card">
+                    <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=500" alt="Texas BBQ">
+                    <h4>Central Texas BBQ</h4>
+                    <p>Legendary oak-smoked brisket and beef ribs. Essential Austin experience.</p>
+                    <span class="tag">📍 Terry Black's / Moreno</span>
+                </div>
+
+                <div class="food-card">
+                    <img src="tacos.jpg" alt="Birria Tacos">
+                    <h4>Birria & Breakfast Tacos</h4>
+                    <p>The only way to start a day in Texas. Migas, chorizo, and fresh salsa.</p>
+                    <span class="tag">📍 Torchy's / Pepe's Tacos </span>
+                </div>
+
+                <div class="food-card">
+                    <img src="nolafoods.jpg" alt="Nola Food Tour">
+                    <h4>NOLA Beignets</h4>
+                    <p>Deep-fried dough mountains covered in powdered sugar. Best at 2 AM.</p>
+                    <span class="tag">📍 Café Du Monde / Oceana Grill </span>
+                </div>
+
+                <div class="food-card">
+                    <img src="cubansan.jpg" alt="Cuban Sandwich">
+                    <h4>Cubano Sandwich</h4>
+                    <p>The Miami classic. Roasted pork, ham, swiss, and pickles. Perfectly pressed.</p>
+                    <span class="tag">📍 Versailles / Sanguich</span>
+                </div>
+
+                <div class="food-card">
+                    <img src="stonecrabs.jpg" alt="Stone Crabs">
+                    <h4>Stone Crabs</h4>
+                    <p>Florida’s premium seasonal luxury. Served cold with mustard sauce.</p>
+                    <span class="tag">📍 Joe's Stone Crab</span>
+                </div>
+
+                <div class="food-card">
+                    <img src="agas.jpg" alt="Houston's Best Indian Food">
+                    <h4>Houston Best Indian Food</h4>
+                    <p>Agas is a non-negotiable stop. The world-famous Goat Chops are a must.</p>
+                    <span class="tag">📍 Aga's Restaurant</span>
+                </div>
+            </div>
+        </section>
+
     </div>
 
     <script>
         function showSection(id) {
             document.querySelectorAll('.glass-card').forEach(card => card.classList.remove('active'));
             document.getElementById(id).classList.add('active');
+            window.scrollTo(0,0);
         }
 
         const targetDate = new Date("June 26, 2026 15:00:00").getTime();
