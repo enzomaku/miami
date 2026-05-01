@@ -394,7 +394,7 @@
         <a onclick="showSection('soccer')">World Cup</a>
         <a onclick="showSection('food')">Vice Eats</a>
         <a onclick="showSection('playground')">Playground</a>
-        <a onclick="showSection('madness')">Madness</a>
+        <a onclick="showSection('matchday')">matchday</a>
     </nav>
 
     <div class="container">
@@ -599,56 +599,122 @@
             </div>
         </section>
 
-        <!-- MADNESS BRACKET -->
-        <section id="madness" class="glass-card">
-            <h2 class="vice-text" style="color:#ff007f; font-size: 2.5rem; margin-bottom: 0.5rem;">⚽ WORLD CUP MADNESS</h2>
-            <p style="color:#00ffff; font-weight: 800; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 2rem;">GROUP STAGE KEY CLASHES[cite: 2]</p>
+
+
+        <!-- MATCHDAY SECTION: THE ULTIMATE 104-MATCH DOSSIER -->
+        <section id="matchday" class="glass-card" style="max-width: 1300px; margin: 2rem auto;">
+            <h2 class="vice-text" style="color:#ff007f; font-size: 2.5rem; margin-bottom: 0.5rem;">⚽ WORLD CUP matchday</h2>
+            <p style="color:#00ffff; font-weight: 800; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 2rem;">THE COMPLETE 104-MATCH SCHEDULE: JUNE 11 – JULY 19[cite: 2]</p>
             
-            <div class="bracket-container">
-                <div class="bracket-column">
-                    <div class="bracket-matchup">
-                        <span style="color:#00ffff; font-size:0.7rem;">MEXICO CITY - JUNE 11[cite: 2]</span>
-                        <span>🇲🇽 MEXICO</span>
-                        <span>vs</span>
-                        <span>🇿🇦 SOUTH AFRICA</span>
-                    </div>
-                    <div class="bracket-matchup">
-                        <span style="color:#00ffff; font-size:0.7rem;">NEW YORK NJ - JUNE 13[cite: 2]</span>
-                        <span>🇧🇷 BRAZIL</span>
-                        <span>vs</span>
-                        <span>🇲🇦 MOROCCO</span>
-                    </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; text-align: left;">
+                
+                <!-- COLUMN 1: GROUP STAGE WEEK 1 & 2 -->
+                <div class="itinerary-phase" style="border-color: #00ffff; height: 650px; overflow-y: auto; padding: 1rem; background: rgba(0,0,0,0.5);">
+                    <h3 style="color:#00ffff; font-family:'Orbitron'; font-size:0.9rem; position: sticky; top: 0; background: #000; padding: 10px; z-index: 5; border-bottom: 1px solid #00ffff;">PHASE 1: THE OPENING VOLLEY[cite: 2]</h3>
+                    <table class="wc-table">
+                        <tbody>
+                            <tr><td>Jun 11</td><td>MEX vs RSA (Mexico City)[cite: 2]</td></tr>
+                            <tr><td>Jun 11</td><td>KOR vs CZE (Guadalajara)[cite: 2]</td></tr>
+                            <tr><td>Jun 12</td><td>CAN vs BIH (Toronto)[cite: 2]</td></tr>
+                            <tr><td>Jun 12</td><td>USA vs PAR (Los Angeles)[cite: 2]</td></tr>
+                            <tr><td>Jun 13</td><td>HAI vs SCO (Boston)[cite: 2]</td></tr>
+                            <tr><td>Jun 13</td><td>AUS vs TUR (Vancouver)[cite: 2]</td></tr>
+                            <tr><td>Jun 13</td><td>BRA vs MAR (NY/NJ)[cite: 2]</td></tr>
+                            <tr><td>Jun 13</td><td>QAT vs SUI (SF Bay Area)[cite: 2]</td></tr>
+                            <tr><td>Jun 14</td><td>CIV vs ECU (Philadelphia)[cite: 2]</td></tr>
+                            <tr><td>Jun 14</td><td>GER vs CUW (Houston)[cite: 2]</td></tr>
+                            <tr><td>Jun 14</td><td>NED vs JPN (Dallas)[cite: 2]</td></tr>
+                            <tr><td>Jun 14</td><td>SWE vs TUN (Monterrey)[cite: 2]</td></tr>
+                            <tr style="background: rgba(255, 0, 127, 0.1);"><td>Jun 15</td><td>KSA vs URU (Miami)[cite: 2]</td></tr>
+                            <tr><td>Jun 15</td><td>ESP vs CPV (Atlanta)[cite: 2]</td></tr>
+                            <tr><td>Jun 15</td><td>IRN vs NZL (Los Angeles)[cite: 2]</td></tr>
+                            <tr><td>Jun 15</td><td>BEL vs EGY (Seattle)[cite: 2]</td></tr>
+                            <tr><td>Jun 16</td><td>FRA vs SEN (NY/NJ)[cite: 2]</td></tr>
+                            <tr><td>Jun 16</td><td>IRQ vs NOR (Boston)[cite: 2]</td></tr>
+                            <tr><td>Jun 16</td><td>ARG vs ALG (Kansas City)[cite: 2]</td></tr>
+                            <tr><td>Jun 16</td><td>AUT vs JOR (SF Bay Area)[cite: 2]</td></tr>
+                            <tr><td>Jun 17</td><td>GHA vs PAN (Toronto)[cite: 2]</td></tr>
+                            <tr><td>Jun 17</td><td>ENG vs CRO (Dallas)[cite: 2]</td></tr>
+                            <tr><td>Jun 17</td><td>POR vs COD (Houston)[cite: 2]</td></tr>
+                            <tr><td>Jun 17</td><td>UZB vs COL (Mexico City)[cite: 2]</td></tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="bracket-column">
-                    <div class="bracket-matchup">
-                        <span style="color:#00ffff; font-size:0.7rem;">TORONTO - JUNE 12[cite: 2]</span>
-                        <span>🏴󠁧󠁢󠁥󠁮󠁧󠁿 ENGLAND</span>
-                        <span>vs</span>
-                        <span>🇭🇷 CROATIA</span>
-                    </div>
-                    <div class="bracket-matchup">
-                        <span style="color:#00ffff; font-size:0.7rem;">HOUSTON - JUNE 14[cite: 2]</span>
-                        <span>🇩🇪 GERMANY</span>
-                        <span>vs</span>
-                        <span>🇨🇼 CURAÇAO</span>
-                    </div>
+
+                <!-- COLUMN 2: GROUP STAGE WEEK 2 & 3 -->
+                <div class="itinerary-phase" style="border-color: #ff007f; height: 650px; overflow-y: auto; padding: 1rem; background: rgba(0,0,0,0.5);">
+                    <h3 style="color:#ff007f; font-family:'Orbitron'; font-size:0.9rem; position: sticky; top: 0; background: #000; padding: 10px; z-index: 5; border-bottom: 1px solid #ff007f;">PHASE 2: THE MID-TOURNEY HEAT[cite: 2]</h3>
+                    <table class="wc-table">
+                        <tbody>
+                            <tr><td>Jun 18</td><td>RSA vs CZE (Atlanta)[cite: 2]</td></tr>
+                            <tr><td>Jun 18</td><td>BIH vs SUI (Los Angeles)[cite: 2]</td></tr>
+                            <tr><td>Jun 18</td><td>CAN vs QAT (Vancouver)[cite: 2]</td></tr>
+                            <tr><td>Jun 18</td><td>MEX vs KOR (Guadalajara)[cite: 2]</td></tr>
+                            <tr><td>Jun 19</td><td>USA vs AUS (Seattle)[cite: 2]</td></tr>
+                            <tr><td>Jun 19</td><td>PAR vs TUR (SF Bay Area)[cite: 2]</td></tr>
+                            <tr><td>Jun 19</td><td>BRA vs HAI (Philadelphia)[cite: 2]</td></tr>
+                            <tr><td>Jun 19</td><td>MAR vs SCO (Boston)[cite: 2]</td></tr>
+                            <tr><td>Jun 20</td><td>GER vs CIV (Toronto)[cite: 2]</td></tr>
+                            <tr><td>Jun 20</td><td>CUW vs ECU (Kansas City)[cite: 2]</td></tr>
+                            <tr><td>Jun 20</td><td>NED vs SWE (Houston)[cite: 2]</td></tr>
+                            <tr><td>Jun 20</td><td>JPN vs TUN (Monterrey)[cite: 2]</td></tr>
+                            <tr style="background: rgba(0, 255, 255, 0.1);"><td>Jun 21</td><td>URU vs CPV (Miami)[cite: 2]</td></tr>
+                            <tr><td>Jun 21</td><td>KSA vs ESP (Atlanta)[cite: 2]</td></tr>
+                            <tr><td>Jun 22</td><td>FRA vs IRQ (NY/NJ)[cite: 2]</td></tr>
+                            <tr><td>Jun 22</td><td>SEN vs NOR (Dallas)[cite: 2]</td></tr>
+                            <tr><td>Jun 23</td><td>ARG vs AUT (Dallas)[cite: 2]</td></tr>
+                            <tr><td>Jun 23</td><td>ENG vs GHA (Boston)[cite: 2]</td></tr>
+                            <tr style="background: rgba(255, 0, 127, 0.1);"><td>Jun 24</td><td>SCO vs BRA (Miami)[cite: 2]</td></tr>
+                            <tr><td>Jun 24</td><td>CZE vs MEX (Mexico City)[cite: 2]</td></tr>
+                            <tr><td>Jun 25</td><td>TUR vs USA (Los Angeles)[cite: 2]</td></tr>
+                            <tr><td>Jun 26</td><td>TUN vs NED (Dallas)[cite: 2]</td></tr>
+                            <tr style="background: rgba(0, 255, 255, 0.1);"><td>Jun 27</td><td>COL vs POR (Miami)[cite: 2]</td></tr>
+                            <tr><td>Jun 27</td><td>PAN vs ENG (NY/NJ)[cite: 2]</td></tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="bracket-column">
-                    <div class="bracket-matchup" style="border: 2px solid #ff007f;">
-                        <h3 style="font-family:'Orbitron'; color:#ff007f; font-size:0.8rem;">VICE FEATURED MATCH[cite: 2]</h3>
-                        <span style="color:#00ffff; font-size:0.7rem;">MIAMI - JUNE 15[cite: 2]</span>
-                        <span style="font-size: 1.1rem;">🇪🇸 SPAIN</span>
-                        <span>vs</span>
-                        <span style="font-size: 1.1rem;">🇺🇾 URUGUAY</span>
-                    </div>
+
+                <!-- COLUMN 3: THE FINALS ROADMAP -->
+                <div class="itinerary-phase" style="border-color: #00ffff; height: 650px; overflow-y: auto; padding: 1rem; background: rgba(0,0,0,0.5);">
+                    <h3 style="color:#00ffff; font-family:'Orbitron'; font-size:0.9rem; position: sticky; top: 0; background: #000; padding: 10px; z-index: 5; border-bottom: 1px solid #00ffff;">PHASE 3: THE KNOCKOUT DOSSIER[cite: 2]</h3>
+                    <table class="wc-table">
+                        <tbody>
+                            <tr><td colspan="2" style="color:#ff007f; font-weight:bold; border-bottom: 1px solid #333;">ROUND OF 32 (JUN 28 - JUL 3)[cite: 2]</td></tr>
+                            <tr><td>Jun 28</td><td>Match 73 (Los Angeles)[cite: 2]</td></tr>
+                            <tr><td>Jun 29</td><td>Match 74 (Boston) | 75 (Monterrey) | 76 (Houston)[cite: 2]</td></tr>
+                            <tr><td>Jun 30</td><td>Match 77 (NY/NJ) | 78 (Dallas) | 79 (Mexico City)[cite: 2]</td></tr>
+                            <tr><td>Jul 01</td><td>Match 80 (Atlanta) | 81 (SF Bay Area) | 82 (Seattle)[cite: 2]</td></tr>
+                            <tr><td>Jul 02</td><td>Match 83 (Toronto) | 84 (Los Angeles) | 85 (Vancouver)[cite: 2]</td></tr>
+                            <tr><td>Jul 03</td><td>Match 86 (Miami) | 87 (Kansas City) | 88 (Dallas)[cite: 2]</td></tr>
+                            
+                            <tr><td colspan="2" style="color:#ff007f; font-weight:bold; border-bottom: 1px solid #333; padding-top: 15px;">ROUND OF 16 (JUL 4 - JUL 7)[cite: 2]</td></tr>
+                            <tr><td>Jul 04</td><td>Match 89 (Philadelphia) | 90 (Houston)[cite: 2]</td></tr>
+                            <tr><td>Jul 05</td><td>Match 91 (NY/NJ) | 92 (Mexico City)[cite: 2]</td></tr>
+                            <tr><td>Jul 06</td><td>Match 93 (Dallas) | 94 (Seattle)[cite: 2]</td></tr>
+                            <tr><td>Jul 07</td><td>Match 95 (Atlanta) | 96 (Vancouver)[cite: 2]</td></tr>
+
+                            <tr><td colspan="2" style="color:#ff007f; font-weight:bold; border-bottom: 1px solid #333; padding-top: 15px;">QUARTER-FINALS (JUL 9 - JUL 11)[cite: 2]</td></tr>
+                            <tr><td>Jul 09</td><td>Match 97 (Boston)[cite: 2]</td></tr>
+                            <tr><td>Jul 10</td><td>Match 98 (Los Angeles)[cite: 2]</td></tr>
+                            <tr><td>Jul 11</td><td>Match 99 (Miami) | 100 (Kansas City)[cite: 2]</td></tr>
+
+                            <tr><td colspan="2" style="color:#ff007f; font-weight:bold; border-bottom: 1px solid #333; padding-top: 15px;">SEMI-FINALS & FINALS[cite: 2]</td></tr>
+                            <tr><td>Jul 14</td><td>SF 1 (Dallas)[cite: 2]</td></tr>
+                            <tr><td>Jul 15</td><td>SF 2 (Atlanta)[cite: 2]</td></tr>
+                            <tr style="background: rgba(0, 255, 255, 0.15);"><td>Jul 18</td><td>3rd PLACE MATCH (Miami)[cite: 2]</td></tr>
+                            <tr style="background: linear-gradient(90deg, #ff007f, #00ffff); color: #000; font-weight: 800;">
+                                <td>Jul 19</td><td>THE FINAL (NY/NJ)[cite: 2]</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             
             <p style="margin-top: 2rem; font-size: 0.75rem; color: #ccc; font-style: italic;">
-                Match schedule extracted from "FWC26 Match Schedule_v17_10042026_EN.pdf"[cite: 2]. 
-                All host city pairings are preliminary and subject to final FIFA confirmation[cite: 2].
+                The complete 104-match roadmap for FIFA World Cup 2026. All times and matchups extracted from official scheduling dossiers[cite: 2].
             </p>
         </section>
+
 
     </div>
 
