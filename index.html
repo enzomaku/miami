@@ -28,7 +28,7 @@
             z-index: 1000;
             display: flex;
             justify-content: center;
-            gap: 25px; 
+            gap: 20px; 
             border-bottom: 3px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
@@ -38,7 +38,7 @@
             color: #fff;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             cursor: pointer;
@@ -77,7 +77,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .active { display: block; }
+        .active { display: block !important; }
 
         .vice-text {
             font-family: 'Orbitron', sans-serif;
@@ -197,7 +197,7 @@
         .miles-container { margin-top: 50px; }
         .miles-highlight { font-size: 4rem; }
 
-        /* ITINERARY STYLING */
+        /* --- ITINERARY STYLING --- */
         .itinerary-phase {
             text-align: left;
             background: rgba(0, 0, 0, 0.7);
@@ -339,10 +339,43 @@
             margin-top: 3px;
         }
 
+        /* --- BRACKET STYLING --- */
+        .bracket-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid #ff007f;
+            margin-top: 2rem;
+            overflow-x: auto;
+        }
+        .bracket-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            gap: 20px;
+        }
+        .bracket-matchup {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #00ffff;
+            padding: 10px 20px;
+            min-width: 180px;
+            text-align: left;
+            position: relative;
+        }
+        .bracket-matchup span {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
         /* MOBILE OPTIMIZATION */
         @media (max-width: 900px) {
-            nav { gap: 15px; padding: 1rem 0.5rem; }
-            nav a { font-size: 0.7rem; }
+            nav { gap: 10px; padding: 1rem 0.2rem; }
+            nav a { font-size: 0.6rem; letter-spacing: 0; }
             .map-wrapper { padding: 40px; height: auto; }
             .route-path { flex-direction: column; height: 1200px; }
             .route-line { width: 6px; height: 90%; left: 50%; transform: translateX(-50%); top: 5%; }
@@ -361,9 +394,11 @@
         <a onclick="showSection('soccer')">World Cup</a>
         <a onclick="showSection('food')">Vice Eats</a>
         <a onclick="showSection('playground')">Playground</a>
+        <a onclick="showSection('madness')">Madness</a>
     </nav>
 
     <div class="container">
+        <!-- HOME SECTION -->
         <section id="home" class="glass-card active">
             <h1>UK MIAMI VICE '26</h1>
             <div class="subtitle vice-text" style="display:inline-flex; align-items:center; gap:15px; background:rgba(0,0,0,0.6); padding:12px 24px; border:1px solid #00ffff; box-shadow:4px 4px 0 #ff007f; margin-bottom:2.5rem;">
@@ -388,6 +423,7 @@
             </div>
         </section>
 
+        <!-- ROUTE MAP SECTION -->
         <section id="map" class="glass-card">
             <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 2rem;">The VICE Route</h2>
             <div class="map-wrapper">
@@ -405,10 +441,10 @@
             </div>
         </section>
 
+        <!-- FULL ITINERARY SECTION -->
         <section id="itinerary" class="glass-card">
             <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 2rem;">The Dossier</h2>
             <div style="max-width: 900px; margin: auto;">
-                
                 <div class="itinerary-phase">
                     <h2 class="vice-text" style="color: #ff007f; margin-bottom: 1.5rem;">📍 Phase 1: Texas Warm-up</h2>
                     <div class="day-block"><h3>FRI JUNE 26: ARRIVAL</h3><ul><li><strong>Afternoon:</strong> Arrival, Airport Pickup, Settle In </li><li><strong>Dinner:</strong> Texas Steakhouse / Torchys / Moreno BBQ / Ramen Tatsuya </li><li><strong>Night:</strong> Chill or East/West 6th Bar Crawl </li></ul></div>
@@ -438,40 +474,80 @@
             </div>
         </section>
 
+        <!-- FULL WORLD CUP SECTION WITH UPDATED HIGHLIGHTS -->
         <section id="soccer" class="glass-card">
             <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 1rem;">🏆 World Cup '26</h2>
-            <p style="margin-bottom: 2rem; color: #ff007f; font-weight: 800;">HUB SCHEDULE: TX, FL, NJ</p>
             <div style="max-width: 900px; margin: auto;">
-                <div class="itinerary-phase" style="border-color: #00ffff;">
-                    <h3 style="color:#00ffff; font-family:'Orbitron'; font-size:1rem; margin-bottom:10px;">Group Stage Matches</h3>
+                
+                <!-- Group Stage Table -->
+                <div class="itinerary-phase" style="border-color: #00ffff; margin-bottom: 2rem;">
+                    <h3 style="color:#00ffff; font-family:'Orbitron'; font-size:1.1rem; margin-bottom:10px;">Group Stage Highlights[cite: 2]</h3>
                     <table class="wc-table">
-                        <thead><tr><th>Date</th><th>Matchup Highlights</th><th>Location</th></tr></thead>
+                        <thead><tr><th>Date</th><th>Matchup</th><th>City</th></tr></thead>
                         <tbody>
-                            <tr><td>June 13</td><td>Brazil vs Morocco</td><td>NJ </td></tr>
-                            <tr><td>June 14</td><td>Germany vs Curaçao</td><td>Houston </td></tr>
-                            <tr><td>June 15</td><td>Saudi Arabia vs Uruguay</td><td>Miami </td></tr>
-                            <tr><td>June 16</td><td>France vs Senegal</td><td>NJ </td></tr>
-                            <tr><td>June 17</td><td>Portugal vs Congo DR</td><td>Houston </td></tr>
-                            <tr><td>June 21</td><td>Uruguay vs Cabo Verde</td><td>Miami </td></tr>
-                            <tr><td>June 23</td><td>Portugal vs Uzbekistan</td><td>Houston </td></tr>
-                            <tr><td>June 24</td><td>Brazil vs Scotland</td><td>Miami </td></tr>
-                            <tr><td>June 27</td><td>Panama vs England</td><td>NJ </td></tr>
+                            <tr><td>June 11</td><td>MEXICO vs SOUTH AFRICA</td><td>MEXICO CITY[cite: 2]</td></tr>
+                            <tr><td>June 12</td><td>ENGLAND vs CROATIA</td><td>TORONTO[cite: 2]</td></tr>
+                            <tr><td>June 13</td><td>BRAZIL vs MOROCCO</td><td>NY/NJ[cite: 2]</td></tr>
+                            <tr><td>June 14</td><td>GERMANY vs CURAÇAO</td><td>HOUSTON[cite: 2]</td></tr>
+                            <tr><td>June 15</td><td>SAUDI ARABIA vs URUGUAY</td><td>MIAMI[cite: 2]</td></tr>
+                            <tr><td>June 15</td><td>SPAIN vs URUGUAY</td><td>MIAMI[cite: 2]</td></tr>
+                            <tr><td>June 16</td><td>FRANCE vs SENEGAL</td><td>NY/NJ[cite: 2]</td></tr>
+                            <tr><td>June 17</td><td>PORTUGAL vs CONGO DR</td><td>HOUSTON[cite: 2]</td></tr>
+                            <tr><td>June 21</td><td>URUGUAY vs CABO VERDE</td><td>MIAMI[cite: 2]</td></tr>
+                            <tr><td>June 23</td><td>PORTUGAL vs UZBEKISTAN</td><td>HOUSTON[cite: 2]</td></tr>
+                            <tr><td>June 24</td><td>BRAZIL vs SCOTLAND</td><td>MIAMI[cite: 2]</td></tr>
+                            <tr><td>June 27</td><td>PANAMA vs ENGLAND</td><td>NY/NJ[cite: 2]</td></tr>
                         </tbody>
                     </table>
-                    <h3 style="color:#00ffff; font-family:'Orbitron'; font-size:1rem; margin-top:30px; margin-bottom:10px;">The Knockout Dossier</h3>
-                    <div class="day-block"><h3>JUNE 28 - JULY 3: ROUND OF 32</h3><ul><li><strong>June 30:</strong> Match in New York New Jersey </li><li><strong>July 1-3:</strong> Matches across US host cities </li></ul></div>
-                    <div class="day-block"><h3>JULY 4 - JULY 7: ROUND OF 16</h3><ul><li><strong>July 4:</strong> Match in <strong>Houston (NRG)</strong> </li><li><strong>July 5:</strong> Match in <strong>NJ (MetLife)</strong> </li></ul></div>
-                    <div class="day-block"><h3>JULY 9 - JULY 19: THE FINALS</h3><ul><li><strong>July 11:</strong> Quarter-Final in <strong>Miami</strong> </li><li><strong>July 18:</strong> 3rd Place Play-off in <strong>Miami</strong> </li><li><strong>JULY 19:</strong> 🏆 <strong>WORLD CUP FINAL (NJ)</strong> </li></ul></div>
                 </div>
+
+                <!-- KNOCKOUT DOSSIER -->
+                <div class="itinerary-phase" style="border-color: #ff007f;">
+                    <h3 style="color:#ff007f; font-family:'Orbitron'; font-size:1.3rem; margin-bottom:20px; text-transform:uppercase; letter-spacing:2px;">The Knockout Dossier[cite: 2]</h3>
+                    
+                    <div class="day-block">
+                        <h3>JUNE 28 – JULY 3: ROUND OF 32</h3>
+                        <ul>
+                            <li><strong>June 28:</strong> Los Angeles[cite: 2]</li>
+                            <li><strong>June 29:</strong> Boston & Dallas[cite: 2]</li>
+                            <li><strong>June 30:</strong> New York New Jersey[cite: 2]</li>
+                            <li><strong>July 1:</strong> San Francisco & Seattle[cite: 2]</li>
+                            <li><strong>July 2:</strong> Toronto & Los Angeles[cite: 2]</li>
+                            <li><strong>July 3:</strong> Dallas & Kansas City[cite: 2]</li>
+                        </ul>
+                    </div>
+
+                    <div class="day-block">
+                        <h3>JULY 4 – JULY 7: ROUND OF 16</h3>
+                        <ul>
+                            <li><strong>July 4:</strong> Houston & Philadelphia[cite: 2]</li>
+                            <li><strong>July 5:</strong> New York New Jersey & Mexico City[cite: 2]</li>
+                            <li><strong>July 6:</strong> Dallas & Seattle[cite: 2]</li>
+                            <li><strong>July 7:</strong> Atlanta & Vancouver[cite: 2]</li>
+                        </ul>
+                    </div>
+
+                    <div class="day-block" style="border-color: #00ffff;">
+                        <h3>JULY 9 – JULY 19: THE FINALS</h3>
+                        <ul>
+                            <li><strong>Quarter-Finals:</strong> July 9 (Boston), July 10 (LA), July 11 (Miami & KC)[cite: 2]</li>
+                            <li><strong>Semi-Finals:</strong> July 14 (Dallas) & July 15 (Atlanta)[cite: 2]</li>
+                            <li><strong>3rd Place:</strong> July 18 (Miami)[cite: 2]</li>
+                            <li><strong>FINAL:</strong> July 19 (New York New Jersey)[cite: 2]</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </section>
 
+        <!-- VICE EATS SECTION (6 IMAGES) -->
         <section id="food" class="glass-card">
             <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 1rem;">🍔 VICE EATS</h2>
             <p style="color:#ff007f; font-weight: 800; font-size: 0.9rem; letter-spacing: 2px;">THE CULINARY HIT LIST</p>
             <div class="food-grid">
                 <div class="food-card"><img src="texas.jpg"><h4>Central Texas BBQ</h4><p>Legendary oak-smoked brisket and beef ribs. Essential Austin experience. </p><span class="tag">📍 Terry Black's / Moreno</span></div>
-                <div class="food-card"><img src="tacos.jpg"><h4>Birria & Tacos</h4><p>The only way to start a day in Texas. Migas, chorizo, and fresh salsa. </p><span class="tag">📍 Tejas Birria / Pepe's Tacos</span></div>
+                <div class="food-card"><img src="tacos.jpg"><h4>Birria & Tacos</h4><p>The only way to start a day in Texas. Migas, chorizo, and fresh salsa. </p><span class="tag">📍 Torchy's / Pepe's Tacos</span></div>
                 <div class="food-card"><img src="nolafoods.jpg"><h4>NOLA Beignets</h4><p>Deep-fried dough mountains covered in powdered sugar. Best at 2 AM. </p><span class="tag">📍 Café Du Monde / Oceana Grill</span></div>
                 <div class="food-card"><img src="cubansan.jpg"><h4>Cubano Sandwich</h4><p>The Miami classic. Roasted pork, ham, swiss, and pickles. Perfectly pressed. </p><span class="tag">📍 Versailles / Sanguich</span></div>
                 <div class="food-card"><img src="stonecrabs.jpg"><h4>Stone Crabs</h4><p>Florida’s premium seasonal luxury. Served cold with mustard sauce. </p><span class="tag">📍 Joe's Stone Crab</span></div>
@@ -479,6 +555,7 @@
             </div>
         </section>
 
+        <!-- FULL PLAYGROUND SECTION -->
         <section id="playground" class="glass-card">
             <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 0.5rem;">🕹️ PLAYGROUND</h2>
             <p style="color:#ff007f; font-weight: 800; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 2rem;">THE VICE ACTIVITY COMPENDIUM</p>
@@ -520,6 +597,57 @@
                     <div class="activity-item"><strong>Design District</strong><p>Architecture, fashion, and public art pieces.</p></div>
                 </div>
             </div>
+        </section>
+
+        <!-- MADNESS BRACKET -->
+        <section id="madness" class="glass-card">
+            <h2 class="vice-text" style="color:#ff007f; font-size: 2.5rem; margin-bottom: 0.5rem;">⚽ WORLD CUP MADNESS</h2>
+            <p style="color:#00ffff; font-weight: 800; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 2rem;">GROUP STAGE KEY CLASHES[cite: 2]</p>
+            
+            <div class="bracket-container">
+                <div class="bracket-column">
+                    <div class="bracket-matchup">
+                        <span style="color:#00ffff; font-size:0.7rem;">MEXICO CITY - JUNE 11[cite: 2]</span>
+                        <span>🇲🇽 MEXICO</span>
+                        <span>vs</span>
+                        <span>🇿🇦 SOUTH AFRICA</span>
+                    </div>
+                    <div class="bracket-matchup">
+                        <span style="color:#00ffff; font-size:0.7rem;">NEW YORK NJ - JUNE 13[cite: 2]</span>
+                        <span>🇧🇷 BRAZIL</span>
+                        <span>vs</span>
+                        <span>🇲🇦 MOROCCO</span>
+                    </div>
+                </div>
+                <div class="bracket-column">
+                    <div class="bracket-matchup">
+                        <span style="color:#00ffff; font-size:0.7rem;">TORONTO - JUNE 12[cite: 2]</span>
+                        <span>🏴󠁧󠁢󠁥󠁮󠁧󠁿 ENGLAND</span>
+                        <span>vs</span>
+                        <span>🇭🇷 CROATIA</span>
+                    </div>
+                    <div class="bracket-matchup">
+                        <span style="color:#00ffff; font-size:0.7rem;">HOUSTON - JUNE 14[cite: 2]</span>
+                        <span>🇩🇪 GERMANY</span>
+                        <span>vs</span>
+                        <span>🇨🇼 CURAÇAO</span>
+                    </div>
+                </div>
+                <div class="bracket-column">
+                    <div class="bracket-matchup" style="border: 2px solid #ff007f;">
+                        <h3 style="font-family:'Orbitron'; color:#ff007f; font-size:0.8rem;">VICE FEATURED MATCH[cite: 2]</h3>
+                        <span style="color:#00ffff; font-size:0.7rem;">MIAMI - JUNE 15[cite: 2]</span>
+                        <span style="font-size: 1.1rem;">🇪🇸 SPAIN</span>
+                        <span>vs</span>
+                        <span style="font-size: 1.1rem;">🇺🇾 URUGUAY</span>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 2rem; font-size: 0.75rem; color: #ccc; font-style: italic;">
+                Match schedule extracted from "FWC26 Match Schedule_v17_10042026_EN.pdf"[cite: 2]. 
+                All host city pairings are preliminary and subject to final FIFA confirmation[cite: 2].
+            </p>
         </section>
 
     </div>
