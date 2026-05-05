@@ -19,64 +19,111 @@
 
         /* --- NAVIGATION --- */
         nav {
-            background: linear-gradient(90deg, rgba(255, 0, 127, 0.9), rgba(0, 255, 255, 0.9));
+            background: linear-gradient(90deg, rgba(255,0,127,0.9), rgba(0,255,255,0.9));
             backdrop-filter: blur(10px);
-            padding: 1.2rem;
+            padding: 0.9rem 1.2rem;
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
             display: flex;
-            justify-content: center;
-            gap: 20px; 
-            border-bottom: 3px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
-
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #000;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            text-shadow: none;
+            display: none;
+        }
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 14px;
+            width: 100%;
+        }
         nav a {
             font-family: 'Orbitron', sans-serif;
             color: #fff;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.75rem;
+            font-size: 0.68rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            white-space: nowrap;
         }
+        nav a:hover { color: #000; transform: translateY(-2px); text-shadow: none; }
 
-        nav a:hover { 
-            color: #000; 
-            transform: translateY(-2px);
-            text-shadow: none;
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            background: none;
+            border: 2px solid #fff;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 4px 10px;
+            border-radius: 6px;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        @media (max-width: 820px) {
+            .nav-logo { display: block; }
+            .hamburger { display: block; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0,0,0,0.97);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0;
+                border-top: 2px solid #ff007f;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a {
+                padding: 0.75rem 0;
+                border-bottom: 1px solid rgba(255,255,255,0.08);
+                font-size: 0.85rem;
+                color: #00ffff;
+            }
+            .nav-links a:last-child { border-bottom: none; }
         }
 
         /* --- MAIN CONTAINER --- */
         .container {
-            padding-top: 100px;
+            padding-top: 80px;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
             padding-bottom: 50px;
         }
-
         .glass-card {
-            background: transparent; 
+            background: transparent;
             padding: 3rem 1rem;
             text-align: center;
             width: 95%;
-            max-width: 1100px; 
+            max-width: 1100px;
             display: none;
             animation: fadeIn 0.5s ease-in-out;
         }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         .active { display: block !important; }
 
         .vice-text {
@@ -85,294 +132,304 @@
             text-shadow: 2px 2px 0px #ff007f;
             letter-spacing: 2px;
         }
-
-        h1 { 
+        h1 {
             font-family: 'Orbitron', sans-serif;
             color: #00ffff;
-            font-size: 3.2rem; 
-            margin-bottom: 0.5rem; 
+            font-size: 3.2rem;
+            margin-bottom: 0.5rem;
             text-shadow: 3px 3px 0px #ff007f;
             letter-spacing: 4px;
         }
-
-        .number-styled { 
+        .number-styled {
             font-family: 'Poppins', sans-serif;
-            font-weight: 800; 
+            font-weight: 800;
             color: #fff;
-            text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f, 2px 4px 0px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f, 2px 4px 0px rgba(0,0,0,0.3);
             line-height: 1;
         }
 
         /* --- MAP SECTION --- */
         .map-wrapper {
             position: relative;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0,0,0,0.7);
             border-radius: 40px;
-            padding: 120px 40px; 
+            padding: 120px 40px;
             border: 2px solid #00ffff;
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 30px rgba(0,255,255,0.2);
             margin-top: 20px;
         }
-
         .route-path {
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: relative;
-            height: 300px; 
+            height: 300px;
         }
-
         .route-line {
             position: absolute;
-            top: 50%;
-            left: 2%;
-            width: 96%;
-            height: 6px;
+            top: 50%; left: 2%; width: 96%; height: 6px;
             background: repeating-linear-gradient(90deg, #ff007f, #ff007f 15px, transparent 15px, transparent 30px);
             z-index: 1;
             filter: drop-shadow(0 0 5px #ff007f);
         }
-
         .city-stop {
             position: relative;
             z-index: 2;
             background: #fff;
-            width: 24px;
-            height: 24px;
+            width: 24px; height: 24px;
             border-radius: 50%;
             box-shadow: 0 0 20px #00ffff;
         }
-
         .polaroid {
             position: absolute;
             background: white;
             padding: 12px 12px 35px 12px;
-            width: 220px; 
+            width: 220px;
             box-shadow: 10px 10px 25px rgba(0,0,0,0.7);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
             color: #222;
             left: 50%;
             transform: translateX(-50%);
         }
-
-        .polaroid img { 
-            width: 100%; 
-            height: 160px; 
-            object-fit: cover; 
-            border: 1px solid #eee;
-        }
-
-        .polaroid span { 
-            font-size: 0.85rem; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            margin-top: 12px; 
-            display: block;
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.2;
-        }
-
+        .polaroid img { width: 100%; height: 160px; object-fit: cover; border: 1px solid #eee; }
+        .polaroid span { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; margin-top: 12px; display: block; font-family: 'Poppins', sans-serif; line-height: 1.2; }
         .stop-top .polaroid { bottom: 60px; transform: translateX(-50%) rotate(-3deg); }
         .stop-bottom .polaroid { top: 60px; transform: translateX(-50%) rotate(3deg); }
-
-        .city-stop:hover .polaroid { 
-            transform: translateX(-50%) scale(1.15) rotate(0deg); 
-            z-index: 100; 
-            border: 3px solid #ff007f;
-            box-shadow: 0 0 30px #ff007f;
-        }
-
-        .city-name {
-            position: absolute;
-            white-space: nowrap;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            color: #00ffff;
-            font-weight: 700;
-        }
-        
+        .city-stop:hover .polaroid { transform: translateX(-50%) scale(1.15) rotate(0deg); z-index: 100; border: 3px solid #ff007f; box-shadow: 0 0 30px #ff007f; }
+        .city-name { position: absolute; white-space: nowrap; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: #00ffff; font-weight: 700; }
         .stop-top .city-name { top: 35px; left: 50%; transform: translateX(-50%); }
         .stop-bottom .city-name { bottom: 35px; left: 50%; transform: translateX(-50%); }
-
         .miles-container { margin-top: 50px; }
         .miles-highlight { font-size: 4rem; }
 
         /* --- ITINERARY STYLING --- */
         .itinerary-phase {
             text-align: left;
-            background: rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(0, 255, 255, 0.3);
+            background: rgba(0,0,0,0.7);
+            border: 1px solid rgba(0,255,255,0.3);
             border-radius: 15px;
             padding: 2rem;
             margin-bottom: 3rem;
         }
-
-        .day-block {
-            border-left: 3px solid #ff007f;
-            padding-left: 20px;
-            margin-bottom: 1.5rem;
-        }
-
-        .day-block h3 {
-            color: #00ffff;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-
-        .day-block ul {
-            list-style: none;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
+        .day-block { border-left: 3px solid #ff007f; padding-left: 20px; margin-bottom: 1.5rem; }
+        .day-block h3 { color: #00ffff; font-family: 'Orbitron', sans-serif; font-size: 1.1rem; margin-bottom: 5px; }
+        .day-block ul { list-style: none; font-size: 0.95rem; line-height: 1.6; }
         .day-block strong { color: #ff007f; }
 
         /* --- WORLD CUP TABLE --- */
-        .wc-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.85rem;
-            text-align: left;
-            margin-top: 10px;
-        }
+        .wc-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left; margin-top: 10px; }
         .wc-table th { color: #ff007f; padding-bottom: 10px; border-bottom: 1px solid #444; }
         .wc-table td { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
         /* --- FOOD GRID --- */
-        .food-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 2rem;
-        }
-
-        .food-card {
-            background: white;
-            padding: 12px 12px 40px 12px;
-            box-shadow: 10px 10px 25px rgba(0,0,0,0.5);
-            transition: 0.3s;
-            text-align: left;
-        }
-
+        .food-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 2rem; }
+        .food-card { background: white; padding: 12px 12px 40px 12px; box-shadow: 10px 10px 25px rgba(0,0,0,0.5); transition: 0.3s; text-align: left; }
         .food-card:nth-child(even) { transform: rotate(2deg); }
         .food-card:nth-child(odd) { transform: rotate(-2deg); }
-        
-        .food-card:hover { 
-            transform: scale(1.05) rotate(0deg); 
-            z-index: 10;
-            border: 2px solid #ff007f;
-        }
-
-        .food-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border: 1px solid #ddd;
-        }
-
-        .food-card h4 {
-            color: #222;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            margin: 15px 0 5px 0;
-            text-transform: uppercase;
-        }
-
-        .food-card p {
-            color: #555;
-            font-size: 0.75rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        .food-card .tag {
-            display: block;
-            margin-top: 10px;
-            color: #ff007f;
-            font-weight: 800;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-        }
+        .food-card:hover { transform: scale(1.05) rotate(0deg); z-index: 10; border: 2px solid #ff007f; }
+        .food-card img { width: 100%; height: 180px; object-fit: cover; border: 1px solid #ddd; }
+        .food-card h4 { color: #222; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; margin: 15px 0 5px 0; text-transform: uppercase; }
+        .food-card p { color: #555; font-size: 0.75rem; font-family: 'Poppins', sans-serif; font-weight: 600; line-height: 1.3; }
+        .food-card .tag { display: block; margin-top: 10px; color: #ff007f; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; }
 
         /* --- PLAYGROUND GRID --- */
-        .playground-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-            text-align: left;
-            margin-top: 2rem;
-        }
-        .playground-category {
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            border-radius: 15px;
-            padding: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        .playground-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; text-align: left; margin-top: 2rem; }
+        .playground-category { background: rgba(0,0,0,0.6); border: 1px solid rgba(0,255,255,0.3); border-radius: 15px; padding: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: 0.3s; }
+        .playground-category:hover { border-color: #ff007f; transform: translateY(-5px); }
+        .playground-category h3 { font-family: 'Orbitron', sans-serif; color: #ff007f; font-size: 1rem; margin-bottom: 1rem; border-bottom: 2px solid rgba(255,0,127,0.3); padding-bottom: 5px; }
+        .activity-item { margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .activity-item strong { display: block; color: #00ffff; font-size: 0.9rem; text-transform: uppercase; }
+        .activity-item p { font-size: 0.8rem; color: #ccc; line-height: 1.4; margin-top: 3px; }
+
+        /* --- WEATHER WIDGET --- */
+        .weather-grid { display: flex; gap: 15px; justify-content: center; margin-bottom: 25px; flex-wrap: wrap; }
+        .weather-card { background: rgba(0,0,0,0.6); border: 1px solid rgba(0,255,255,0.3); padding: 18px 22px; border-radius: 14px; flex: 1; min-width: 140px; max-width: 200px; text-align: left; transition: 0.3s; }
+        .weather-card:hover { border-color: #ff007f; }
+        .weather-card .w-label { font-size: 0.65rem; color: #00ffff; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px; font-family: 'Orbitron', sans-serif; }
+        .weather-card .w-val { font-size: 2rem; font-weight: 800; color: #fff; line-height: 1; }
+        .weather-card .w-sub { font-size: 0.7rem; color: #aaa; margin-top: 4px; }
+        .weather-card.pink-border { border-left: 4px solid #ff007f; }
+        .weather-card.cyan-border { border-left: 4px solid #00ffff; }
+        #weatherIcon { font-size: 2.5rem; }
+
+        /* --- MILESTONES --- */
+        .milestone-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 18px 0; }
+        .milestone-pill { background: rgba(0,0,0,0.5); border: 1px solid rgba(0,255,255,0.2); border-radius: 50px; padding: 8px 18px; text-align: center; min-width: 130px; }
+        .milestone-pill .m-label { font-family: 'Orbitron', sans-serif; font-size: 0.55rem; color: #ff007f; text-transform: uppercase; letter-spacing: 1px; }
+        .milestone-pill .m-count { font-size: 1.4rem; font-weight: 800; color: #00ffff; display: block; text-shadow: 0 0 10px #00ffff; }
+        .milestone-pill .m-unit { font-size: 0.6rem; color: #aaa; }
+
+        /* ============================================
+           NEW SECTIONS
+        ============================================ */
+
+        .section-header { margin-bottom: 2rem; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 0.3rem; }
+        .section-header p { color: #ff007f; font-weight: 800; font-size: 0.9rem; letter-spacing: 2px; }
+
+        /* Vice input style */
+        .vice-input {
+            background: rgba(0,0,0,0.6);
+            border: 1px solid rgba(0,255,255,0.4);
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
             transition: 0.3s;
         }
-        .playground-category:hover { border-color: #ff007f; transform: translateY(-5px); }
-        .playground-category h3 {
+        .vice-input:focus { border-color: #ff007f; box-shadow: 0 0 10px rgba(255,0,127,0.3); }
+        .vice-input option { background: #111; }
+
+        .vice-btn {
+            background: linear-gradient(90deg, #ff007f, #cc0066);
+            color: #fff;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 8px;
             font-family: 'Orbitron', sans-serif;
-            color: #ff007f;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid rgba(255, 0, 127, 0.3);
-            padding-bottom: 5px;
-        }
-        .activity-item {
-            margin-bottom: 12px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .activity-item strong {
-            display: block;
-            color: #00ffff;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
             text-transform: uppercase;
         }
-        .activity-item p {
-            font-size: 0.8rem;
-            color: #ccc;
-            line-height: 1.4;
-            margin-top: 3px;
-        }
+        .vice-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255,0,127,0.5); }
+        .vice-btn.cyan { background: linear-gradient(90deg, #00cccc, #009999); }
+        .vice-btn.cyan:hover { box-shadow: 0 5px 20px rgba(0,255,255,0.4); }
 
-        /* --- BRACKET STYLING --- */
-        .bracket-container {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid #ff007f;
-            margin-top: 2rem;
-            overflow-x: auto;
-        }
-        .bracket-column {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            gap: 20px;
-        }
-        .bracket-matchup {
-            background: rgba(255, 255, 255, 0.1);
-            border-left: 4px solid #00ffff;
-            padding: 10px 20px;
-            min-width: 180px;
-            text-align: left;
-            position: relative;
-        }
-        .bracket-matchup span {
-            display: block;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin: 5px 0;
-        }
+        /* ========== PACKING CHECKLIST ========== */
+        .pack-controls { display: flex; gap: 12px; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 2rem; }
+        .pack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; text-align: left; }
+        .pack-category { background: rgba(0,0,0,0.65); border: 1px solid rgba(0,255,255,0.25); border-radius: 14px; padding: 1.4rem; }
+        .pack-category h4 { font-family: 'Orbitron', sans-serif; color: #00ffff; font-size: 0.85rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(0,255,255,0.2); padding-bottom: 8px; }
+        .pack-item { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.04); cursor: pointer; transition: 0.2s; }
+        .pack-item:hover { background: rgba(255,0,127,0.05); border-radius: 6px; padding: 7px 8px; }
+        .pack-item input[type="checkbox"] { display: none; }
+        .pack-checkbox { width: 18px; height: 18px; border: 2px solid #ff007f; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: 0.2s; }
+        .pack-checkbox.checked { background: #ff007f; }
+        .pack-checkbox.checked::after { content: '✓'; color: #fff; font-size: 0.7rem; font-weight: 800; }
+        .pack-item-label { font-size: 0.85rem; color: #ddd; transition: 0.2s; }
+        .pack-item.done .pack-item-label { text-decoration: line-through; color: #666; }
+        .pack-progress { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+        .pack-bar-outer { flex: 1; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
+        .pack-bar-inner { height: 100%; background: linear-gradient(90deg, #ff007f, #00ffff); border-radius: 3px; transition: width 0.4s; }
+        .pack-pct { font-family: 'Orbitron', sans-serif; font-size: 0.75rem; color: #00ffff; min-width: 36px; }
+        .pack-stats { font-size: 0.75rem; color: #aaa; margin-bottom: 1.5rem; }
 
-        /* MOBILE OPTIMIZATION */
+        /* ========== ACTIVITY VOTES ========== */
+        .votes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; text-align: left; margin-top: 1.5rem; }
+        .vote-card { background: rgba(0,0,0,0.6); border: 1px solid rgba(0,255,255,0.2); border-radius: 12px; padding: 1rem 1.2rem; display: flex; flex-direction: column; gap: 8px; transition: 0.3s; }
+        .vote-card:hover { border-color: rgba(255,0,127,0.5); transform: translateY(-3px); }
+        .vote-card .vc-name { font-weight: 700; color: #00ffff; font-size: 0.9rem; }
+        .vote-card .vc-cat { font-size: 0.7rem; color: #ff007f; font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+        .vote-card .vc-actions { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
+        .vote-up { background: rgba(0,255,255,0.1); border: 1px solid rgba(0,255,255,0.3); color: #00ffff; padding: 5px 14px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: 700; transition: 0.2s; }
+        .vote-up:hover, .vote-up.voted { background: #00ffff; color: #000; }
+        .vote-count { font-size: 1.1rem; font-weight: 800; color: #fff; }
+        .votes-filter { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+        .vf-btn { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); color: #ccc; padding: 5px 14px; border-radius: 20px; cursor: pointer; font-size: 0.75rem; font-family: 'Orbitron', sans-serif; transition: 0.2s; }
+        .vf-btn.active, .vf-btn:hover { border-color: #ff007f; color: #ff007f; }
+
+        /* ========== BUDGET / CURRENCY ========== */
+        .budget-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; text-align: left; margin-top: 1.5rem; }
+        @media (max-width: 700px) { .budget-layout { grid-template-columns: 1fr; } }
+        .budget-panel { background: rgba(0,0,0,0.65); border: 1px solid rgba(0,255,255,0.25); border-radius: 14px; padding: 1.5rem; }
+        .budget-panel h4 { font-family: 'Orbitron', sans-serif; color: #ff007f; font-size: 0.9rem; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+        .currency-big { text-align: center; padding: 1.5rem; }
+        .currency-rate { font-size: 3rem; font-weight: 800; color: #00ffff; text-shadow: 0 0 20px #00ffff; line-height: 1; }
+        .currency-label { font-family: 'Orbitron', sans-serif; font-size: 0.7rem; color: #aaa; margin-top: 6px; }
+        .currency-convert { margin-top: 1.2rem; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+        .budget-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem; }
+        .budget-row label { color: #ccc; }
+        .budget-row .vice-input { width: 100px; padding: 6px 10px; font-size: 0.85rem; text-align: right; }
+        .budget-total { margin-top: 1.5rem; text-align: center; }
+        .budget-total .total-gbp { font-size: 2.2rem; font-weight: 800; color: #ff007f; text-shadow: 0 0 15px #ff007f; }
+        .budget-total .total-usd { font-size: 1.4rem; color: #00ffff; margin-top: 4px; }
+        .budget-total .per-person { font-size: 0.8rem; color: #aaa; margin-top: 4px; }
+
+        /* ========== BRACKET ========== */
+        .bracket-wrapper { overflow-x: auto; padding-bottom: 1rem; }
+        .bracket { display: flex; gap: 0; min-width: 900px; }
+        .bracket-round { display: flex; flex-direction: column; flex: 1; min-width: 160px; }
+        .bracket-round-title { font-family: 'Orbitron', sans-serif; font-size: 0.65rem; color: #ff007f; text-align: center; padding: 8px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(255,0,127,0.2); margin-bottom: 10px; }
+        .bracket-slots { display: flex; flex-direction: column; flex: 1; justify-content: space-around; padding: 0 4px; }
+        .bracket-matchup { display: flex; flex-direction: column; margin: 6px 0; border: 1px solid rgba(0,255,255,0.15); border-radius: 8px; overflow: hidden; }
+        .bracket-team { padding: 7px 10px; font-size: 0.75rem; cursor: pointer; transition: 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 6px; }
+        .bracket-team:last-child { border-bottom: none; }
+        .bracket-team:hover { background: rgba(0,255,255,0.12); }
+        .bracket-team.winner { background: rgba(255,0,127,0.2); color: #ff007f; font-weight: 700; }
+        .bracket-team.winner::before { content: '★'; font-size: 0.65rem; }
+        .bracket-team input { background: transparent; border: none; color: inherit; font-size: 0.75rem; font-family: 'Poppins', sans-serif; width: 100%; outline: none; }
+        .bracket-team input::placeholder { color: #555; }
+        .bracket-champion { text-align: center; padding: 16px; margin: 10px; border: 2px solid #ff007f; border-radius: 12px; background: rgba(255,0,127,0.1); box-shadow: 0 0 20px rgba(255,0,127,0.3); }
+        .bracket-champion .champ-label { font-family: 'Orbitron', sans-serif; font-size: 0.65rem; color: #ff007f; }
+        .bracket-champion .champ-name { font-size: 1.4rem; font-weight: 800; color: #00ffff; text-shadow: 0 0 10px #00ffff; min-height: 2rem; }
+        .bracket-controls { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; align-items: center; }
+        .bracket-person-select { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+        .person-tab { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); color: #ccc; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.78rem; font-family: 'Orbitron', sans-serif; transition: 0.2s; }
+        .person-tab.active { background: #ff007f; border-color: #ff007f; color: #fff; }
+        .leaderboard-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; font-size: 0.85rem; max-width: 600px; margin: 1.5rem auto 0; }
+        .leaderboard-table th { color: #ff007f; font-family: 'Orbitron', sans-serif; font-size: 0.7rem; padding: 8px; border-bottom: 1px solid #444; }
+        .leaderboard-table td { padding: 10px 8px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .leaderboard-table tr:first-child td { color: #00ffff; font-weight: 700; }
+
+        /* ========== VIBES (SYNTH + PLAYLIST) ========== */
+        .synth-panel { background: rgba(0,0,0,0.7); border: 2px solid #00ffff; border-radius: 20px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 0 40px rgba(0,255,255,0.1); }
+        .synth-visualizer { height: 60px; display: flex; align-items: flex-end; justify-content: center; gap: 3px; margin: 1.5rem 0; overflow: hidden; }
+        .synth-bar { width: 6px; border-radius: 3px 3px 0 0; background: linear-gradient(180deg, #00ffff, #ff007f); transition: height 0.1s; min-height: 4px; }
+        .synth-controls { display: flex; gap: 15px; justify-content: center; align-items: center; flex-wrap: wrap; }
+        #synthBtn { font-size: 1rem; padding: 14px 36px; border-radius: 50px; background: linear-gradient(90deg, #ff007f, #00ffff); color: #000; font-family: 'Orbitron', sans-serif; font-weight: 700; border: none; cursor: pointer; transition: 0.3s; letter-spacing: 2px; }
+        #synthBtn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(0,255,255,0.5); }
+        .volume-control { display: flex; align-items: center; gap: 8px; color: #ccc; font-size: 0.8rem; }
+        input[type="range"].vice-range { -webkit-appearance: none; width: 100px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.2); outline: none; }
+        input[type="range"].vice-range::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: #ff007f; cursor: pointer; }
+        .playlist-section { text-align: left; }
+        .playlist-add-form { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 1.5rem; align-items: center; background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 12px; border: 1px solid rgba(0,255,255,0.2); }
+        .playlist-add-form input, .playlist-add-form select { flex: 1; min-width: 120px; }
+        .playlist-list { display: flex; flex-direction: column; gap: 6px; }
+        .playlist-track { display: flex; align-items: center; gap: 12px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 10px 14px; transition: 0.2s; }
+        .playlist-track:hover { border-color: rgba(0,255,255,0.3); }
+        .track-num { font-family: 'Orbitron', sans-serif; font-size: 0.75rem; color: #555; min-width: 24px; }
+        .track-info { flex: 1; }
+        .track-title { font-size: 0.9rem; font-weight: 700; color: #fff; }
+        .track-artist { font-size: 0.75rem; color: #aaa; }
+        .track-vibe { font-size: 0.65rem; font-family: 'Orbitron', sans-serif; padding: 3px 10px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .track-vibe.road-trip { background: rgba(255,0,127,0.2); color: #ff007f; border: 1px solid rgba(255,0,127,0.3); }
+        .track-vibe.beach { background: rgba(0,255,255,0.1); color: #00ffff; border: 1px solid rgba(0,255,255,0.3); }
+        .track-vibe.night-out { background: rgba(128,0,255,0.2); color: #cc88ff; border: 1px solid rgba(128,0,255,0.3); }
+        .track-vibe.match-day { background: rgba(255,200,0,0.15); color: #ffcc00; border: 1px solid rgba(255,200,0,0.3); }
+        .track-vibe.poolside { background: rgba(0,200,100,0.15); color: #00cc66; border: 1px solid rgba(0,200,100,0.3); }
+        .track-by { font-size: 0.7rem; color: #666; }
+        .track-actions { display: flex; gap: 6px; }
+        .track-del { background: none; border: 1px solid rgba(255,0,127,0.3); color: #ff007f; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.7rem; transition: 0.2s; }
+        .track-del:hover { background: rgba(255,0,127,0.2); }
+        .spotify-link { font-size: 0.7rem; color: #1DB954; text-decoration: none; padding: 4px 10px; border: 1px solid #1DB954; border-radius: 6px; transition: 0.2s; }
+        .spotify-link:hover { background: rgba(29,185,84,0.2); }
+        .playlist-vibe-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1rem; }
+
+        /* ========== MEMORIES / PHOTO WALL ========== */
+        .memories-upload { border: 2px dashed rgba(0,255,255,0.3); border-radius: 16px; padding: 2rem; text-align: center; cursor: pointer; transition: 0.3s; margin-bottom: 2rem; }
+        .memories-upload:hover { border-color: #ff007f; background: rgba(255,0,127,0.05); }
+        .memories-upload input { display: none; }
+        .memories-upload-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .memories-upload p { color: #aaa; font-size: 0.85rem; }
+        .memories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
+        .memory-card { background: white; padding: 10px 10px 40px 10px; box-shadow: 8px 8px 20px rgba(0,0,0,0.6); transition: all 0.3s; cursor: pointer; position: relative; }
+        .memory-card:nth-child(3n+1) { transform: rotate(-2deg); }
+        .memory-card:nth-child(3n+2) { transform: rotate(1.5deg); }
+        .memory-card:nth-child(3n) { transform: rotate(-1deg); }
+        .memory-card:hover { transform: scale(1.08) rotate(0deg) !important; z-index: 10; box-shadow: 0 0 30px rgba(255,0,127,0.6); }
+        .memory-card img { width: 100%; height: 150px; object-fit: cover; display: block; }
+        .memory-caption { position: absolute; bottom: 8px; left: 10px; right: 10px; font-size: 0.7rem; font-weight: 800; color: #222; text-align: center; text-transform: uppercase; font-family: 'Poppins'; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+        .memory-del { position: absolute; top: -8px; right: -8px; background: #ff007f; color: #fff; border: none; border-radius: 50%; width: 22px; height: 22px; font-size: 0.7rem; cursor: pointer; display: none; align-items: center; justify-content: center; line-height: 1; }
+        .memory-card:hover .memory-del { display: flex; }
+        .memories-empty { color: #555; font-style: italic; text-align: center; padding: 3rem; font-size: 0.9rem; }
+        .memories-stats { font-size: 0.8rem; color: #666; margin-bottom: 1rem; }
+
+        /* BRACKET MOBILE */
         @media (max-width: 900px) {
             nav { gap: 10px; padding: 1rem 0.2rem; }
             nav a { font-size: 0.6rem; letter-spacing: 0; }
@@ -382,48 +439,107 @@
             .polaroid { width: 180px; left: 110px; transform: translateY(-50%) !important; }
             .stop-top .polaroid, .stop-bottom .polaroid { top: 50%; bottom: auto; left: 120px; }
             .city-name { left: -100px !important; top: 50% !important; transform: translateY(-50%) !important; }
+            h1 { font-size: 2.2rem; }
+            .budget-layout { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a onclick="showSection('home')">Home</a>
-        <a onclick="showSection('map')">Route</a>
-        <a onclick="showSection('itinerary')">Itinerary</a>
-        <a onclick="showSection('soccer')">World Cup</a>
-        <a onclick="showSection('food')">Vice Eats</a>
-        <a onclick="showSection('playground')">Playground</a>
-        <a onclick="showSection('matchday')">matchday</a>
+        <div class="nav-logo">UK MIAMI VICE '26</div>
+        <div class="nav-links" id="navLinks">
+            <a onclick="showSection('home');closeNav()">🏠 Home</a>
+            <a onclick="showSection('map');closeNav()">🗺 Route</a>
+            <a onclick="showSection('itinerary');closeNav()">📋 Itinerary</a>
+            <a onclick="showSection('soccer');closeNav()">🏆 World Cup</a>
+            <a onclick="showSection('food');closeNav()">🍔 Vice Eats</a>
+            <a onclick="showSection('playground');closeNav()">🕹️ Playground</a>
+            <a onclick="showSection('matchday');closeNav()">⚽ Matchday</a>
+            <a onclick="showSection('pack');closeNav()">🧳 Pack</a>
+            <a onclick="showSection('votes');closeNav()">🗳️ Votes</a>
+            <a onclick="showSection('budget');closeNav()">💷 Budget</a>
+            <a onclick="showSection('bracket');closeNav()">🔮 Bracket</a>
+            <a onclick="showSection('vibes');closeNav()">🎵 Vibes</a>
+            <a onclick="showSection('memories');closeNav()">📸 Memories</a>
+        </div>
+        <button class="hamburger" id="hamburgerBtn" onclick="toggleNav()">☰</button>
     </nav>
 
     <div class="container">
-        <!-- HOME SECTION -->
+
+        <!-- ==================== HOME ==================== -->
         <section id="home" class="glass-card active">
             <h1>UK MIAMI VICE '26</h1>
-            <div class="subtitle vice-text" style="display:inline-flex; align-items:center; gap:15px; background:rgba(0,0,0,0.6); padding:12px 24px; border:1px solid #00ffff; box-shadow:4px 4px 0 #ff007f; margin-bottom:2.5rem;">
+            <div class="subtitle vice-text" style="display:inline-flex; align-items:center; gap:15px; background:rgba(0,0,0,0.6); padding:12px 24px; border:1px solid #00ffff; box-shadow:4px 4px 0 #ff007f; margin-bottom:1.5rem;">
                 <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK" style="height:1.1rem; border-radius:2px;"/>
                 Union Jack to Ocean Drive 🏖️
             </div>
-            
-            <div style="display:flex; gap:15px; justify-content:center; margin-bottom:25px;">
-                <div style="background:rgba(0,0,0,0.5); padding:15px; border-radius:12px; flex:1; max-width:200px; text-align:left; border-left:4px solid #ff007f;">
-                    <div style="font-size:2.2rem; font-weight:800;">74°F</div><div style="font-size:0.75rem;">Current</div>
+
+            <!-- Live Weather -->
+            <div class="weather-grid" id="weatherGrid">
+                <div class="weather-card cyan-border" id="wc-now">
+                    <div class="w-label">Miami Now</div>
+                    <div class="w-val" id="w-temp">--°F</div>
+                    <div class="w-sub" id="w-desc">Loading…</div>
                 </div>
-                <div style="background:rgba(0,0,0,0.5); padding:15px; border-radius:12px; flex:1; max-width:200px; text-align:left; border-left:4px solid #ff007f;">
-                    <div style="font-size:2.2rem; font-weight:800;">89°F</div><div style="font-size:0.75rem;">June Forecast</div>
+                <div class="weather-card pink-border" id="wc-humidity">
+                    <div class="w-label">Humidity</div>
+                    <div class="w-val" id="w-hum">--%</div>
+                    <div class="w-sub" id="w-wind">Wind: --</div>
+                </div>
+                <div class="weather-card cyan-border">
+                    <div class="w-label">June Forecast</div>
+                    <div class="w-val">89°F</div>
+                    <div class="w-sub">🌤️ Sunny & Hot</div>
+                </div>
+                <div class="weather-card pink-border">
+                    <div class="w-label">UV Index</div>
+                    <div class="w-val" id="w-uv">10+</div>
+                    <div class="w-sub">Very High ☀️</div>
                 </div>
             </div>
 
-            <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px;">
+            <!-- Countdown to Departure -->
+            <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:1.5rem;">
                 <div style="background:rgba(0,0,0,0.4); padding:20px 10px; border-radius:25px; border:2px solid rgba(255,0,127,0.2);"><span class="number-styled" id="days" style="font-size:3.2rem; display:block;">00</span><span style="font-size:0.7rem; color:#00ffff; text-transform:uppercase;">Days</span></div>
                 <div style="background:rgba(0,0,0,0.4); padding:20px 10px; border-radius:25px; border:2px solid rgba(255,0,127,0.2);"><span class="number-styled" id="hours" style="font-size:3.2rem; display:block;">00</span><span style="font-size:0.7rem; color:#00ffff; text-transform:uppercase;">Hours</span></div>
                 <div style="background:rgba(0,0,0,0.4); padding:20px 10px; border-radius:25px; border:2px solid rgba(255,0,127,0.2);"><span class="number-styled" id="minutes" style="font-size:3.2rem; display:block;">00</span><span style="font-size:0.7rem; color:#00ffff; text-transform:uppercase;">Mins</span></div>
                 <div style="background:rgba(0,0,0,0.4); padding:20px 10px; border-radius:25px; border:2px solid rgba(255,0,127,0.2);"><span class="number-styled" id="seconds" style="font-size:3.2rem; display:block;">00</span><span style="font-size:0.7rem; color:#00ffff; text-transform:uppercase;">Secs</span></div>
             </div>
+            <p style="font-family:'Orbitron'; font-size:0.65rem; color:#ff007f; letter-spacing:3px; margin-bottom:1.8rem; text-transform:uppercase;">Until Departure — Austin TX</p>
+
+            <!-- Milestone Pills -->
+            <div class="milestone-row">
+                <div class="milestone-pill">
+                    <div class="m-label">🏙️ Austin</div>
+                    <span class="m-count" id="m-austin">--</span>
+                    <div class="m-unit">days</div>
+                </div>
+                <div class="milestone-pill">
+                    <div class="m-label">🎷 NOLA</div>
+                    <span class="m-count" id="m-nola">--</span>
+                    <div class="m-unit">days</div>
+                </div>
+                <div class="milestone-pill">
+                    <div class="m-label">🌴 Miami</div>
+                    <span class="m-count" id="m-miami">--</span>
+                    <div class="m-unit">days</div>
+                </div>
+                <div class="milestone-pill">
+                    <div class="m-label">⚽ WC Final</div>
+                    <span class="m-count" id="m-final">--</span>
+                    <div class="m-unit">days</div>
+                </div>
+                <div class="milestone-pill">
+                    <div class="m-label">🎆 4th July</div>
+                    <span class="m-count" id="m-july4">--</span>
+                    <div class="m-unit">days</div>
+                </div>
+            </div>
         </section>
 
-        <!-- ROUTE MAP SECTION -->
+        <!-- ==================== ROUTE MAP ==================== -->
         <section id="map" class="glass-card">
             <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 2rem;">The VICE Route</h2>
             <div class="map-wrapper">
@@ -441,127 +557,114 @@
             </div>
         </section>
 
-        <!-- FULL ITINERARY SECTION -->
+        <!-- ==================== ITINERARY ==================== -->
         <section id="itinerary" class="glass-card">
             <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 2rem;">The Dossier</h2>
             <div style="max-width: 900px; margin: auto;">
                 <div class="itinerary-phase">
                     <h2 class="vice-text" style="color: #ff007f; margin-bottom: 1.5rem;">📍 Phase 1: Texas Warm-up</h2>
-                    <div class="day-block"><h3>FRI JUNE 26: ARRIVAL</h3><ul><li><strong>Afternoon:</strong> Arrival, Airport Pickup, Settle In </li><li><strong>Dinner:</strong> Texas Steakhouse / Torchys / Moreno BBQ / Ramen Tatsuya </li><li><strong>Night:</strong> Chill or East/West 6th Bar Crawl </li></ul></div>
-                    <div class="day-block"><h3>SAT JUNE 27: AUSTIN TX</h3><ul><li><strong>Morning:</strong> Zilker Park, Lake Travis </li><li><strong>Lunch:</strong> Cava / Cabo Bob </li><li><strong>Dinner:</strong> Korean BBQ / GangNam / Ramen Tatsuya </li><li><strong>Night:</strong> Riviere / Luna Rooftop / Busy Signal </li></ul></div>
-                    <div class="day-block"><h3>SUN JUNE 28: SAN ANTONIO VISIT</h3><ul><li><strong>Morning:</strong> Drive to San Antonio (Esther & Gert Visit) </li><li><strong>Afternoon:</strong> The Alamo & Riverwalk </li><li><strong>Dinner:</strong> Mexican Food in SA </li><li><strong>Evening:</strong> Drive back to Austin </li></ul></div>
+                    <div class="day-block"><h3>FRI JUNE 26: ARRIVAL</h3><ul><li><strong>Afternoon:</strong> Arrival, Airport Pickup, Settle In</li><li><strong>Dinner:</strong> Texas Steakhouse / Torchys / Moreno BBQ / Ramen Tatsuya</li><li><strong>Night:</strong> Chill or East/West 6th Bar Crawl</li></ul></div>
+                    <div class="day-block"><h3>SAT JUNE 27: AUSTIN TX</h3><ul><li><strong>Morning:</strong> Zilker Park / Ladybird Lake / Downtown</li><li><strong>Lunch:</strong> Foodtruck Park / Cava / Tacos</li><li><strong>Dinner:</strong> Korean BBQ / GangNam / Ramen Tatsuya</li><li><strong>Night:</strong> Riviere / Luna Rooftop / Busy Signal</li></ul></div>
+                    <div class="day-block"><h3>SUN JUNE 28: SAN ANTONIO VISIT</h3><ul><li><strong>Morning:</strong> San Antonio (Alamo) / Austin (Lake Travis)</li><li><strong>Afternoon:</strong> The Alamo & Riverwalk</li><li><strong>Dinner:</strong> Mexican Food in SA</li><li><strong>Evening:</strong> Drive back to Austin</li></ul></div>
                 </div>
-
                 <div class="itinerary-phase" style="border-color: #ff007f;">
                     <h2 class="vice-text" style="color: #00ffff; margin-bottom: 1.5rem;">🏎️ Phase 2: Road Trip</h2>
-                    <div class="day-block"><h3>MON JUNE 29: NOLA BOUND</h3><ul><li><strong>Early:</strong> 8am Depart ATX (8hr drive). Check-in 4pm. </li><li><strong>Night:</strong> Bourbon Street Exploration & Bar Crawl </li></ul></div>
-                    <div class="day-block"><h3>TUE JUNE 30: THE FAMILY STOP</h3><ul><li><strong>Morning:</strong> Leave for Bradenton (10hr drive). </li><li><strong>Evening:</strong> Arrive at Gladys’ place. Dinner & rest. </li></ul></div>
+                    <div class="day-block"><h3>MON JUNE 29: NOLA BOUND</h3><ul><li><strong>Early:</strong> 8am Depart ATX (8hr drive). Check-in 4pm.</li><li><strong>Night:</strong> Bourbon Street Exploration & Bar Crawl</li></ul></div>
+                    <div class="day-block"><h3>TUE JUNE 30: THE FAMILY STOP</h3><ul><li><strong>Morning:</strong> Leave for Bradenton (10hr drive).</li><li><strong>Evening:</strong> Arrive at Gladys' place. Dinner & rest.</li></ul></div>
                 </div>
-
                 <div class="itinerary-phase">
                     <h2 class="vice-text" style="color: #ff007f; margin-bottom: 1.5rem;">🌴 Phase 3: Miami Main Event</h2>
-                    <div class="day-block"><h3>WED JULY 1: TOUCHDOWN MIAMI</h3><ul><li><strong>Morning:</strong> Breakfast with Gladys. Leave for SoBe 11am. </li><li><strong>Afternoon:</strong> 3pm Check-in. Grocery & Supplies run. </li><li><strong>Night:</strong> Brickell Dinner / Clevelander Drinks </li></ul></div>
-                    <div class="day-block"><h3>THU JULY 2: DESIGN & ARTS</h3><ul><li><strong>Day:</strong> Wynwood Art / Superblue Immersive </li><li><strong>Night:</strong> Blackbird / Las Olas Strip </li></ul></div>
-                    <div class="day-block" style="border-color: #00ffff; background: rgba(0,255,255,0.1); padding: 15px;"><h3>SAT JULY 4: INDEPENDENCE DAY 🇺🇸</h3><ul><li><strong>Afternoon:</strong> ⚪ <strong>ALL WHITE BOAT PARTY</strong> </li><li><strong>Evening:</strong> South Beach Fireworks </li></ul></div>
+                    <div class="day-block"><h3>WED JULY 1: TOUCHDOWN MIAMI</h3><ul><li><strong>Morning:</strong> Breakfast with Gladys. Leave for SoBe 11am.</li><li><strong>Afternoon:</strong> 3pm Check-in. Grocery & Supplies run.</li><li><strong>Night:</strong> Brickell Dinner / Clevelander Drinks</li></ul></div>
+                    <div class="day-block"><h3>THU JULY 2: DESIGN & ARTS</h3><ul><li><strong>Day:</strong> Wynwood Art / Superblue Immersive</li><li><strong>Night:</strong> Blackbird / Las Olas Strip</li></ul></div>
+                    <div class="day-block" style="border-color:#00ffff; background:rgba(0,255,255,0.1); padding:15px;"><h3>SAT JULY 4: INDEPENDENCE DAY 🇺🇸</h3><ul><li><strong>Afternoon:</strong> ⚪ <strong>ALL WHITE BOAT PARTY</strong></li><li><strong>Evening:</strong> South Beach Fireworks</li></ul></div>
                 </div>
-
                 <div class="itinerary-phase" style="border-color: #ff007f;">
                     <h2 class="vice-text" style="color: #00ffff; margin-bottom: 1.5rem;">🍹 Phase 4: Wind Down</h2>
-                    <div class="day-block"><h3>WED JULY 8: PANHANDLE DRIVE</h3><ul><li><strong>Route:</strong> Destin / Panama City / Baton Rouge (13hr drive) </li><li><strong>Night:</strong> Dinner & Casino stop </li></ul></div>
-                    <div class="day-block"><h3>THU JULY 9: HOUSTON</h3><ul><li><strong>Afternoon:</strong> 3pm Houston Check-in </li><li><strong>Dinner:</strong> Aga's (Must do) </li></ul></div>
-                    <div class="day-block" style="border-left: 5px solid white;"><h3>SAT JULY 11: DEPARTURE</h3><ul><li><strong>7pm:</strong> Airport Goodbyes </li><li><strong>10:30pm:</strong> UK Return Flight ✈️ </li></ul></div>
+                    <div class="day-block"><h3>WED JULY 8: PANHANDLE DRIVE</h3><ul><li><strong>Route:</strong> Destin / Panama City / Baton Rouge (13hr drive)</li><li><strong>Night:</strong> Dinner & Casino stop</li></ul></div>
+                    <div class="day-block"><h3>THU JULY 9: HOUSTON</h3><ul><li><strong>Afternoon:</strong> 3pm Houston Check-in</li><li><strong>Dinner:</strong> Aga's (Must do)</li></ul></div>
+                    <div class="day-block" style="border-left: 5px solid white;"><h3>SAT JULY 11: DEPARTURE</h3><ul><li><strong>7pm:</strong> Airport Goodbyes</li><li><strong>10:30pm:</strong> UK Return Flight ✈️</li></ul></div>
                 </div>
             </div>
         </section>
 
-        <!-- FULL WORLD CUP SECTION WITH UPDATED HIGHLIGHTS -->
+        <!-- ==================== WORLD CUP ==================== -->
         <section id="soccer" class="glass-card">
             <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 1rem;">🏆 World Cup '26</h2>
             <div style="max-width: 900px; margin: auto;">
-                
-                <!-- Group Stage Table -->
                 <div class="itinerary-phase" style="border-color: #00ffff; margin-bottom: 2rem;">
-                    <h3 style="color:#00ffff; font-family:'Orbitron'; font-size:1.1rem; margin-bottom:10px;">Group Stage Highlights[cite: 2]</h3>
+                    <h3 style="color:#00ffff; font-family:'Orbitron'; font-size:1.1rem; margin-bottom:10px;">Group Stage Highlights</h3>
                     <table class="wc-table">
                         <thead><tr><th>Date</th><th>Matchup</th><th>City</th></tr></thead>
                         <tbody>
-                            <tr><td>June 11</td><td>MEXICO vs SOUTH AFRICA</td><td>MEXICO CITY[cite: 2]</td></tr>
-                            <tr><td>June 12</td><td>ENGLAND vs CROATIA</td><td>TORONTO[cite: 2]</td></tr>
-                            <tr><td>June 13</td><td>BRAZIL vs MOROCCO</td><td>NY/NJ[cite: 2]</td></tr>
-                            <tr><td>June 14</td><td>GERMANY vs CURAÇAO</td><td>HOUSTON[cite: 2]</td></tr>
-                            <tr><td>June 15</td><td>SAUDI ARABIA vs URUGUAY</td><td>MIAMI[cite: 2]</td></tr>
-                            <tr><td>June 15</td><td>SPAIN vs URUGUAY</td><td>MIAMI[cite: 2]</td></tr>
-                            <tr><td>June 16</td><td>FRANCE vs SENEGAL</td><td>NY/NJ[cite: 2]</td></tr>
-                            <tr><td>June 17</td><td>PORTUGAL vs CONGO DR</td><td>HOUSTON[cite: 2]</td></tr>
-                            <tr><td>June 21</td><td>URUGUAY vs CABO VERDE</td><td>MIAMI[cite: 2]</td></tr>
-                            <tr><td>June 23</td><td>PORTUGAL vs UZBEKISTAN</td><td>HOUSTON[cite: 2]</td></tr>
-                            <tr><td>June 24</td><td>BRAZIL vs SCOTLAND</td><td>MIAMI[cite: 2]</td></tr>
-                            <tr><td>June 27</td><td>PANAMA vs ENGLAND</td><td>NY/NJ[cite: 2]</td></tr>
+                            <tr><td>June 11</td><td>MEXICO vs SOUTH AFRICA</td><td>MEXICO CITY</td></tr>
+                            <tr><td>June 12</td><td>ENGLAND vs CROATIA</td><td>TORONTO</td></tr>
+                            <tr><td>June 13</td><td>BRAZIL vs MOROCCO</td><td>NY/NJ</td></tr>
+                            <tr><td>June 14</td><td>GERMANY vs CURAÇAO</td><td>HOUSTON</td></tr>
+                            <tr><td>June 15</td><td>SAUDI ARABIA vs URUGUAY</td><td>MIAMI</td></tr>
+                            <tr><td>June 15</td><td>SPAIN vs CAPE VERDE</td><td>MIAMI</td></tr>
+                            <tr><td>June 16</td><td>FRANCE vs SENEGAL</td><td>NY/NJ</td></tr>
+                            <tr><td>June 17</td><td>PORTUGAL vs CONGO DR</td><td>HOUSTON</td></tr>
+                            <tr><td>June 21</td><td>URUGUAY vs CABO VERDE</td><td>MIAMI</td></tr>
+                            <tr><td>June 23</td><td>PORTUGAL vs UZBEKISTAN</td><td>HOUSTON</td></tr>
+                            <tr><td>June 24</td><td>BRAZIL vs SCOTLAND</td><td>MIAMI</td></tr>
+                            <tr><td>June 27</td><td>PANAMA vs ENGLAND</td><td>NY/NJ</td></tr>
                         </tbody>
                     </table>
                 </div>
-
-                <!-- KNOCKOUT DOSSIER -->
                 <div class="itinerary-phase" style="border-color: #ff007f;">
-                    <h3 style="color:#ff007f; font-family:'Orbitron'; font-size:1.3rem; margin-bottom:20px; text-transform:uppercase; letter-spacing:2px;">The Knockout Dossier[cite: 2]</h3>
-                    
+                    <h3 style="color:#ff007f; font-family:'Orbitron'; font-size:1.3rem; margin-bottom:20px; text-transform:uppercase; letter-spacing:2px;">The Knockout Dossier</h3>
                     <div class="day-block">
                         <h3>JUNE 28 – JULY 3: ROUND OF 32</h3>
                         <ul>
-                            <li><strong>June 28:</strong> Los Angeles[cite: 2]</li>
-                            <li><strong>June 29:</strong> Boston & Dallas[cite: 2]</li>
-                            <li><strong>June 30:</strong> New York New Jersey[cite: 2]</li>
-                            <li><strong>July 1:</strong> San Francisco & Seattle[cite: 2]</li>
-                            <li><strong>July 2:</strong> Toronto & Los Angeles[cite: 2]</li>
-                            <li><strong>July 3:</strong> Dallas & Kansas City[cite: 2]</li>
+                            <li><strong>June 28:</strong> Los Angeles</li>
+                            <li><strong>June 29:</strong> Boston & Dallas</li>
+                            <li><strong>June 30:</strong> New York New Jersey</li>
+                            <li><strong>July 1:</strong> San Francisco & Seattle</li>
+                            <li><strong>July 2:</strong> Toronto & Los Angeles</li>
+                            <li><strong>July 3:</strong> Dallas & Kansas City</li>
                         </ul>
                     </div>
-
                     <div class="day-block">
                         <h3>JULY 4 – JULY 7: ROUND OF 16</h3>
                         <ul>
-                            <li><strong>July 4:</strong> Houston & Philadelphia[cite: 2]</li>
-                            <li><strong>July 5:</strong> New York New Jersey & Mexico City[cite: 2]</li>
-                            <li><strong>July 6:</strong> Dallas & Seattle[cite: 2]</li>
-                            <li><strong>July 7:</strong> Atlanta & Vancouver[cite: 2]</li>
+                            <li><strong>July 4:</strong> Houston & Philadelphia</li>
+                            <li><strong>July 5:</strong> New York New Jersey & Mexico City</li>
+                            <li><strong>July 6:</strong> Dallas & Seattle</li>
+                            <li><strong>July 7:</strong> Atlanta & Vancouver</li>
                         </ul>
                     </div>
-
                     <div class="day-block" style="border-color: #00ffff;">
                         <h3>JULY 9 – JULY 19: THE FINALS</h3>
                         <ul>
-                            <li><strong>Quarter-Finals:</strong> July 9 (Boston), July 10 (LA), July 11 (Miami & KC)[cite: 2]</li>
-                            <li><strong>Semi-Finals:</strong> July 14 (Dallas) & July 15 (Atlanta)[cite: 2]</li>
-                            <li><strong>3rd Place:</strong> July 18 (Miami)[cite: 2]</li>
-                            <li><strong>FINAL:</strong> July 19 (New York New Jersey)[cite: 2]</li>
+                            <li><strong>Quarter-Finals:</strong> July 9 (Boston), July 10 (LA), July 11 (Miami & KC)</li>
+                            <li><strong>Semi-Finals:</strong> July 14 (Dallas) & July 15 (Atlanta)</li>
+                            <li><strong>3rd Place:</strong> July 18 (Miami)</li>
+                            <li><strong>FINAL:</strong> July 19 (New York New Jersey)</li>
                         </ul>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- VICE EATS SECTION (6 IMAGES) -->
+        <!-- ==================== VICE EATS ==================== -->
         <section id="food" class="glass-card">
             <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 1rem;">🍔 VICE EATS</h2>
             <p style="color:#ff007f; font-weight: 800; font-size: 0.9rem; letter-spacing: 2px;">THE CULINARY HIT LIST</p>
             <div class="food-grid">
-                <div class="food-card"><img src="texas.jpg"><h4>Central Texas BBQ</h4><p>Legendary oak-smoked brisket and beef ribs. Essential Austin experience. </p><span class="tag">📍 Terry Black's / Moreno</span></div>
-                <div class="food-card"><img src="tacos.jpg"><h4>Birria & Tacos</h4><p>The only way to start a day in Texas. Migas, chorizo, and fresh salsa. </p><span class="tag">📍 Torchy's / Pepe's Tacos</span></div>
-                <div class="food-card"><img src="nolafoods.jpg"><h4>NOLA Beignets</h4><p>Deep-fried dough mountains covered in powdered sugar. Best at 2 AM. </p><span class="tag">📍 Café Du Monde / Oceana Grill</span></div>
-                <div class="food-card"><img src="cubansan.jpg"><h4>Cubano Sandwich</h4><p>The Miami classic. Roasted pork, ham, swiss, and pickles. Perfectly pressed. </p><span class="tag">📍 Versailles / Sanguich</span></div>
-                <div class="food-card"><img src="stonecrabs.jpg"><h4>Stone Crabs</h4><p>Florida’s premium seasonal luxury. Served cold with mustard sauce. </p><span class="tag">📍 Joe's Stone Crab</span></div>
-                <div class="food-card"><img src="agas.jpg"><h4>Houston's Aga's</h4><p>Non-negotiable stop. The world-famous Goat Chops are a must. </p><span class="tag">📍 Aga's Restaurant</span></div>
+                <div class="food-card"><img src="texas.jpg"><h4>Central Texas BBQ</h4><p>Legendary oak-smoked brisket and beef ribs. Essential Austin experience.</p><span class="tag">📍 Terry Black's / Moreno</span></div>
+                <div class="food-card"><img src="tacos.jpg"><h4>Birria & Tacos</h4><p>The only way to start a day in Texas. Migas, chorizo, and fresh salsa.</p><span class="tag">📍 Torchy's / Pepe's Tacos</span></div>
+                <div class="food-card"><img src="nolafoods.jpg"><h4>NOLA Beignets</h4><p>Deep-fried dough mountains covered in powdered sugar. Best at 2 AM.</p><span class="tag">📍 Café Du Monde / Oceana Grill</span></div>
+                <div class="food-card"><img src="cubansan.jpg"><h4>Cubano Sandwich</h4><p>The Miami classic. Roasted pork, ham, swiss, and pickles. Perfectly pressed.</p><span class="tag">📍 Versailles / Sanguich</span></div>
+                <div class="food-card"><img src="stonecrabs.jpg"><h4>Stone Crabs</h4><p>Florida's premium seasonal luxury. Served cold with mustard sauce.</p><span class="tag">📍 Joe's Stone Crab</span></div>
+                <div class="food-card"><img src="agas.jpg"><h4>Houston's Aga's</h4><p>Non-negotiable stop. The world-famous Goat Chops are a must.</p><span class="tag">📍 Aga's Restaurant</span></div>
             </div>
         </section>
 
-        <!-- PLAYGROUND SECTION: THE ULTIMATE MERGED DOSSIER -->
+        <!-- ==================== PLAYGROUND ==================== -->
         <section id="playground" class="glass-card">
             <h2 class="vice-text" style="color:#00ffff; font-size: 2.5rem; margin-bottom: 0.5rem;">🕹️ PLAYGROUND</h2>
             <p style="color:#ff007f; font-weight: 800; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 2rem;">THE VICE ACTIVITY COMPENDIUM</p>
-            
             <div class="playground-container">
-                <!-- 🌊 Water & Adventure -->
                 <div class="playground-category" style="border-color: #00ffff;">
                     <h3>🌊 Water & Adventure</h3>
                     <div class="activity-item"><strong>Miami Beach Boat Party</strong><p>High-energy social vibes and beats on the open water.</p></div>
@@ -572,42 +675,33 @@
                     <div class="activity-item"><strong>Biscayne Bay Snorkeling</strong><p>Explore vibrant underwater reefs and marine life.</p></div>
                     <div class="activity-item"><strong>Everglades Airboat</strong><p>High-speed Gator spotting in the prehistoric swamps.</p></div>
                 </div>
-
-                <!-- 🏖️ Beach & Sandbars -->
                 <div class="playground-category" style="border-color: #ff007f;">
                     <h3>🏖️ Beach & Sandbars</h3>
                     <div class="activity-item"><strong>Haulover & Nixon Sandbars</strong><p>The ultimate floating parties and local chill vibes.</p></div>
-                    <div class="activity-item"><strong>Miami Elite</strong><p>South Pointe Beach, Haulover (Social & Nude), and Sunny Isles Beach.</p></div>
-                    <div class="activity-item"><strong>Fort Lauderdale Favorites</strong><p>Las Olas Beach, Lauderdale-by-the-Sea, and Hollywood Broadwalk.</p></div>
+                    <div class="activity-item"><strong>Miami Elite</strong><p>South Pointe Beach, Haulover, and Sunny Isles Beach.</p></div>
+                    <div class="activity-item"><strong>Fort Lauderdale Favorites</strong><p>Las Olas Beach, Lauderdale-by-the-Sea, and Hollywood Boardwalk.</p></div>
                     <div class="activity-item"><strong>West Palm Prestige</strong><p>Palm Beach (The Breakers area), Juno Beach, and Peanut Island.</p></div>
-                    <div class="activity-item"><strong>Star Island / Private Yachts</strong><p>Cruise "Millionaire's Row" in total luxury past world-class estates.</p></div>
+                    <div class="activity-item"><strong>Star Island / Private Yachts</strong><p>Cruise "Millionaire's Row", past world-class estates.</p></div>
                 </div>
-
-                <!-- 🏃 Active & Outdoors -->
                 <div class="playground-category" style="border-color: #00ffff;">
                     <h3>🏃 Active & Outdoors</h3>
                     <div class="activity-item"><strong>South Pointe Park & Pier</strong><p>Stunning ocean views, morning runs, and sunset walks.</p></div>
                     <div class="activity-item"><strong>Lummus Park & Boardwalk</strong><p>The iconic Miami Beach fitness and people-watching spot.</p></div>
                     <div class="activity-item"><strong>Venetian Pool</strong><p>Historic spring-fed coral rock pool in Coral Gables.</p></div>
                     <div class="activity-item"><strong>Topgolf Doral</strong><p>High-tech driving range with neon-lit skyline views.</p></div>
-                    <div class="activity-item"><strong>Enchanted Forest Park</strong><p>Elaine Gordon’s lush, 22-acre sub-tropical nature escape.</p></div>
-                    <div class="activity-item"><strong>Dogs & Cats Walkway</strong><p>Oversized whimsical sculptures at Maurice A. Ferré Park.</p></div>
-                    <div class="activity-item"><strong>Botanical Garden</strong><p>A tropical boutique oasis in the heart of Miami Beach.</p></div>
+                    <div class="activity-item"><strong>Enchanted Forest Park</strong><p>Elaine Gordon's lush, 22-acre sub-tropical nature escape.</p></div>
                     <div class="activity-item"><strong>ATV Tours</strong><p>Daytime and nighttime off-road exploration through the dirt.</p></div>
+                    <div class="activity-item"><strong>Botanical Garden</strong><p>A tropical boutique oasis in the heart of Miami Beach.</p></div>
                 </div>
-
-                <!-- 🥂 Elite Nightlife -->
                 <div class="playground-category" style="border-color: #ff007f;">
                     <h3>🥂 Elite Nightlife</h3>
-                    <div class="activity-item"><strong>The 24/7 Icons</strong><p>E11EVEN (Ultraclub), LIV, and Club Space (Terrace vibes).</p></div>
+                    <div class="activity-item"><strong>The 24/7 Icons</strong><p>E11EVEN, LIV, and ClubSpace (Terrace vibes).</p></div>
                     <div class="activity-item"><strong>Riverside Energy</strong><p>Kiki on the River, Komodo, Sexy Fish, and Casadonna.</p></div>
                     <div class="activity-item"><strong>Rooftops & Lounges</strong><p>Sugar (Brickell), Astra (Wynwood), and Serena Rooftop (SoBe).</p></div>
                     <div class="activity-item"><strong>Wynwood Wildness</strong><p>Dirty Rabbit, Pero Negro, and the Wynwood Jungle district.</p></div>
                     <div class="activity-item"><strong>Late Night Dossier</strong><p>Tootsies, Gold Rush, Booby Trap, Taboo, and The Mint.</p></div>
-                    <div class="activity-item"><strong>Sunday Sessions</strong><p>Sunday Rise & Toast and Sundays at Stamped.</p></div>
+                    <div class="activity-item"><strong>Sunday Sessions</strong><p>Rise & Toast and Sundays at Stamped.</p></div>
                 </div>
-
-                <!-- 🛍️ Lifestyle & Retail -->
                 <div class="playground-category" style="border-color: #00ffff;">
                     <h3>🛍️ Lifestyle & Retail</h3>
                     <div class="activity-item"><strong>Bal Harbour Shops</strong><p>Ultra-luxury retail (Lunch at Makoto is mandatory).</p></div>
@@ -617,8 +711,6 @@
                     <div class="activity-item"><strong>Classic Pedestrian</strong><p>Lincoln Road Mall, Bayside Marketplace, and Coconut Grove.</p></div>
                     <div class="activity-item"><strong>Prestige Imports</strong><p>Exotic car scouting for the true supercar enthusiast.</p></div>
                 </div>
-
-                <!-- 🎨 Arts & Culture -->
                 <div class="playground-category" style="border-color: #ff007f;">
                     <h3>🎨 Arts & Culture</h3>
                     <div class="activity-item"><strong>Wynwood Walls</strong><p>The global epicenter of street art and the Museum of Graffiti.</p></div>
@@ -631,144 +723,1056 @@
             </div>
         </section>
 
-
-
-        <!-- MATCHDAY SECTION: THE ULTIMATE 104-MATCH DOSSIER -->
+        <!-- ==================== MATCHDAY ==================== -->
         <section id="matchday" class="glass-card" style="max-width: 1300px; margin: 2rem auto;">
             <h2 class="vice-text" style="color:#ff007f; font-size: 2.5rem; margin-bottom: 0.5rem;">⚽ WORLD CUP matchday</h2>
-            <p style="color:#00ffff; font-weight: 800; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 2rem;">THE COMPLETE 104-MATCH SCHEDULE: JUNE 11 – JULY 19[cite: 2]</p>
-            
+            <p style="color:#00ffff; font-weight: 800; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 2rem;">THE COMPLETE 104-MATCH SCHEDULE: JUNE 11 – JULY 19</p>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; text-align: left;">
-                
-                <!-- COLUMN 1: GROUP STAGE WEEK 1 & 2 -->
                 <div class="itinerary-phase" style="border-color: #00ffff; height: 650px; overflow-y: auto; padding: 1rem; background: rgba(0,0,0,0.5);">
-                    <h3 style="color:#00ffff; font-family:'Orbitron'; font-size:0.9rem; position: sticky; top: 0; background: #000; padding: 10px; z-index: 5; border-bottom: 1px solid #00ffff;">PHASE 1: THE OPENING VOLLEY[cite: 2]</h3>
-                    <table class="wc-table">
-                        <tbody>
-                            <tr><td>Jun 11</td><td>MEX vs RSA (Mexico City)[cite: 2]</td></tr>
-                            <tr><td>Jun 11</td><td>KOR vs CZE (Guadalajara)[cite: 2]</td></tr>
-                            <tr><td>Jun 12</td><td>CAN vs BIH (Toronto)[cite: 2]</td></tr>
-                            <tr><td>Jun 12</td><td>USA vs PAR (Los Angeles)[cite: 2]</td></tr>
-                            <tr><td>Jun 13</td><td>HAI vs SCO (Boston)[cite: 2]</td></tr>
-                            <tr><td>Jun 13</td><td>AUS vs TUR (Vancouver)[cite: 2]</td></tr>
-                            <tr><td>Jun 13</td><td>BRA vs MAR (NY/NJ)[cite: 2]</td></tr>
-                            <tr><td>Jun 13</td><td>QAT vs SUI (SF Bay Area)[cite: 2]</td></tr>
-                            <tr><td>Jun 14</td><td>CIV vs ECU (Philadelphia)[cite: 2]</td></tr>
-                            <tr><td>Jun 14</td><td>GER vs CUW (Houston)[cite: 2]</td></tr>
-                            <tr><td>Jun 14</td><td>NED vs JPN (Dallas)[cite: 2]</td></tr>
-                            <tr><td>Jun 14</td><td>SWE vs TUN (Monterrey)[cite: 2]</td></tr>
-                            <tr style="background: rgba(255, 0, 127, 0.1);"><td>Jun 15</td><td>KSA vs URU (Miami)[cite: 2]</td></tr>
-                            <tr><td>Jun 15</td><td>ESP vs CPV (Atlanta)[cite: 2]</td></tr>
-                            <tr><td>Jun 15</td><td>IRN vs NZL (Los Angeles)[cite: 2]</td></tr>
-                            <tr><td>Jun 15</td><td>BEL vs EGY (Seattle)[cite: 2]</td></tr>
-                            <tr><td>Jun 16</td><td>FRA vs SEN (NY/NJ)[cite: 2]</td></tr>
-                            <tr><td>Jun 16</td><td>IRQ vs NOR (Boston)[cite: 2]</td></tr>
-                            <tr><td>Jun 16</td><td>ARG vs ALG (Kansas City)[cite: 2]</td></tr>
-                            <tr><td>Jun 16</td><td>AUT vs JOR (SF Bay Area)[cite: 2]</td></tr>
-                            <tr><td>Jun 17</td><td>GHA vs PAN (Toronto)[cite: 2]</td></tr>
-                            <tr><td>Jun 17</td><td>ENG vs CRO (Dallas)[cite: 2]</td></tr>
-                            <tr><td>Jun 17</td><td>POR vs COD (Houston)[cite: 2]</td></tr>
-                            <tr><td>Jun 17</td><td>UZB vs COL (Mexico City)[cite: 2]</td></tr>
-                        </tbody>
-                    </table>
+                    <h3 style="color:#00ffff; font-family:'Orbitron'; font-size:0.9rem; position: sticky; top: 0; background: #000; padding: 10px; z-index: 5; border-bottom: 1px solid #00ffff;">PHASE 1: THE OPENING VOLLEY</h3>
+                    <table class="wc-table"><tbody>
+                        <tr><td>Jun 11</td><td>MEX vs RSA (Mexico City)</td></tr>
+                        <tr><td>Jun 11</td><td>KOR vs CZE (Guadalajara)</td></tr>
+                        <tr><td>Jun 12</td><td>CAN vs BIH (Toronto)</td></tr>
+                        <tr><td>Jun 12</td><td>USA vs PAR (Los Angeles)</td></tr>
+                        <tr><td>Jun 13</td><td>HAI vs SCO (Boston)</td></tr>
+                        <tr><td>Jun 13</td><td>AUS vs TUR (Vancouver)</td></tr>
+                        <tr><td>Jun 13</td><td>BRA vs MAR (NY/NJ)</td></tr>
+                        <tr><td>Jun 13</td><td>QAT vs SUI (SF Bay Area)</td></tr>
+                        <tr><td>Jun 14</td><td>CIV vs ECU (Philadelphia)</td></tr>
+                        <tr><td>Jun 14</td><td>GER vs CUW (Houston)</td></tr>
+                        <tr><td>Jun 14</td><td>NED vs JPN (Dallas)</td></tr>
+                        <tr><td>Jun 14</td><td>SWE vs TUN (Monterrey)</td></tr>
+                        <tr style="background: rgba(255,0,127,0.1);"><td>Jun 15</td><td>KSA vs URU (Miami)</td></tr>
+                        <tr><td>Jun 15</td><td>ESP vs CPV (Atlanta)</td></tr>
+                        <tr><td>Jun 15</td><td>IRN vs NZL (Los Angeles)</td></tr>
+                        <tr><td>Jun 15</td><td>BEL vs EGY (Seattle)</td></tr>
+                        <tr><td>Jun 16</td><td>FRA vs SEN (NY/NJ)</td></tr>
+                        <tr><td>Jun 16</td><td>IRQ vs NOR (Boston)</td></tr>
+                        <tr><td>Jun 16</td><td>ARG vs ALG (Kansas City)</td></tr>
+                        <tr><td>Jun 16</td><td>AUT vs JOR (SF Bay Area)</td></tr>
+                        <tr><td>Jun 17</td><td>GHA vs PAN (Toronto)</td></tr>
+                        <tr><td>Jun 17</td><td>ENG vs CRO (Dallas)</td></tr>
+                        <tr><td>Jun 17</td><td>POR vs COD (Houston)</td></tr>
+                        <tr><td>Jun 17</td><td>UZB vs COL (Mexico City)</td></tr>
+                    </tbody></table>
                 </div>
-
-                <!-- COLUMN 2: GROUP STAGE WEEK 2 & 3 -->
                 <div class="itinerary-phase" style="border-color: #ff007f; height: 650px; overflow-y: auto; padding: 1rem; background: rgba(0,0,0,0.5);">
-                    <h3 style="color:#ff007f; font-family:'Orbitron'; font-size:0.9rem; position: sticky; top: 0; background: #000; padding: 10px; z-index: 5; border-bottom: 1px solid #ff007f;">PHASE 2: THE MID-TOURNEY HEAT[cite: 2]</h3>
-                    <table class="wc-table">
-                        <tbody>
-                            <tr><td>Jun 18</td><td>RSA vs CZE (Atlanta)[cite: 2]</td></tr>
-                            <tr><td>Jun 18</td><td>BIH vs SUI (Los Angeles)[cite: 2]</td></tr>
-                            <tr><td>Jun 18</td><td>CAN vs QAT (Vancouver)[cite: 2]</td></tr>
-                            <tr><td>Jun 18</td><td>MEX vs KOR (Guadalajara)[cite: 2]</td></tr>
-                            <tr><td>Jun 19</td><td>USA vs AUS (Seattle)[cite: 2]</td></tr>
-                            <tr><td>Jun 19</td><td>PAR vs TUR (SF Bay Area)[cite: 2]</td></tr>
-                            <tr><td>Jun 19</td><td>BRA vs HAI (Philadelphia)[cite: 2]</td></tr>
-                            <tr><td>Jun 19</td><td>MAR vs SCO (Boston)[cite: 2]</td></tr>
-                            <tr><td>Jun 20</td><td>GER vs CIV (Toronto)[cite: 2]</td></tr>
-                            <tr><td>Jun 20</td><td>CUW vs ECU (Kansas City)[cite: 2]</td></tr>
-                            <tr><td>Jun 20</td><td>NED vs SWE (Houston)[cite: 2]</td></tr>
-                            <tr><td>Jun 20</td><td>JPN vs TUN (Monterrey)[cite: 2]</td></tr>
-                            <tr style="background: rgba(0, 255, 255, 0.1);"><td>Jun 21</td><td>URU vs CPV (Miami)[cite: 2]</td></tr>
-                            <tr><td>Jun 21</td><td>KSA vs ESP (Atlanta)[cite: 2]</td></tr>
-                            <tr><td>Jun 22</td><td>FRA vs IRQ (NY/NJ)[cite: 2]</td></tr>
-                            <tr><td>Jun 22</td><td>SEN vs NOR (Dallas)[cite: 2]</td></tr>
-                            <tr><td>Jun 23</td><td>ARG vs AUT (Dallas)[cite: 2]</td></tr>
-                            <tr><td>Jun 23</td><td>ENG vs GHA (Boston)[cite: 2]</td></tr>
-                            <tr style="background: rgba(255, 0, 127, 0.1);"><td>Jun 24</td><td>SCO vs BRA (Miami)[cite: 2]</td></tr>
-                            <tr><td>Jun 24</td><td>CZE vs MEX (Mexico City)[cite: 2]</td></tr>
-                            <tr><td>Jun 25</td><td>TUR vs USA (Los Angeles)[cite: 2]</td></tr>
-                            <tr><td>Jun 26</td><td>TUN vs NED (Dallas)[cite: 2]</td></tr>
-                            <tr style="background: rgba(0, 255, 255, 0.1);"><td>Jun 27</td><td>COL vs POR (Miami)[cite: 2]</td></tr>
-                            <tr><td>Jun 27</td><td>PAN vs ENG (NY/NJ)[cite: 2]</td></tr>
-                        </tbody>
-                    </table>
+                    <h3 style="color:#ff007f; font-family:'Orbitron'; font-size:0.9rem; position: sticky; top: 0; background: #000; padding: 10px; z-index: 5; border-bottom: 1px solid #ff007f;">PHASE 2: THE MID-TOURNEY HEAT</h3>
+                    <table class="wc-table"><tbody>
+                        <tr><td>Jun 18</td><td>RSA vs CZE (Atlanta)</td></tr>
+                        <tr><td>Jun 18</td><td>BIH vs SUI (Los Angeles)</td></tr>
+                        <tr><td>Jun 18</td><td>CAN vs QAT (Vancouver)</td></tr>
+                        <tr><td>Jun 18</td><td>MEX vs KOR (Guadalajara)</td></tr>
+                        <tr><td>Jun 19</td><td>USA vs AUS (Seattle)</td></tr>
+                        <tr><td>Jun 19</td><td>PAR vs TUR (SF Bay Area)</td></tr>
+                        <tr><td>Jun 19</td><td>BRA vs HAI (Philadelphia)</td></tr>
+                        <tr><td>Jun 19</td><td>MAR vs SCO (Boston)</td></tr>
+                        <tr><td>Jun 20</td><td>GER vs CIV (Toronto)</td></tr>
+                        <tr><td>Jun 20</td><td>CUW vs ECU (Kansas City)</td></tr>
+                        <tr><td>Jun 20</td><td>NED vs SWE (Houston)</td></tr>
+                        <tr><td>Jun 20</td><td>JPN vs TUN (Monterrey)</td></tr>
+                        <tr style="background: rgba(0,255,255,0.1);"><td>Jun 21</td><td>URU vs CPV (Miami)</td></tr>
+                        <tr><td>Jun 21</td><td>KSA vs ESP (Atlanta)</td></tr>
+                        <tr><td>Jun 22</td><td>FRA vs IRQ (NY/NJ)</td></tr>
+                        <tr><td>Jun 22</td><td>SEN vs NOR (Dallas)</td></tr>
+                        <tr><td>Jun 23</td><td>ARG vs AUT (Dallas)</td></tr>
+                        <tr><td>Jun 23</td><td>ENG vs GHA (Boston)</td></tr>
+                        <tr style="background: rgba(255,0,127,0.1);"><td>Jun 24</td><td>SCO vs BRA (Miami)</td></tr>
+                        <tr><td>Jun 24</td><td>CZE vs MEX (Mexico City)</td></tr>
+                        <tr><td>Jun 25</td><td>TUR vs USA (Los Angeles)</td></tr>
+                        <tr><td>Jun 26</td><td>TUN vs NED (Dallas)</td></tr>
+                        <tr style="background: rgba(0,255,255,0.1);"><td>Jun 27</td><td>COL vs POR (Miami)</td></tr>
+                        <tr><td>Jun 27</td><td>PAN vs ENG (NY/NJ)</td></tr>
+                    </tbody></table>
                 </div>
-
-                <!-- COLUMN 3: THE FINALS ROADMAP -->
                 <div class="itinerary-phase" style="border-color: #00ffff; height: 650px; overflow-y: auto; padding: 1rem; background: rgba(0,0,0,0.5);">
-                    <h3 style="color:#00ffff; font-family:'Orbitron'; font-size:0.9rem; position: sticky; top: 0; background: #000; padding: 10px; z-index: 5; border-bottom: 1px solid #00ffff;">PHASE 3: THE KNOCKOUT DOSSIER[cite: 2]</h3>
-                    <table class="wc-table">
-                        <tbody>
-                            <tr><td colspan="2" style="color:#ff007f; font-weight:bold; border-bottom: 1px solid #333;">ROUND OF 32 (JUN 28 - JUL 3)[cite: 2]</td></tr>
-                            <tr><td>Jun 28</td><td>Match 73 (Los Angeles)[cite: 2]</td></tr>
-                            <tr><td>Jun 29</td><td>Match 74 (Boston) | 75 (Monterrey) | 76 (Houston)[cite: 2]</td></tr>
-                            <tr><td>Jun 30</td><td>Match 77 (NY/NJ) | 78 (Dallas) | 79 (Mexico City)[cite: 2]</td></tr>
-                            <tr><td>Jul 01</td><td>Match 80 (Atlanta) | 81 (SF Bay Area) | 82 (Seattle)[cite: 2]</td></tr>
-                            <tr><td>Jul 02</td><td>Match 83 (Toronto) | 84 (Los Angeles) | 85 (Vancouver)[cite: 2]</td></tr>
-                            <tr><td>Jul 03</td><td>Match 86 (Miami) | 87 (Kansas City) | 88 (Dallas)[cite: 2]</td></tr>
-                            
-                            <tr><td colspan="2" style="color:#ff007f; font-weight:bold; border-bottom: 1px solid #333; padding-top: 15px;">ROUND OF 16 (JUL 4 - JUL 7)[cite: 2]</td></tr>
-                            <tr><td>Jul 04</td><td>Match 89 (Philadelphia) | 90 (Houston)[cite: 2]</td></tr>
-                            <tr><td>Jul 05</td><td>Match 91 (NY/NJ) | 92 (Mexico City)[cite: 2]</td></tr>
-                            <tr><td>Jul 06</td><td>Match 93 (Dallas) | 94 (Seattle)[cite: 2]</td></tr>
-                            <tr><td>Jul 07</td><td>Match 95 (Atlanta) | 96 (Vancouver)[cite: 2]</td></tr>
-
-                            <tr><td colspan="2" style="color:#ff007f; font-weight:bold; border-bottom: 1px solid #333; padding-top: 15px;">QUARTER-FINALS (JUL 9 - JUL 11)[cite: 2]</td></tr>
-                            <tr><td>Jul 09</td><td>Match 97 (Boston)[cite: 2]</td></tr>
-                            <tr><td>Jul 10</td><td>Match 98 (Los Angeles)[cite: 2]</td></tr>
-                            <tr><td>Jul 11</td><td>Match 99 (Miami) | 100 (Kansas City)[cite: 2]</td></tr>
-
-                            <tr><td colspan="2" style="color:#ff007f; font-weight:bold; border-bottom: 1px solid #333; padding-top: 15px;">SEMI-FINALS & FINALS[cite: 2]</td></tr>
-                            <tr><td>Jul 14</td><td>SF 1 (Dallas)[cite: 2]</td></tr>
-                            <tr><td>Jul 15</td><td>SF 2 (Atlanta)[cite: 2]</td></tr>
-                            <tr style="background: rgba(0, 255, 255, 0.15);"><td>Jul 18</td><td>3rd PLACE MATCH (Miami)[cite: 2]</td></tr>
-                            <tr style="background: linear-gradient(90deg, #ff007f, #00ffff); color: #000; font-weight: 800;">
-                                <td>Jul 19</td><td>THE FINAL (NY/NJ)[cite: 2]</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <h3 style="color:#00ffff; font-family:'Orbitron'; font-size:0.9rem; position: sticky; top: 0; background: #000; padding: 10px; z-index: 5; border-bottom: 1px solid #00ffff;">PHASE 3: THE KNOCKOUT DOSSIER</h3>
+                    <table class="wc-table"><tbody>
+                        <tr><td colspan="2" style="color:#ff007f; font-weight:bold; border-bottom:1px solid #333;">ROUND OF 32 (JUN 28 - JUL 3)</td></tr>
+                        <tr><td>Jun 28</td><td>Match 73 (Los Angeles)</td></tr>
+                        <tr><td>Jun 29</td><td>Match 74 (Boston) | 75 (Monterrey) | 76 (Houston)</td></tr>
+                        <tr><td>Jun 30</td><td>Match 77 (NY/NJ) | 78 (Dallas) | 79 (Mexico City)</td></tr>
+                        <tr><td>Jul 01</td><td>Match 80 (Atlanta) | 81 (SF Bay Area) | 82 (Seattle)</td></tr>
+                        <tr><td>Jul 02</td><td>Match 83 (Toronto) | 84 (Los Angeles) | 85 (Vancouver)</td></tr>
+                        <tr><td>Jul 03</td><td>Match 86 (Miami) | 87 (Kansas City) | 88 (Dallas)</td></tr>
+                        <tr><td colspan="2" style="color:#ff007f; font-weight:bold; border-bottom:1px solid #333; padding-top:15px;">ROUND OF 16 (JUL 4 - JUL 7)</td></tr>
+                        <tr><td>Jul 04</td><td>Match 89 (Philadelphia) | 90 (Houston)</td></tr>
+                        <tr><td>Jul 05</td><td>Match 91 (NY/NJ) | 92 (Mexico City)</td></tr>
+                        <tr><td>Jul 06</td><td>Match 93 (Dallas) | 94 (Seattle)</td></tr>
+                        <tr><td>Jul 07</td><td>Match 95 (Atlanta) | 96 (Vancouver)</td></tr>
+                        <tr><td colspan="2" style="color:#ff007f; font-weight:bold; border-bottom:1px solid #333; padding-top:15px;">QUARTER-FINALS (JUL 9 - JUL 11)</td></tr>
+                        <tr><td>Jul 09</td><td>Match 97 (Boston)</td></tr>
+                        <tr><td>Jul 10</td><td>Match 98 (Los Angeles)</td></tr>
+                        <tr><td>Jul 11</td><td>Match 99 (Miami) | 100 (Kansas City)</td></tr>
+                        <tr><td colspan="2" style="color:#ff007f; font-weight:bold; border-bottom:1px solid #333; padding-top:15px;">SEMI-FINALS & FINALS</td></tr>
+                        <tr><td>Jul 14</td><td>SF 1 (Dallas)</td></tr>
+                        <tr><td>Jul 15</td><td>SF 2 (Atlanta)</td></tr>
+                        <tr style="background: rgba(0,255,255,0.15);"><td>Jul 18</td><td>3rd PLACE MATCH (Miami)</td></tr>
+                        <tr style="background: linear-gradient(90deg, #ff007f, #00ffff); color: #000; font-weight: 800;">
+                            <td>Jul 19</td><td>THE FINAL (NY/NJ)</td>
+                        </tr>
+                    </tbody></table>
                 </div>
             </div>
-            
-            <p style="margin-top: 2rem; font-size: 0.75rem; color: #ccc; font-style: italic;">
-                The complete 104-match roadmap for FIFA World Cup 2026. All times and matchups extracted from official scheduling dossiers[cite: 2].
-            </p>
         </section>
 
+        <!-- ==================== PACKING CHECKLIST ==================== -->
+        <section id="pack" class="glass-card">
+            <div class="section-header">
+                <h2 class="vice-text" style="color:#00ffff;">🧳 PACK LIST</h2>
+                <p>WHO'S READY FOR THE VICE TRIP?</p>
+            </div>
+            <div class="pack-controls">
+                <select class="vice-input" id="packPerson" onchange="loadPack()">
+                    <option value="shared">📋 Shared List</option>
+                    <option value="person1">👤 Person 1</option>
+                    <option value="person2">👤 Person 2</option>
+                    <option value="person3">👤 Person 3</option>
+                    <option value="person4">👤 Person 4</option>
+                    <option value="person5">👤 Person 5</option>
+                </select>
+                <button class="vice-btn" onclick="resetPack()">Reset</button>
+                <button class="vice-btn cyan" onclick="checkAllPack()">Check All</button>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <div class="pack-progress">
+                    <div class="pack-bar-outer"><div class="pack-bar-inner" id="packBarInner" style="width:0%"></div></div>
+                    <span class="pack-pct" id="packPct">0%</span>
+                </div>
+                <p class="pack-stats" id="packStats">0 of 0 items packed</p>
+            </div>
+            <div class="pack-grid" id="packGrid">
+                <!-- dynamically rendered -->
+            </div>
+        </section>
 
-    </div>
+        <!-- ==================== ACTIVITY VOTES ==================== -->
+        <section id="votes" class="glass-card">
+            <div class="section-header">
+                <h2 class="vice-text" style="color:#ff007f;">🗳️ VOTE IT UP</h2>
+                <p>CAST YOUR VOICE — WHAT'S THE MOVE?</p>
+            </div>
+            <div class="votes-filter" id="voteFilter">
+                <div class="vf-btn active" onclick="filterVotes('all', this)">All</div>
+                <div class="vf-btn" onclick="filterVotes('Water',this)">🌊 Water</div>
+                <div class="vf-btn" onclick="filterVotes('Beach',this)">🏖️ Beach</div>
+                <div class="vf-btn" onclick="filterVotes('Active',this)">🏃 Active</div>
+                <div class="vf-btn" onclick="filterVotes('Nightlife',this)">🥂 Nightlife</div>
+                <div class="vf-btn" onclick="filterVotes('Food',this)">🍔 Food</div>
+                <div class="vf-btn" onclick="filterVotes('Arts',this)">🎨 Arts</div>
+                <div class="vf-btn" onclick="filterVotes('Shopping',this)">🛍️ Shopping</div>
+            </div>
+            <div class="votes-grid" id="votesGrid">
+                <!-- dynamically rendered -->
+            </div>
+        </section>
+
+        <!-- ==================== BUDGET & CURRENCY ==================== -->
+        <section id="budget" class="glass-card">
+            <div class="section-header">
+                <h2 class="vice-text" style="color:#00ffff;">💷 BUDGET DOSSIER</h2>
+                <p>EVERY PENNY ACCOUNTED FOR</p>
+            </div>
+            <div class="budget-layout">
+                <!-- Currency converter -->
+                <div class="budget-panel">
+                    <h4>💱 Live Exchange Rate</h4>
+                    <div class="currency-big">
+                        <div class="currency-rate" id="gbpRate">Loading…</div>
+                        <div class="currency-label">£1 GBP = <span id="gbpRateNum">--</span> USD</div>
+                        <div style="font-size: 0.7rem; color: #666; margin-top: 4px;" id="rateTime"></div>
+                    </div>
+                    <div class="currency-convert">
+                        <span style="color:#ff007f; font-weight:700; font-family:'Orbitron'; font-size:0.8rem;">£</span>
+                        <input type="number" class="vice-input" id="gbpInput" placeholder="Amount in GBP" style="flex:1;" oninput="convertCurrency()" value="100">
+                        <span style="color:#00ffff; font-weight:700; font-family:'Orbitron'; font-size:0.8rem;">=</span>
+                        <input type="number" class="vice-input" id="usdOutput" placeholder="USD" style="flex:1;" readonly>
+                        <span style="color:#00ffff; font-size:0.8rem; font-family:'Orbitron';">$</span>
+                    </div>
+                    <div style="height:1px; background: rgba(255,255,255,0.1); margin: 1.2rem 0;"></div>
+                    <div class="currency-convert">
+                        <span style="color:#00ffff; font-weight:700; font-family:'Orbitron'; font-size:0.8rem;">$</span>
+                        <input type="number" class="vice-input" id="usdInput" placeholder="Amount in USD" style="flex:1;" oninput="convertCurrencyUSD()" value="100">
+                        <span style="color:#ff007f; font-weight:700; font-family:'Orbitron'; font-size:0.8rem;">=</span>
+                        <input type="number" class="vice-input" id="gbpOutput" placeholder="GBP" style="flex:1;" readonly>
+                        <span style="color:#ff007f; font-size:0.8rem; font-family:'Orbitron';">£</span>
+                    </div>
+                </div>
+
+                <!-- Trip budget estimator -->
+                <div class="budget-panel">
+                    <h4>🧾 Trip Cost Estimator (Per Person)</h4>
+                    <div class="budget-row">
+                        <label>✈️ Flights (£)</label>
+                        <input type="number" class="vice-input" id="b-flights" value="600" oninput="calcBudget()">
+                    </div>
+                    <div class="budget-row">
+                        <label>🏠 Accommodation total (£, split 5)</label>
+                        <input type="number" class="vice-input" id="b-accom" value="4000" oninput="calcBudget()">
+                    </div>
+                    <div class="budget-row">
+                        <label>🚗 Car rental total (£, split 5)</label>
+                        <input type="number" class="vice-input" id="b-car" value="800" oninput="calcBudget()">
+                    </div>
+                    <div class="budget-row">
+                        <label>🍽️ Food budget / day (£)</label>
+                        <input type="number" class="vice-input" id="b-food" value="60" oninput="calcBudget()">
+                    </div>
+                    <div class="budget-row">
+                        <label>🎉 Activities total (£)</label>
+                        <input type="number" class="vice-input" id="b-acts" value="500" oninput="calcBudget()">
+                    </div>
+                    <div class="budget-row">
+                        <label>🥂 Drinks / extras (£)</label>
+                        <input type="number" class="vice-input" id="b-drinks" value="400" oninput="calcBudget()">
+                    </div>
+                    <div class="budget-total">
+                        <div style="font-size:0.7rem; color:#aaa; margin-bottom:4px; font-family:'Orbitron'; letter-spacing:1px;">TOTAL PER PERSON</div>
+                        <div class="total-gbp" id="totalGBP">£0</div>
+                        <div class="total-usd" id="totalUSD">$0 USD</div>
+                        <div class="per-person" id="budgetBreakdown">Trip: 16 nights · 5 people</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== WORLD CUP BRACKET ==================== -->
+        <section id="bracket" class="glass-card" style="max-width:1200px;">
+            <div class="section-header">
+                <h2 class="vice-text" style="color:#ff007f;">🔮 BRACKET PREDICTOR</h2>
+                <p>WHO'S LIFTING THE TROPHY? PICK YOUR WINNERS</p>
+            </div>
+            <div class="bracket-controls">
+                <select class="vice-input" id="bracketPerson" onchange="loadBracket()">
+                    <option value="Person 1">Person 1</option>
+                    <option value="Person 2">Person 2</option>
+                    <option value="Person 3">Person 3</option>
+                    <option value="Person 4">Person 4</option>
+                    <option value="Person 5">Person 5</option>
+                </select>
+                <button class="vice-btn cyan" onclick="saveBracket()">💾 Save Bracket</button>
+                <button class="vice-btn" onclick="resetBracket()">↺ Reset</button>
+            </div>
+            <p style="font-size:0.78rem; color:#aaa; margin-bottom:1rem;">Click a team to advance them. Edit names in R16 fields. Save brackets per person.</p>
+            <div class="bracket-wrapper">
+                <div class="bracket" id="bracketEl">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+            <div style="margin-top:1rem; text-align:center;">
+                <button class="vice-btn" onclick="toggleLeaderboard()" style="background:rgba(0,0,0,0.5); border:1px solid #ff007f; color:#ff007f;">📊 View Group Leaderboard</button>
+            </div>
+            <div id="leaderboardSection" style="display:none; margin-top:1.5rem;">
+                <h3 style="font-family:'Orbitron'; color:#00ffff; font-size:0.9rem; margin-bottom:1rem; text-transform:uppercase;">Group Predictions — All Brackets</h3>
+                <div id="leaderboardContent"></div>
+            </div>
+        </section>
+
+        <!-- ==================== VIBES (SYNTH + PLAYLIST) ==================== -->
+        <section id="vibes" class="glass-card">
+            <div class="section-header">
+                <h2 class="vice-text" style="color:#00ffff;">🎵 VICE VIBES</h2>
+                <p>THE ULTIMATE ROAD TRIP & VACAY PLAYLIST</p>
+            </div>
+
+            <!-- Synthwave Player -->
+            <div class="synth-panel">
+                <h3 style="font-family:'Orbitron'; color:#ff007f; font-size:0.85rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:0.5rem;">🌆 Miami Vice Synthwave Generator</h3>
+                <p style="font-size:0.75rem; color:#aaa; margin-bottom:0.5rem;">Procedurally generated 80s synth ambiance. Neon nights on demand.</p>
+                <div class="synth-visualizer" id="synthViz">
+                    <!-- bars rendered by JS -->
+                </div>
+                <div class="synth-controls">
+                    <button id="synthBtn" onclick="toggleSynth()">▶ PLAY VIBES</button>
+                    <div class="volume-control">
+                        🔊 <input type="range" class="vice-range" id="volumeRange" min="0" max="100" value="50" oninput="setSynthVolume(this.value)">
+                    </div>
+                    <select class="vice-input" id="synthMode" style="font-size:0.75rem; padding:6px 12px;" onchange="changeSynthMode()">
+                        <option value="chill">🌙 Night Drive</option>
+                        <option value="beach">🌊 Beach Vibes</option>
+                        <option value="hype">⚡ Hype Mode</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Collaborative Playlist -->
+            <div class="playlist-section">
+                <h3 style="font-family:'Orbitron'; color:#ff007f; font-size:0.85rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:1rem;">🎤 Collaborative Playlist</h3>
+                <div class="playlist-add-form">
+                    <input type="text" class="vice-input" id="trackTitle" placeholder="Song title…" style="min-width:150px;">
+                    <input type="text" class="vice-input" id="trackArtist" placeholder="Artist…" style="min-width:120px;">
+                    <select class="vice-input" id="trackVibe">
+                        <option value="road-trip">🚗 Road Trip</option>
+                        <option value="beach">🏖️ Beach</option>
+                        <option value="night-out">🥂 Night Out</option>
+                        <option value="match-day">⚽ Match Day</option>
+                        <option value="poolside">🌊 Poolside</option>
+                    </select>
+                    <input type="text" class="vice-input" id="trackBy" placeholder="Your name…" style="min-width:100px; max-width:120px;">
+                    <button class="vice-btn" onclick="addTrack()">+ Add</button>
+                </div>
+                <div class="playlist-vibe-tabs" id="vibeTabsEl">
+                    <div class="vf-btn active" onclick="filterTracks('all', this)">All</div>
+                    <div class="vf-btn" onclick="filterTracks('road-trip',this)">🚗 Road Trip</div>
+                    <div class="vf-btn" onclick="filterTracks('beach',this)">🏖️ Beach</div>
+                    <div class="vf-btn" onclick="filterTracks('night-out',this)">🥂 Night Out</div>
+                    <div class="vf-btn" onclick="filterTracks('match-day',this)">⚽ Match Day</div>
+                    <div class="vf-btn" onclick="filterTracks('poolside',this)">🌊 Poolside</div>
+                </div>
+                <div id="playlistEl" class="playlist-list">
+                    <div style="text-align:center; color:#555; font-style:italic; padding:2rem;">No tracks yet — be the first to add a vibe!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== MEMORIES / PHOTO WALL ==================== -->
+        <section id="memories" class="glass-card">
+            <div class="section-header">
+                <h2 class="vice-text" style="color:#ff007f;">📸 VICE MEMORIES</h2>
+                <p>THE MOMENTS THAT MATTER</p>
+            </div>
+            <div class="memories-upload" onclick="document.getElementById('photoInput').click()">
+                <input type="file" id="photoInput" accept="image/*" multiple onchange="handlePhotoUpload(event)">
+                <div class="memories-upload-icon">📷</div>
+                <p>Click to upload photos — they'll appear as polaroids below</p>
+                <p style="font-size:0.7rem; margin-top:4px; color:#555;">Stored locally on this device · Max 15 photos recommended</p>
+            </div>
+            <p class="memories-stats" id="memoriesStats"></p>
+            <div class="memories-grid" id="memoriesGrid">
+                <div class="memories-empty">No memories yet — upload your first photo above 🌴</div>
+            </div>
+        </section>
+
+    </div><!-- end .container -->
 
     <script>
-        function showSection(id) {
-            document.querySelectorAll('.glass-card').forEach(card => card.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            window.scrollTo(0,0);
-        }
+    // ============================================================
+    // NAV
+    // ============================================================
+    function showSection(id) {
+        document.querySelectorAll('.glass-card').forEach(c => c.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo(0, 0);
+    }
+    function toggleNav() {
+        document.getElementById('navLinks').classList.toggle('open');
+    }
+    function closeNav() {
+        document.getElementById('navLinks').classList.remove('open');
+    }
 
-        const targetDate = new Date("June 26, 2026 15:00:00").getTime();
-        function update() {
-            const now = new Date().getTime();
-            const gap = targetDate - now;
-            if (gap < 0) return;
-            document.getElementById("days").innerText = Math.floor(gap / 86400000).toString().padStart(2, '0');
-            document.getElementById("hours").innerText = Math.floor((gap % 86400000) / 3600000).toString().padStart(2, '0');
+    // ============================================================
+    // COUNTDOWN (departure + milestones)
+    // ============================================================
+    const DATES = {
+        departure: new Date("June 26, 2026 15:00:00"),
+        nola:      new Date("June 29, 2026 08:00:00"),
+        miami:     new Date("July 1, 2026 15:00:00"),
+        july4:     new Date("July 4, 2026 12:00:00"),
+        final:     new Date("July 19, 2026 18:00:00"),
+    };
+
+    function msToDay(ms) { return Math.max(0, Math.floor(ms / 86400000)); }
+
+    function update() {
+        const now = Date.now();
+        const gap = DATES.departure - now;
+        if (gap > 0) {
+            document.getElementById("days").innerText    = Math.floor(gap / 86400000).toString().padStart(2, '0');
+            document.getElementById("hours").innerText   = Math.floor((gap % 86400000) / 3600000).toString().padStart(2, '0');
             document.getElementById("minutes").innerText = Math.floor((gap % 3600000) / 60000).toString().padStart(2, '0');
             document.getElementById("seconds").innerText = Math.floor((gap % 60000) / 1000).toString().padStart(2, '0');
+        } else {
+            ['days','hours','minutes','seconds'].forEach(id => document.getElementById(id).innerText = '00');
         }
-        setInterval(update, 1000);
-        update();
+        document.getElementById('m-austin').innerText = msToDay(DATES.departure - now);
+        document.getElementById('m-nola').innerText   = msToDay(DATES.nola - now);
+        document.getElementById('m-miami').innerText  = msToDay(DATES.miami - now);
+        document.getElementById('m-july4').innerText  = msToDay(DATES.july4 - now);
+        document.getElementById('m-final').innerText  = msToDay(DATES.final - now);
+    }
+    setInterval(update, 1000);
+    update();
+
+    // ============================================================
+    // LIVE WEATHER (Open-Meteo, Miami)
+    // ============================================================
+    const WMO_ICONS = {
+        0:'☀️',1:'🌤️',2:'⛅',3:'☁️',
+        45:'🌫️',48:'🌫️',
+        51:'🌦️',53:'🌦️',55:'🌧️',
+        61:'🌧️',63:'🌧️',65:'🌧️',
+        71:'❄️',73:'❄️',75:'❄️',
+        77:'❄️',80:'🌦️',81:'🌧️',82:'⛈️',
+        95:'⛈️',96:'⛈️',99:'⛈️'
+    };
+    const WMO_DESC = {
+        0:'Clear Sky',1:'Mainly Clear',2:'Partly Cloudy',3:'Overcast',
+        45:'Foggy',48:'Foggy',51:'Light Drizzle',53:'Drizzle',55:'Heavy Drizzle',
+        61:'Light Rain',63:'Rain',65:'Heavy Rain',80:'Showers',81:'Heavy Showers',82:'Violent Showers',
+        95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'
+    };
+
+    async function fetchWeather() {
+        try {
+            const url = 'https://api.open-meteo.com/v1/forecast?latitude=25.7617&longitude=-80.1918&current=temperature_2m,weather_code,wind_speed_10m,relative_humidity_2m&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FNew_York';
+            const r = await fetch(url);
+            const d = await r.json();
+            const c = d.current;
+            const code = c.weather_code;
+            const icon = WMO_ICONS[code] || '🌤️';
+            const desc = WMO_DESC[code] || 'Clear';
+            document.getElementById('w-temp').innerText = Math.round(c.temperature_2m) + '°F';
+            document.getElementById('w-desc').innerText = icon + ' ' + desc;
+            document.getElementById('w-hum').innerText = c.relative_humidity_2m + '%';
+            document.getElementById('w-wind').innerText = 'Wind: ' + Math.round(c.wind_speed_10m) + ' mph';
+        } catch(e) {
+            document.getElementById('w-temp').innerText = '87°F';
+            document.getElementById('w-desc').innerText = '☀️ Sunny';
+            document.getElementById('w-hum').innerText = '72%';
+            document.getElementById('w-wind').innerText = 'Wind: 12 mph';
+        }
+    }
+    fetchWeather();
+
+    // ============================================================
+    // LIVE EXCHANGE RATE
+    // ============================================================
+    let currentRate = 1.27; // fallback
+
+    async function fetchExchangeRate() {
+        try {
+            const r = await fetch('https://open.er-api.com/v6/latest/GBP');
+            const d = await r.json();
+            currentRate = d.rates.USD;
+            document.getElementById('gbpRate').innerText = '$' + currentRate.toFixed(4);
+            document.getElementById('gbpRateNum').innerText = currentRate.toFixed(4);
+            document.getElementById('rateTime').innerText = 'Updated: ' + new Date(d.time_last_update_utc).toLocaleDateString();
+            convertCurrency();
+            calcBudget();
+        } catch(e) {
+            document.getElementById('gbpRate').innerText = '$1.27';
+            document.getElementById('gbpRateNum').innerText = '1.27';
+        }
+    }
+    fetchExchangeRate();
+
+    function convertCurrency() {
+        const val = parseFloat(document.getElementById('gbpInput').value) || 0;
+        document.getElementById('usdOutput').value = (val * currentRate).toFixed(2);
+    }
+    function convertCurrencyUSD() {
+        const val = parseFloat(document.getElementById('usdInput').value) || 0;
+        document.getElementById('gbpOutput').value = (val / currentRate).toFixed(2);
+    }
+
+    function calcBudget() {
+        const flights = parseFloat(document.getElementById('b-flights').value) || 0;
+        const accom   = (parseFloat(document.getElementById('b-accom').value) || 0) / 5;
+        const car     = (parseFloat(document.getElementById('b-car').value) || 0) / 5;
+        const food    = (parseFloat(document.getElementById('b-food').value) || 0) * 16;
+        const acts    = parseFloat(document.getElementById('b-acts').value) || 0;
+        const drinks  = parseFloat(document.getElementById('b-drinks').value) || 0;
+        const total   = flights + accom + car + food + acts + drinks;
+        document.getElementById('totalGBP').innerText = '£' + Math.round(total).toLocaleString();
+        document.getElementById('totalUSD').innerText = '$' + Math.round(total * currentRate).toLocaleString() + ' USD';
+        document.getElementById('budgetBreakdown').innerText = `Accom: £${Math.round(accom)} · Car: £${Math.round(car)} · Food: £${Math.round(food)} · Acts+Drinks: £${acts+drinks}`;
+    }
+
+    // ============================================================
+    // PACKING CHECKLIST
+    // ============================================================
+    const PACK_DATA = [
+        { cat: '🛂 Travel Documents', items: ['Passport (valid 6+ months)','ESTA Visa Waiver','Travel Insurance','Flight Confirmation','Hotel/Accommodation Printouts','International Driving Permit','UK EHIC / Medical Card','Emergency Contact List'] },
+        { cat: '💻 Tech & Devices', items: ['UK to US Plug Adapters (x3)','Phone + Charger','Portable Power Bank','Camera + Memory Cards','Laptop / iPad','Earphones / Headphones','Universal SIM or eSIM data plan'] },
+        { cat: '🤠 Austin Outfit', items: ['Casual T-Shirts (3+)','Shorts','Light Jeans / Chinos','Trainers / Boots','Baseball Cap','Smart Casual (night out)'] },
+        { cat: '🌴 Miami Beachwear', items: ['Swim shorts (x3)','Flip Flops','Sunglasses (UV400)','Beach bag / tote','Rash vest / swim shirt','Cover-up / light shirt'] },
+        { cat: '⚽ Match Day Kit', items: ['Team Jersey / Football Shirt','Comfortable Walking Shoes','Small backpack / bum bag','Rain poncho (foldable)','Stadium snacks / cash','Earplugs / earplugs'] },
+        { cat: '💊 Health & Toiletries', items: ['Sunscreen SPF 50+','After-Sun Lotion','Insect Repellent','Personal Medications','Paracetamol / Ibuprofen','Anti-diarrhoea tablets','Toothbrush & Toothpaste','Deodorant','Razors / Shaving kit'] },
+        { cat: '💳 Money & Cards', items: ['Debit card (no foreign fees)','Credit card (backup)','Cash in USD (~$200 emergency)','Revolut / Wise Card','Notify bank of travel dates'] },
+        { cat: '🎒 Misc Essentials', items: ['Re-usable water bottle','Padlock (for luggage)','Neck pillow (long drives)','Sunhat','Light rain jacket','Small day bag / backpack'] }
+    ];
+
+    function getPackKey() { return 'packList_' + (document.getElementById('packPerson')?.value || 'shared'); }
+
+    function loadPack() {
+        const key = getPackKey();
+        const saved = JSON.parse(localStorage.getItem(key) || '{}');
+        const grid = document.getElementById('packGrid');
+        grid.innerHTML = '';
+        let total = 0, checked = 0;
+        PACK_DATA.forEach(cat => {
+            const div = document.createElement('div');
+            div.className = 'pack-category';
+            div.innerHTML = `<h4>${cat.cat}</h4>`;
+            cat.items.forEach((item, i) => {
+                const id = `${cat.cat}_${i}`;
+                const isChecked = saved[id] || false;
+                if(isChecked) checked++;
+                total++;
+                const row = document.createElement('div');
+                row.className = 'pack-item' + (isChecked ? ' done' : '');
+                row.innerHTML = `<div class="pack-checkbox ${isChecked?'checked':''}"></div><span class="pack-item-label">${item}</span>`;
+                row.onclick = () => togglePackItem(id, row, cat.cat, i);
+                div.appendChild(row);
+            });
+            grid.appendChild(div);
+        });
+        updatePackProgress(checked, total);
+    }
+
+    function togglePackItem(id, row, cat, i) {
+        const key = getPackKey();
+        const saved = JSON.parse(localStorage.getItem(key) || '{}');
+        saved[id] = !saved[id];
+        localStorage.setItem(key, JSON.stringify(saved));
+        row.classList.toggle('done', saved[id]);
+        row.querySelector('.pack-checkbox').classList.toggle('checked', saved[id]);
+        const total = document.querySelectorAll('.pack-item').length;
+        const checked = document.querySelectorAll('.pack-item.done').length;
+        updatePackProgress(checked, total);
+    }
+
+    function updatePackProgress(checked, total) {
+        const pct = total ? Math.round(checked/total*100) : 0;
+        document.getElementById('packBarInner').style.width = pct + '%';
+        document.getElementById('packPct').innerText = pct + '%';
+        document.getElementById('packStats').innerText = `${checked} of ${total} items packed`;
+    }
+
+    function resetPack() {
+        if(!confirm('Reset this person\'s list?')) return;
+        localStorage.removeItem(getPackKey());
+        loadPack();
+    }
+
+    function checkAllPack() {
+        const key = getPackKey();
+        const saved = {};
+        PACK_DATA.forEach(cat => cat.items.forEach((_,i) => saved[`${cat.cat}_${i}`] = true));
+        localStorage.setItem(key, JSON.stringify(saved));
+        loadPack();
+    }
+
+    loadPack();
+
+    // ============================================================
+    // ACTIVITY VOTES
+    // ============================================================
+    const VOTE_ITEMS = [
+        // Water & Adventure
+        {name:'Miami Beach Boat Party', cat:'Water'}, {name:'4th July Fireworks Boat', cat:'Water'},
+        {name:'Jet Car Experience', cat:'Water'}, {name:'Jet Ski Safaris', cat:'Water'},
+        {name:'Speed Boat Miami', cat:'Water'}, {name:'Everglades Airboat', cat:'Water'},
+        {name:'Biscayne Bay Snorkeling', cat:'Water'},
+        // Beach
+        {name:'Haulover & Nixon Sandbars', cat:'Beach'}, {name:'Star Island Yacht Cruise', cat:'Beach'},
+        {name:'Fort Lauderdale Beach', cat:'Beach'}, {name:'South Pointe Beach', cat:'Beach'},
+        {name:'Peanut Island', cat:'Beach'},
+        // Active
+        {name:'South Pointe Park & Pier', cat:'Active'}, {name:'Topgolf Doral', cat:'Active'},
+        {name:'ATV Tours', cat:'Active'}, {name:'Venetian Pool', cat:'Active'},
+        // Nightlife
+        {name:'E11EVEN Miami', cat:'Nightlife'}, {name:'LIV Nightclub', cat:'Nightlife'},
+        {name:'Kiki on the River', cat:'Nightlife'}, {name:'Sugar Rooftop', cat:'Nightlife'},
+        {name:'Wynwood Wildness', cat:'Nightlife'}, {name:'ClubSpace', cat:'Nightlife'},
+        // Food
+        {name:'Terry Black\'s BBQ', cat:'Food'}, {name:'Joe\'s Stone Crab', cat:'Food'},
+        {name:'Versailles Cuban', cat:'Food'}, {name:'Aga\'s Restaurant Houston', cat:'Food'},
+        {name:'Café Du Monde NOLA', cat:'Food'},
+        // Arts
+        {name:'Wynwood Walls', cat:'Arts'}, {name:'Superblue Immersive', cat:'Arts'},
+        {name:'Little Havana', cat:'Arts'}, {name:'Art Deco District', cat:'Arts'},
+        // Shopping
+        {name:'Bal Harbour Shops', cat:'Shopping'}, {name:'Design District', cat:'Shopping'},
+        {name:'Aventura Mall', cat:'Shopping'}, {name:'Brickell City Centre', cat:'Shopping'}
+    ];
+
+    let currentVoteFilter = 'all';
+
+    function getVotes() { return JSON.parse(localStorage.getItem('viceVotes') || '{}'); }
+    function saveVotes(v) { localStorage.setItem('viceVotes', JSON.stringify(v)); }
+
+    function renderVotes(filter) {
+        const votes = getVotes();
+        const grid = document.getElementById('votesGrid');
+        grid.innerHTML = '';
+        const items = filter === 'all' ? VOTE_ITEMS : VOTE_ITEMS.filter(i => i.cat === filter);
+        const sorted = [...items].sort((a,b) => (votes[b.name]||0) - (votes[a.name]||0));
+        sorted.forEach(item => {
+            const count = votes[item.name] || 0;
+            const card = document.createElement('div');
+            card.className = 'vote-card';
+            card.innerHTML = `
+                <div class="vc-cat">${catIcon(item.cat)} ${item.cat}</div>
+                <div class="vc-name">${item.name}</div>
+                <div class="vc-actions">
+                    <button class="vote-up ${count>0?'voted':''}" onclick="castVote('${item.name.replace(/'/g,"\\'")}', this)">
+                        👍 Vote
+                    </button>
+                    <span class="vote-count">${count}</span>
+                </div>`;
+            grid.appendChild(card);
+        });
+    }
+
+    function catIcon(cat) {
+        const m = {Water:'🌊',Beach:'🏖️',Active:'🏃',Nightlife:'🥂',Food:'🍔',Arts:'🎨',Shopping:'🛍️'};
+        return m[cat] || '🎯';
+    }
+
+    function castVote(name, btn) {
+        const votes = getVotes();
+        votes[name] = (votes[name] || 0) + 1;
+        saveVotes(votes);
+        btn.classList.add('voted');
+        btn.nextElementSibling.innerText = votes[name];
+        renderVotes(currentVoteFilter);
+    }
+
+    function filterVotes(cat, el) {
+        currentVoteFilter = cat;
+        document.querySelectorAll('#voteFilter .vf-btn').forEach(b => b.classList.remove('active'));
+        el.classList.add('active');
+        renderVotes(cat);
+    }
+
+    renderVotes('all');
+
+    // ============================================================
+    // WORLD CUP BRACKET
+    // ============================================================
+    const BRACKET_ROUNDS = ['Round of 16','Quarter-Finals','Semi-Finals','Final'];
+    const BRACKET_SIZES  = [16, 8, 4, 2];
+    let bracketData = {};
+
+    function getBracketKey(person) { return 'bracket_' + person; }
+
+    function loadBracket() {
+        const person = document.getElementById('bracketPerson').value;
+        const saved = JSON.parse(localStorage.getItem(getBracketKey(person)) || 'null');
+        if(saved) bracketData = saved;
+        else {
+            bracketData = {};
+            for(let r=0;r<4;r++) {
+                bracketData[r] = [];
+                for(let m=0;m<BRACKET_SIZES[r]/2;m++) {
+                    bracketData[r][m] = { teams: [r===0?'':null, r===0?'':null], winner: null };
+                }
+            }
+        }
+        renderBracket();
+    }
+
+    function renderBracket() {
+        const el = document.getElementById('bracketEl');
+        el.innerHTML = '';
+        for(let r=0; r<4; r++) {
+            const col = document.createElement('div');
+            col.className = 'bracket-round';
+            col.innerHTML = `<div class="bracket-round-title">${BRACKET_ROUNDS[r]}</div>`;
+            const slots = document.createElement('div');
+            slots.className = 'bracket-slots';
+            const matchCount = BRACKET_SIZES[r] / 2;
+            for(let m=0; m<matchCount; m++) {
+                const match = bracketData[r]?.[m] || {teams:[null,null],winner:null};
+                const mu = document.createElement('div');
+                mu.className = 'bracket-matchup';
+                [0,1].forEach(ti => {
+                    const teamEl = document.createElement('div');
+                    teamEl.className = 'bracket-team' + (match.winner === ti ? ' winner' : '');
+                    if(r === 0) {
+                        const inp = document.createElement('input');
+                        inp.type = 'text';
+                        inp.placeholder = 'Team ' + (m*2+ti+1);
+                        inp.value = match.teams[ti] || '';
+                        inp.oninput = (e) => {
+                            if(!bracketData[r]) bracketData[r] = [];
+                            if(!bracketData[r][m]) bracketData[r][m] = {teams:[null,null],winner:null};
+                            bracketData[r][m].teams[ti] = e.target.value;
+                        };
+                        teamEl.appendChild(inp);
+                    } else {
+                        teamEl.innerText = match.teams[ti] || '—';
+                    }
+                    teamEl.onclick = () => advanceTeam(r, m, ti);
+                    mu.appendChild(teamEl);
+                });
+                slots.appendChild(mu);
+            }
+            col.appendChild(slots);
+            el.appendChild(col);
+        }
+        // Champion display
+        const champCol = document.createElement('div');
+        champCol.className = 'bracket-round';
+        champCol.innerHTML = `<div class="bracket-round-title">🏆 Champion</div>`;
+        const champSlots = document.createElement('div');
+        champSlots.className = 'bracket-slots';
+        const final = bracketData[3]?.[0];
+        const champ = final?.winner !== null && final?.winner !== undefined ? (final.teams[final.winner] || '?') : '?';
+        champSlots.innerHTML = `<div class="bracket-champion"><div class="champ-label">World Cup Winner</div><div class="champ-name">${champ !== '?' ? champ : '—'}</div></div>`;
+        champCol.appendChild(champSlots);
+        el.appendChild(champCol);
+    }
+
+    function advanceTeam(round, matchIdx, teamIdx) {
+        if(!bracketData[round]) return;
+        if(!bracketData[round][matchIdx]) return;
+        const match = bracketData[round][matchIdx];
+        // Get team name
+        let teamName = match.teams[teamIdx];
+        if(round === 0) {
+            // Read from input fields
+            const inputs = document.querySelectorAll('.bracket-round:nth-child(1) .bracket-matchup')[matchIdx]?.querySelectorAll('input');
+            if(inputs) teamName = inputs[teamIdx]?.value || teamName;
+        }
+        if(!teamName) return;
+        match.winner = teamIdx;
+        // Advance to next round
+        if(round < 3) {
+            if(!bracketData[round+1]) bracketData[round+1] = [];
+            const nextMatch = Math.floor(matchIdx / 2);
+            const nextSlot  = matchIdx % 2;
+            if(!bracketData[round+1][nextMatch]) bracketData[round+1][nextMatch] = {teams:[null,null],winner:null};
+            bracketData[round+1][nextMatch].teams[nextSlot] = teamName;
+        }
+        renderBracket();
+    }
+
+    function saveBracket() {
+        const person = document.getElementById('bracketPerson').value;
+        // Also capture R16 input values
+        document.querySelectorAll('.bracket-round:first-child .bracket-matchup').forEach((mu, mi) => {
+            const inputs = mu.querySelectorAll('input');
+            if(!bracketData[0][mi]) bracketData[0][mi] = {teams:[null,null],winner:null};
+            if(inputs[0]) bracketData[0][mi].teams[0] = inputs[0].value;
+            if(inputs[1]) bracketData[0][mi].teams[1] = inputs[1].value;
+        });
+        localStorage.setItem(getBracketKey(person), JSON.stringify(bracketData));
+        const btn = document.querySelector('.bracket-controls .vice-btn.cyan');
+        const orig = btn.innerText;
+        btn.innerText = '✅ Saved!';
+        setTimeout(() => btn.innerText = orig, 1500);
+    }
+
+    function resetBracket() {
+        if(!confirm('Reset this bracket?')) return;
+        bracketData = {};
+        for(let r=0;r<4;r++) {
+            bracketData[r] = [];
+            for(let m=0;m<BRACKET_SIZES[r]/2;m++) {
+                bracketData[r][m] = {teams:[r===0?'':null, r===0?'':null], winner:null};
+            }
+        }
+        renderBracket();
+    }
+
+    function toggleLeaderboard() {
+        const sec = document.getElementById('leaderboardSection');
+        if(sec.style.display === 'none') {
+            sec.style.display = 'block';
+            renderLeaderboard();
+        } else {
+            sec.style.display = 'none';
+        }
+    }
+
+    function renderLeaderboard() {
+        const content = document.getElementById('leaderboardContent');
+        const people = ['Person 1','Person 2','Person 3','Person 4','Person 5'];
+        let html = `<table class="leaderboard-table"><thead><tr><th>Person</th><th>R16 Champion Pick</th><th>Semi-Finalists</th></tr></thead><tbody>`;
+        people.forEach(p => {
+            const saved = JSON.parse(localStorage.getItem(getBracketKey(p)) || 'null');
+            if(!saved) { html += `<tr><td>${p}</td><td style="color:#555;">No bracket yet</td><td>—</td></tr>`; return; }
+            const final = saved[3]?.[0];
+            const champ = final?.winner !== null && final?.winner !== undefined ? (final.teams[final.winner] || '—') : '—';
+            const sf = (saved[2] || []).map(m => m.winner !== null ? m.teams[m.winner] : '—').filter(x=>x&&x!=='—').join(', ') || '—';
+            html += `<tr><td style="font-family:'Orbitron'; font-size:0.75rem;">${p}</td><td>${champ}</td><td style="color:#aaa; font-size:0.8rem;">${sf}</td></tr>`;
+        });
+        html += '</tbody></table>';
+        content.innerHTML = html;
+    }
+
+    loadBracket();
+
+    // ============================================================
+    // SYNTHWAVE PLAYER (Web Audio API)
+    // ============================================================
+    let audioCtx = null;
+    let synthPlaying = false;
+    let synthTimers = [];
+    let masterGain = null;
+    let vizInterval = null;
+    let synthVolumeLevel = 0.5;
+
+    const MODES = {
+        chill: {
+            chords: [[293.66,349.23,440],[233.08,293.66,349.23],[174.61,220,261.63],[261.63,329.63,392]],
+            bass:   [146.83,116.54,87.31,130.81],
+            arp:    [587.33,698.46,880,1046.5,880,698.46],
+            bpm: 72, chordDur: 2.5, arpDur: 0.18
+        },
+        beach: {
+            chords: [[261.63,329.63,392],[392,493.88,587.33],[293.66,349.23,440],[349.23,440,523.25]],
+            bass:   [130.81,196,146.83,174.61],
+            arp:    [523.25,659.25,783.99,1046.5,783.99,659.25],
+            bpm: 90, chordDur: 1.8, arpDur: 0.12
+        },
+        hype: {
+            chords: [[220,277.18,329.63],[174.61,220,261.63],[196,246.94,293.66],[220,277.18,329.63]],
+            bass:   [110,87.31,98,110],
+            arp:    [440,554.37,659.25,880,1108.73,880,659.25,554.37],
+            bpm: 120, chordDur: 1.2, arpDur: 0.08
+        }
+    };
+    let currentMode = 'chill';
+    let chordIdx = 0;
+    let arpIdx = 0;
+
+    function changeSynthMode() {
+        currentMode = document.getElementById('synthMode').value;
+        if(synthPlaying) { stopSynth(); startSynth(); }
+    }
+
+    function createTone(freq, type, dur, gain, ctx, dest, attack=0.1, release=0.3) {
+        const osc = ctx.createOscillator();
+        const g   = ctx.createGain();
+        osc.type = type;
+        osc.frequency.value = freq;
+        const now = ctx.currentTime;
+        g.gain.setValueAtTime(0, now);
+        g.gain.linearRampToValueAtTime(gain, now + attack);
+        g.gain.linearRampToValueAtTime(gain * 0.7, now + dur - release);
+        g.gain.linearRampToValueAtTime(0, now + dur);
+        osc.connect(g);
+        g.connect(dest);
+        osc.start(now);
+        osc.stop(now + dur + 0.1);
+    }
+
+    function startSynth() {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        masterGain = audioCtx.createGain();
+        masterGain.gain.value = synthVolumeLevel * 0.8;
+        masterGain.connect(audioCtx.destination);
+        const mode = MODES[currentMode];
+        chordIdx = 0; arpIdx = 0;
+        synthPlaying = true;
+
+        function playChord() {
+            if(!synthPlaying) return;
+            const chord = mode.chords[chordIdx % 4];
+            chord.forEach(f => createTone(f, 'sawtooth', mode.chordDur, 0.05, audioCtx, masterGain, 0.4, 0.5));
+            createTone(mode.bass[chordIdx % 4], 'sine', mode.chordDur, 0.09, audioCtx, masterGain, 0.05, 0.3);
+            chordIdx++;
+        }
+        function playArp() {
+            if(!synthPlaying) return;
+            const f = mode.arp[arpIdx % mode.arp.length];
+            createTone(f, 'square', mode.arpDur, 0.025, audioCtx, masterGain, 0.01, 0.05);
+            arpIdx++;
+        }
+        playChord();
+        const chordMs = mode.chordDur * 1000;
+        const arpMs   = (60000 / mode.bpm) / 2;
+        synthTimers.push(setInterval(playChord, chordMs));
+        synthTimers.push(setInterval(playArp, arpMs));
+    }
+
+    function stopSynth() {
+        synthPlaying = false;
+        synthTimers.forEach(t => clearInterval(t));
+        synthTimers = [];
+        if(audioCtx) { audioCtx.close(); audioCtx = null; }
+        clearInterval(vizInterval);
+        resetViz();
+    }
+
+    function resetViz() {
+        document.querySelectorAll('.synth-bar').forEach(b => b.style.height = '4px');
+    }
+
+    function toggleSynth() {
+        if(!synthPlaying) {
+            startSynth();
+            document.getElementById('synthBtn').textContent = '⏹ STOP VIBES';
+            document.getElementById('synthBtn').style.boxShadow = '0 0 30px rgba(0,255,255,0.7), 0 0 60px rgba(255,0,127,0.4)';
+            startViz();
+        } else {
+            stopSynth();
+            document.getElementById('synthBtn').textContent = '▶ PLAY VIBES';
+            document.getElementById('synthBtn').style.boxShadow = '';
+        }
+    }
+
+    function setSynthVolume(val) {
+        synthVolumeLevel = val / 100;
+        if(masterGain) masterGain.gain.value = synthVolumeLevel * 0.8;
+    }
+
+    function startViz() {
+        const bars = document.querySelectorAll('.synth-bar');
+        clearInterval(vizInterval);
+        vizInterval = setInterval(() => {
+            if(!synthPlaying) { resetViz(); clearInterval(vizInterval); return; }
+            bars.forEach((b, i) => {
+                const h = synthPlaying ? (8 + Math.random() * 50) : 4;
+                b.style.height = h + 'px';
+                b.style.opacity = 0.6 + Math.random() * 0.4;
+            });
+        }, 80);
+    }
+
+    // Build synth visualizer bars
+    (function buildViz() {
+        const viz = document.getElementById('synthViz');
+        for(let i=0; i<40; i++) {
+            const b = document.createElement('div');
+            b.className = 'synth-bar';
+            b.style.height = (4 + Math.sin(i*0.4)*3) + 'px';
+            viz.appendChild(b);
+        }
+    })();
+
+    // ============================================================
+    // COLLABORATIVE PLAYLIST
+    // ============================================================
+    function getPlaylist() { return JSON.parse(localStorage.getItem('vicePlaylist') || '[]'); }
+    function savePlaylist(p) { localStorage.setItem('vicePlaylist', JSON.stringify(p)); }
+
+    let currentVibeFilter = 'all';
+
+    function addTrack() {
+        const title  = document.getElementById('trackTitle').value.trim();
+        const artist = document.getElementById('trackArtist').value.trim();
+        const vibe   = document.getElementById('trackVibe').value;
+        const by     = document.getElementById('trackBy').value.trim() || 'The Crew';
+        if(!title || !artist) { alert('Enter a song title and artist!'); return; }
+        const playlist = getPlaylist();
+        playlist.push({ title, artist, vibe, by, id: Date.now() });
+        savePlaylist(playlist);
+        document.getElementById('trackTitle').value = '';
+        document.getElementById('trackArtist').value = '';
+        renderPlaylist(currentVibeFilter);
+    }
+
+    function deleteTrack(id) {
+        const playlist = getPlaylist().filter(t => t.id !== id);
+        savePlaylist(playlist);
+        renderPlaylist(currentVibeFilter);
+    }
+
+    function vibeLabel(vibe) {
+        const map = {'road-trip':'🚗 Road Trip','beach':'🏖️ Beach','night-out':'🥂 Night Out','match-day':'⚽ Match Day','poolside':'🌊 Poolside'};
+        return map[vibe] || vibe;
+    }
+
+    function filterTracks(vibe, el) {
+        currentVibeFilter = vibe;
+        document.querySelectorAll('.playlist-vibe-tabs .vf-btn').forEach(b => b.classList.remove('active'));
+        el.classList.add('active');
+        renderPlaylist(vibe);
+    }
+
+    function renderPlaylist(filter) {
+        const tracks = getPlaylist().filter(t => filter === 'all' || t.vibe === filter);
+        const el = document.getElementById('playlistEl');
+        if(!tracks.length) { el.innerHTML = '<div style="text-align:center; color:#555; font-style:italic; padding:2rem;">No tracks in this vibe yet!</div>'; return; }
+        el.innerHTML = '';
+        tracks.forEach((t, i) => {
+            const row = document.createElement('div');
+            row.className = 'playlist-track';
+            const spotifyQuery = encodeURIComponent(`${t.title} ${t.artist}`);
+            row.innerHTML = `
+                <span class="track-num">${(i+1).toString().padStart(2,'0')}</span>
+                <div class="track-info">
+                    <div class="track-title">${t.title}</div>
+                    <div class="track-artist">${t.artist} <span class="track-by">· added by ${t.by}</span></div>
+                </div>
+                <span class="track-vibe ${t.vibe}">${vibeLabel(t.vibe)}</span>
+                <div class="track-actions">
+                    <a class="spotify-link" href="https://open.spotify.com/search/${spotifyQuery}" target="_blank">♫</a>
+                    <button class="track-del" onclick="deleteTrack(${t.id})">✕</button>
+                </div>`;
+            el.appendChild(row);
+        });
+    }
+
+    renderPlaylist('all');
+
+    // ============================================================
+    // MEMORIES / PHOTO WALL
+    // ============================================================
+    function getMemories() { return JSON.parse(localStorage.getItem('viceMemories') || '[]'); }
+    function saveMemories(m) { localStorage.setItem('viceMemories', JSON.stringify(m)); }
+
+    function handlePhotoUpload(evt) {
+        const files = Array.from(evt.target.files);
+        const mems = getMemories();
+        if(mems.length + files.length > 20) { alert('Max 20 photos to keep things snappy!'); return; }
+        let loaded = 0;
+        files.forEach(file => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const max = 400;
+                    let w = img.width, h = img.height;
+                    if(w > h && w > max) { h = h*(max/w); w = max; }
+                    else if(h > max) { w = w*(max/h); h = max; }
+                    canvas.width = w; canvas.height = h;
+                    canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+                    const caption = file.name.replace(/\.[^/.]+$/, '').replace(/_/g,' ').substring(0,30);
+                    mems.push({ data: canvas.toDataURL('image/jpeg', 0.75), caption, id: Date.now() + Math.random() });
+                    loaded++;
+                    if(loaded === files.length) { saveMemories(mems); renderMemories(); }
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+        evt.target.value = '';
+    }
+
+    function deleteMemory(id) {
+        if(!confirm('Remove this memory?')) return;
+        const mems = getMemories().filter(m => m.id !== id);
+        saveMemories(mems);
+        renderMemories();
+    }
+
+    function updateMemCaption(id, val) {
+        const mems = getMemories();
+        const m = mems.find(m => m.id === id);
+        if(m) { m.caption = val; saveMemories(mems); }
+    }
+
+    function renderMemories() {
+        const mems = getMemories();
+        const grid = document.getElementById('memoriesGrid');
+        const stats = document.getElementById('memoriesStats');
+        stats.innerText = mems.length ? `${mems.length} memor${mems.length===1?'y':'ies'} · Stored locally on this device` : '';
+        if(!mems.length) { grid.innerHTML = '<div class="memories-empty">No memories yet — upload your first photo above 🌴</div>'; return; }
+        grid.innerHTML = '';
+        mems.forEach(m => {
+            const card = document.createElement('div');
+            card.className = 'memory-card';
+            card.innerHTML = `
+                <img src="${m.data}" alt="${m.caption}">
+                <input type="text" value="${m.caption}" maxlength="30" 
+                    class="memory-caption" 
+                    style="position:absolute; bottom:8px; left:10px; right:10px; background:transparent; border:none; outline:none; font-size:0.7rem; font-weight:800; color:#222; text-align:center; text-transform:uppercase; font-family:'Poppins'; cursor:text; width:calc(100% - 20px);"
+                    onchange="updateMemCaption(${m.id}, this.value)">
+                <button class="memory-del" onclick="deleteMemory(${m.id})">✕</button>`;
+            grid.appendChild(card);
+        });
+    }
+
+    renderMemories();
+
     </script>
 </body>
 </html>
