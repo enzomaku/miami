@@ -429,6 +429,118 @@
         .memories-empty { color: #555; font-style: italic; text-align: center; padding: 3rem; font-size: 0.9rem; }
         .memories-stats { font-size: 0.8rem; color: #666; margin-bottom: 1rem; }
 
+        /* ========== HABLO VICE — SPANISH GAME ========== */
+        .sp-view { display: none; }
+        .sp-view.sp-active { display: block; animation: fadeIn 0.35s ease; }
+
+        /* Lobby */
+        .sp-mode-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 1.4rem 0; }
+        .sp-mode-card { background: rgba(0,0,0,0.65); border: 2px solid rgba(0,255,255,0.18); border-radius: 16px; padding: 1.4rem 1rem; cursor: pointer; transition: 0.3s; text-align: center; }
+        .sp-mode-card:hover,.sp-mode-card.sp-sel { border-color: #ff007f; background: rgba(255,0,127,0.1); box-shadow: 0 0 20px rgba(255,0,127,0.25); }
+        .sp-mode-icon { font-size: 2.2rem; margin-bottom: 0.5rem; }
+        .sp-mode-name { font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: #00ffff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem; }
+        .sp-mode-desc { font-size: 0.74rem; color: #888; line-height: 1.4; }
+        .sp-cat-row { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin: 1rem 0; }
+        .sp-cat-btn { background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.12); color: #aaa; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 0.75rem; transition: 0.2s; }
+        .sp-cat-btn:hover,.sp-cat-btn.sp-sel { border-color: #00ffff; color: #00ffff; background: rgba(0,255,255,0.08); border-width: 2px; }
+        .sp-q-count-row { display: flex; gap: 8px; justify-content: center; margin: 0.8rem 0; }
+        .sp-qc-btn { background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.12); color: #aaa; padding: 6px 18px; border-radius: 20px; cursor: pointer; font-size: 0.78rem; font-family: 'Orbitron', sans-serif; transition: 0.2s; }
+        .sp-qc-btn.sp-sel { border-color: #ff007f; color: #ff007f; background: rgba(255,0,127,0.08); border-width: 2px; }
+
+        /* Player queue chips */
+        .sp-queue { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 1rem 0; }
+        .sp-chip { padding: 6px 14px; border-radius: 20px; font-family: 'Orbitron', sans-serif; font-size: 0.65rem; font-weight: 700; border: 2px solid; text-transform: uppercase; letter-spacing: 0.5px; transition: 0.3s; }
+        .sp-chip.sp-cur { transform: scale(1.18); box-shadow: 0 0 16px; }
+        .sp-chip.sp-done { opacity: 0.25; }
+        .sp-chip.sp-out { opacity: 0.15; text-decoration: line-through; }
+
+        /* Hot seat screen */
+        .sp-hotseat-wrap { padding: 2rem 0; text-align: center; }
+        .sp-hs-label { font-family: 'Orbitron', sans-serif; font-size: 0.7rem; color: #aaa; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 0.8rem; }
+        .sp-hs-name { font-family: 'Orbitron', sans-serif; font-size: clamp(2.4rem, 8vw, 4.5rem); font-weight: 700; text-transform: uppercase; letter-spacing: 3px; line-height: 1; animation: spPulse 1s ease-in-out infinite; }
+        .sp-hs-streak { font-size: 1.4rem; margin: 0.6rem 0; min-height: 2rem; }
+        .sp-hs-countdown { font-family: 'Orbitron', sans-serif; font-size: 3rem; font-weight: 700; color: #fff; margin: 1rem 0; opacity: 0; transition: opacity 0.3s; }
+        @keyframes spPulse { 0%,100%{text-shadow:0 0 20px currentColor,0 0 40px currentColor;} 50%{text-shadow:0 0 50px currentColor,0 0 100px currentColor;} }
+
+        /* Question screen */
+        .sp-qcard { background: rgba(0,0,0,0.78); border: 2px solid rgba(0,255,255,0.25); border-radius: 18px; padding: 1.6rem 1.2rem; margin: 0.8rem 0; }
+        .sp-qcard-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 8px; }
+        .sp-qcat { font-family: 'Orbitron', sans-serif; font-size: 0.62rem; color: #ff007f; text-transform: uppercase; letter-spacing: 2px; }
+        .sp-qprogress { font-family: 'Orbitron', sans-serif; font-size: 0.62rem; color: #555; }
+        .sp-question { font-size: clamp(1.5rem, 5vw, 2.4rem); font-weight: 800; color: #fff; line-height: 1.2; margin: 0.5rem 0 1.2rem; }
+        .sp-hint-text { font-size: 0.8rem; color: #666; font-style: italic; margin-top: -0.8rem; margin-bottom: 1rem; min-height: 1.2rem; }
+        .sp-timer-rail { width: 100%; height: 5px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; margin-bottom: 1rem; }
+        .sp-timer-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg,#00ffff,#ff007f); transition: width 0.1s linear; }
+        .sp-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .sp-opt { background: rgba(0,0,0,0.55); border: 2px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 14px 10px; font-size: 0.95rem; font-weight: 700; color: #fff; cursor: pointer; transition: 0.2s; text-align: center; min-height: 56px; display: flex; align-items: center; justify-content: center; }
+        .sp-opt:hover:not(:disabled) { border-color: #00ffff; background: rgba(0,255,255,0.1); transform: translateY(-1px); }
+        .sp-opt.sp-correct { border-color: #00ff88; background: rgba(0,255,136,0.18); color: #00ff88; }
+        .sp-opt.sp-wrong { border-color: #ff3355; background: rgba(255,51,85,0.18); color: #ff3355; }
+        .sp-opt:disabled { pointer-events: none; }
+        @media(max-width:520px){ .sp-options { grid-template-columns: 1fr; } .sp-opt { font-size: 1rem; padding: 16px; } }
+
+        /* Flash card */
+        .sp-flash-wrap { perspective: 1000px; margin: 1rem auto; max-width: 460px; min-height: 180px; cursor: pointer; }
+        .sp-flash-inner { position: relative; width: 100%; height: 180px; transition: transform 0.55s; transform-style: preserve-3d; }
+        .sp-flash-wrap.sp-flipped .sp-flash-inner { transform: rotateY(180deg); }
+        .sp-flash-front,.sp-flash-back { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.2rem; }
+        .sp-flash-front { background: rgba(0,0,0,0.8); border: 2px solid rgba(0,255,255,0.35); }
+        .sp-flash-back  { background: rgba(0,0,0,0.8); border: 2px solid rgba(255,0,127,0.55); transform: rotateY(180deg); }
+        .sp-flash-word { font-size: clamp(1.6rem,5vw,2.6rem); font-weight: 800; text-align: center; }
+        .sp-flash-sub { font-family: 'Orbitron', sans-serif; font-size: 0.6rem; color: #555; letter-spacing: 2px; margin-top: 0.8rem; text-transform: uppercase; }
+        .sp-claim-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: 1rem; }
+        .sp-claim-btn { padding: 12px 6px; border: 2px solid; border-radius: 10px; font-family: 'Orbitron', sans-serif; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.2s; background: rgba(0,0,0,0.5); }
+        .sp-claim-btn:hover { transform: scale(1.04); filter: brightness(1.3); }
+        .sp-nobody-btn { grid-column: 1/-1; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: #555; padding: 8px; border-radius: 8px; cursor: pointer; font-size: 0.75rem; transition: 0.2s; }
+        .sp-nobody-btn:hover { color: #aaa; }
+
+        /* Steal window */
+        .sp-steal-box { border: 2px solid #ff007f; border-radius: 16px; padding: 1.4rem; margin: 0.8rem 0; background: rgba(255,0,127,0.08); animation: spStealPulse 0.6s ease infinite; }
+        @keyframes spStealPulse { 0%,100%{border-color:#ff007f; box-shadow:0 0 10px rgba(255,0,127,0.3);} 50%{border-color:#ffaa00; box-shadow:0 0 25px rgba(255,170,0,0.4);} }
+        .sp-steal-label { font-family: 'Orbitron', sans-serif; font-size: 0.75rem; color: #ff007f; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.4rem; }
+        .sp-steal-countdown { font-family: 'Orbitron', sans-serif; font-size: 3.5rem; font-weight: 700; color: #ff007f; line-height: 1; }
+        .sp-steal-answer { font-size: 1rem; color: #888; margin: 0.5rem 0; font-style: italic; }
+
+        /* Result */
+        .sp-result-box { border-radius: 18px; padding: 1.6rem; margin: 0.8rem 0; text-align: center; animation: fadeIn 0.25s; }
+        .sp-result-box.sp-win { background: rgba(0,255,136,0.1); border: 2px solid #00ff88; }
+        .sp-result-box.sp-lose { background: rgba(255,51,85,0.1); border: 2px solid #ff3355; }
+        .sp-result-icon { font-size: 3.5rem; line-height: 1; }
+        .sp-result-who { font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 700; margin: 0.5rem 0; }
+        .sp-result-pts { font-family: 'Orbitron', sans-serif; font-size: 1.6rem; font-weight: 700; color: #00ffff; }
+        .sp-result-ans { font-size: 1.1rem; color: #ccc; margin: 0.4rem 0; }
+        .sp-result-ans strong { color: #fff; font-size: 1.3rem; }
+        .sp-result-streak { color: #ff8800; font-size: 0.9rem; font-weight: 700; margin-top: 0.3rem; }
+
+        /* Score rows */
+        .sp-score-section { background: rgba(0,0,0,0.6); border: 1px solid rgba(0,255,255,0.15); border-radius: 14px; padding: 1.2rem; margin: 0.8rem 0; text-align: left; }
+        .sp-score-row { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .sp-score-row:last-child { border-bottom: none; }
+        .sp-sr-rank { font-size: 1.1rem; width: 28px; flex-shrink: 0; text-align: center; }
+        .sp-sr-name { font-family: 'Orbitron', sans-serif; font-size: 0.72rem; width: 70px; flex-shrink: 0; text-transform: uppercase; }
+        .sp-sr-bar { flex: 1; height: 7px; background: rgba(255,255,255,0.07); border-radius: 4px; overflow: hidden; }
+        .sp-sr-fill { height: 100%; border-radius: 4px; transition: width 0.7s cubic-bezier(.4,0,.2,1); }
+        .sp-sr-pts { font-size: 0.85rem; font-weight: 800; width: 44px; text-align: right; flex-shrink: 0; }
+        .sp-sr-streak { font-size: 0.75rem; color: #ff8800; min-width: 40px; }
+        .sp-sr-lives { font-size: 0.85rem; min-width: 40px; }
+
+        /* Badges */
+        .sp-badge-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 1rem 0; }
+        .sp-badge { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px 12px; text-align: center; min-width: 72px; opacity: 0.22; transition: 0.4s; }
+        .sp-badge.sp-earned { opacity: 1; border-color: #ffcc00; background: rgba(255,204,0,0.1); box-shadow: 0 0 12px rgba(255,204,0,0.2); }
+        .sp-badge-ico { font-size: 1.4rem; display: block; }
+        .sp-badge-lbl { font-size: 0.58rem; color: #aaa; font-family: 'Orbitron'; text-transform: uppercase; margin-top: 4px; letter-spacing: 0.3px; }
+
+        /* Lives */
+        .sp-lives-row { display: flex; gap: 6px; justify-content: center; margin: 0.4rem 0; font-size: 1.1rem; }
+
+        /* Audio button */
+        .sp-audio { background: rgba(0,255,255,0.08); border: 1px solid rgba(0,255,255,0.25); color: #00ffff; padding: 5px 13px; border-radius: 16px; cursor: pointer; font-size: 0.78rem; transition: 0.2s; display: inline-flex; align-items: center; gap: 5px; }
+        .sp-audio:hover { background: rgba(0,255,255,0.18); }
+
+        /* Survivor KO */
+        .sp-ko-badge { display: inline-block; background: rgba(255,51,85,0.2); border: 1px solid #ff3355; color: #ff3355; font-size: 0.6rem; font-family: 'Orbitron'; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; margin-left: 4px; }
+
         /* BRACKET MOBILE */
         @media (max-width: 900px) {
             nav { gap: 10px; padding: 1rem 0.2rem; }
@@ -462,6 +574,7 @@
             <a onclick="showSection('bracket');closeNav()">🔮 Bracket</a>
             <a onclick="showSection('vibes');closeNav()">🎵 Vibes</a>
             <a onclick="showSection('memories');closeNav()">📸 Memories</a>
+            <a onclick="showSection('spanish');closeNav()">🇪🇸 Hablo Vice</a>
         </div>
         <button class="hamburger" id="hamburgerBtn" onclick="toggleNav()">☰</button>
     </nav>
@@ -1044,6 +1157,15 @@
             <div class="memories-grid" id="memoriesGrid">
                 <div class="memories-empty">No memories yet — upload your first photo above 🌴</div>
             </div>
+        </section>
+
+        <!-- ==================== HABLO VICE — SPANISH GAME ==================== -->
+        <section id="spanish" class="glass-card" style="max-width:900px;">
+            <div class="section-header">
+                <h2 class="vice-text" style="color:#ff007f;">🇪🇸 HABLO VICE</h2>
+                <p>LEARN SPANISH · QUIZ THE CREW · DOMINATE MIAMI</p>
+            </div>
+            <div id="spGame"></div>
         </section>
 
     </div><!-- end .container -->
@@ -1774,6 +1896,694 @@
     }
 
     renderMemories();
+
+    // ============================================================
+    // HABLO VICE — SPANISH GAME
+    // ============================================================
+    const SP_PLAYERS = ['Mandy','Tamelia','Linda','Tiago','Michael','Itai'];
+    const SP_COLORS  = ['#ff007f','#00ffff','#ffcc00','#00ff88','#ff8800','#cc88ff'];
+    const SP_EMOJIS  = ['💃','🌴','👑','⚽','🎯','🔥'];
+
+    const SP_VOCAB = {
+        bar:       { label:'🍹 Bar & Drinks',       words:[
+            {en:'a beer',es:'una cerveza'},{en:'a cocktail',es:'un cóctel'},{en:'a glass of wine',es:'una copa de vino'},
+            {en:'rum',es:'el ron'},{en:'tequila',es:'la tequila'},{en:'without ice',es:'sin hielo'},
+            {en:'with ice',es:'con hielo'},{en:'the bill please',es:'la cuenta por favor'},{en:'another round',es:'otra ronda'},
+            {en:'cheers!',es:'¡salud!'},{en:'what do you recommend?',es:'¿qué recomiendas?'},{en:'sparkling water',es:'agua con gas'},
+            {en:'still water',es:'agua sin gas'},{en:"it's delicious",es:'está delicioso'},{en:"let's toast!",es:'¡brindemos!'},
+            {en:'two beers please',es:'dos cervezas por favor'},{en:'a shot',es:'un chupito'},{en:'open bar',es:'barra libre'},
+            {en:"I'm drunk",es:'estoy borracho/a'},{en:'the bar tab',es:'la cuenta del bar'}
+        ]},
+        food:      { label:'🍔 Food & Restaurant',  words:[
+            {en:'the table',es:'la mesa'},{en:'the menu',es:'el menú'},{en:'table for six?',es:'¿mesa para seis?'},
+            {en:'the waiter',es:'el camarero'},{en:"I'd like to order",es:'quiero pedir'},{en:'the tip',es:'la propina'},
+            {en:'spicy',es:'picante'},{en:'what is this?',es:'¿qué es esto?'},{en:"it's amazing!",es:'¡está riquísimo!'},
+            {en:'to take away',es:'para llevar'},{en:'breakfast',es:'el desayuno'},{en:'lunch',es:'el almuerzo'},
+            {en:'dinner',es:'la cena'},{en:"I'm hungry",es:'tengo hambre'},{en:"I'm thirsty",es:'tengo sed'},
+            {en:'can I see the menu?',es:'¿me puede traer la carta?'},{en:'pork',es:'el cerdo'},{en:'chicken',es:'el pollo'},
+            {en:'seafood',es:'los mariscos'},{en:'the receipt',es:'el recibo'}
+        ]},
+        beach:     { label:'🏖️ Beach & Water',       words:[
+            {en:'the beach',es:'la playa'},{en:'the sea',es:'el mar'},{en:'the wave',es:'la ola'},
+            {en:'sunscreen',es:'el protector solar'},{en:'sunglasses',es:'las gafas de sol'},{en:'beach umbrella',es:'la sombrilla'},
+            {en:'lifeguard',es:'el salvavidas'},{en:'to swim',es:'nadar'},{en:'jet ski',es:'la moto acuática'},
+            {en:'the boat',es:'el barco'},{en:'the sand',es:'la arena'},{en:"it's hot",es:'hace calor'},
+            {en:'the sunset',es:'la puesta de sol'},{en:'the towel',es:'la toalla'},{en:'the lobster',es:'la langosta'},
+            {en:'the shark',es:'el tiburón'},{en:'swimming trunks',es:'el bañador'},{en:'the reef',es:'el arrecife'},
+            {en:'the crab',es:'el cangrejo'},{en:'snorkelling',es:'hacer esnórquel'}
+        ]},
+        football:  { label:'⚽ Football & World Cup', words:[
+            {en:'the match',es:'el partido'},{en:'the goal',es:'el gol'},{en:'the goalkeeper',es:'el portero'},
+            {en:'the striker',es:'el delantero'},{en:'the referee',es:'el árbitro'},{en:'offside',es:'fuera de juego'},
+            {en:'the foul',es:'la falta'},{en:'the penalty',es:'el penalti'},{en:'red card',es:'tarjeta roja'},
+            {en:'yellow card',es:'tarjeta amarilla'},{en:'the stadium',es:'el estadio'},{en:'the national team',es:'la selección'},
+            {en:'champions!',es:'¡campeones!'},{en:'to win',es:'ganar'},{en:'to lose',es:'perder'},
+            {en:'to draw',es:'empatar'},{en:'the World Cup',es:'el Mundial'},{en:'extra time',es:'la prórroga'},
+            {en:'the captain',es:'el capitán'},{en:'header',es:'el cabezazo'}
+        ]},
+        basics:    { label:'💬 Greetings & Basics',  words:[
+            {en:'hello',es:'hola'},{en:'good morning',es:'buenos días'},{en:'good afternoon',es:'buenas tardes'},
+            {en:'good evening',es:'buenas noches'},{en:'how are you?',es:'¿cómo estás?'},{en:'very well thank you',es:'muy bien gracias'},
+            {en:"what's your name?",es:'¿cómo te llamas?'},{en:'my name is...',es:'me llamo...'},{en:'nice to meet you',es:'encantado/a'},
+            {en:'please',es:'por favor'},{en:'thank you',es:'gracias'},{en:"you're welcome",es:'de nada'},
+            {en:"I'm sorry",es:'lo siento'},{en:'excuse me',es:'perdón'},{en:'do you speak English?',es:'¿hablas inglés?'},
+            {en:"I don't understand",es:'no entiendo'},{en:'see you later',es:'hasta luego'},{en:'of course!',es:'¡claro!'},
+            {en:'no problem',es:'no hay problema'},{en:'how cool!',es:'¡qué chévere!'}
+        ]},
+        nightlife: { label:'🌃 Nightlife & Socialising', words:[
+            {en:'the nightclub',es:'la discoteca'},{en:'the party',es:'la fiesta'},{en:'to dance',es:'bailar'},
+            {en:'the music',es:'la música'},{en:'do you want to dance?',es:'¿quieres bailar?'},{en:"it's packed!",es:'¡está lleno!'},
+            {en:'the entrance fee',es:'la entrada'},{en:'what time does it close?',es:'¿a qué hora cierra?'},
+            {en:'the terrace',es:'la terraza'},{en:'what a night!',es:'¡qué noche!'},
+            {en:"we're on holiday",es:'estamos de vacaciones'},{en:"we're from England",es:'somos de Inglaterra'},
+            {en:"let's go!",es:'¡vámonos!'},{en:"I'm tired",es:'estoy cansado/a'},{en:'we sleep tomorrow',es:'mañana dormimos'},
+            {en:"this is incredible!",es:'¡esto es increíble!'},{en:'the bouncer',es:'el portero de noche'},
+            {en:'to queue',es:'hacer cola'},{en:'a great time',es:'pasarlo genial'},{en:'I love this song',es:'me encanta esta canción'}
+        ]},
+        travel:    { label:'🚗 Directions & Travel',  words:[
+            {en:'where is...?',es:'¿dónde está...?'},{en:'to the right',es:'a la derecha'},{en:'to the left',es:'a la izquierda'},
+            {en:'straight ahead',es:'todo recto'},{en:'the petrol station',es:'la gasolinera'},{en:'the airport',es:'el aeropuerto'},
+            {en:'the hotel',es:'el hotel'},{en:'how long?',es:'¿cuánto tiempo?'},{en:'nearby',es:'cerca'},
+            {en:'far away',es:'lejos'},{en:'the traffic light',es:'el semáforo'},{en:'the motorway',es:'la autopista'},
+            {en:'the toll',es:'el peaje'},{en:'is it open?',es:'¿está abierto?'},{en:'be careful!',es:'¡con cuidado!'},
+            {en:"we're lost",es:'estamos perdidos'},{en:'the car park',es:'el aparcamiento'},
+            {en:'how many kilometres?',es:'¿a cuántos kilómetros?'},{en:"let's stop here",es:'paremos aquí'},
+            {en:'the road trip',es:'el viaje por carretera'}
+        ]},
+        miami:     { label:'🔥 Miami & Cuban Slang',  words:[
+            {en:"let's go! / come on!",es:'¡dale!'},{en:'hey! / listen!',es:'¡oye!'},{en:'how delicious!',es:'¡qué rico!'},
+            {en:'tremendous! / amazing!',es:'¡tremendo!'},{en:'buddy / mate (Cuban)',es:'¡asere!'},
+            {en:"what's up? (Cuban)",es:'¿qué bolá?'},{en:'awesome! (Cuban)',es:'¡bárbaro!'},{en:'cash money',es:'el efectivo'},
+            {en:"that's it! exactly!",es:'¡eso es!'},{en:'woo! yeah! (Caribbean)',es:'¡wepa!'},
+            {en:'of course!',es:'¡por supuesto!'},{en:'hooray!',es:'¡viva!'},{en:'how beautiful!',es:'¡qué bonito/a!'},
+            {en:'the neighbourhood',es:'el barrio'},{en:'the party / rumba',es:'la rumba'},{en:'what a view!',es:'¡qué vista!'},
+            {en:"this is the life!",es:'¡esto es la vida!'},{en:"let's party!",es:'¡a gozar!'},
+            {en:'I love Miami',es:'me encanta Miami'},{en:"it's on fire! (slang)",es:'¡está en candela!'}
+        ]}
+    };
+
+    const SP_BADGES = [
+        {id:'barman',    icon:'🍹', label:'Barman',       cat:'bar',       need:8},
+        {id:'beachbum',  icon:'🏖️', label:'Beach Bum',    cat:'beach',     need:8},
+        {id:'ultra',     icon:'⚽', label:'Ultra',         cat:'football',  need:8},
+        {id:'owlnight',  icon:'🌃', label:'Night Owl',     cat:'nightlife', need:8},
+        {id:'miaminative',icon:'🔥',label:'Miami Native',  cat:'miami',     need:8},
+        {id:'pioneer',   icon:'💬', label:'Pioneer',       cat:'basics',    need:8},
+        {id:'viajero',   icon:'🚗', label:'Viajero',       cat:'travel',    need:8},
+        {id:'foodie',    icon:'🍔', label:'Foodie',        cat:'food',      need:8},
+        {id:'hablovice', icon:'🏆', label:'Hablo Vice',    cat:'all',       need:30},
+        {id:'perfectionist',icon:'🎯',label:'Perfecto',   cat:'all',       need:0, streak:8},
+        {id:'speedster', icon:'⚡', label:'Rápido',        cat:'all',       need:0, speed:5},
+    ];
+
+    // ---- Game State ----
+    let sp = {
+        mode: 'choice', cat: 'all', qPerPlayer: 5,
+        playerIdx: 0, q: null, queue: [],
+        roundScores: {}, totalScores: {},
+        streaks: {}, lives: {},
+        qNum: 0, totalQs: 0,
+        timerInt: null, timerVal: 10,
+        stealInt: null, stealVal: 3,
+        stealCorrect: null,
+        screen: 'lobby',
+        catCorrect: {},    // {cat: count} for badge tracking
+        speedBonus: {},    // speed bonus counter per player
+        flashFlipped: false,
+        flashClaimOpen: false,
+    };
+
+    function spGetTotalScores() { return JSON.parse(localStorage.getItem('habloViceScores')||'{}'); }
+    function spSaveTotalScores(s){ localStorage.setItem('habloViceScores', JSON.stringify(s)); }
+    function spGetBadges()       { return JSON.parse(localStorage.getItem('habloViceBadges')||'{}'); }
+    function spSaveBadges(b)     { localStorage.setItem('habloViceBadges', JSON.stringify(b)); }
+
+    function spShuffle(arr){ for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr; }
+
+    function spGetPool(cat){
+        if(cat==='all') return Object.entries(SP_VOCAB).flatMap(([k,v])=>v.words.map(w=>({...w,cat:k})));
+        return (SP_VOCAB[cat]?.words||[]).map(w=>({...w,cat}));
+    }
+
+    function spBuildQueue(){
+        const pool = spShuffle([...spGetPool(sp.cat)]);
+        const out = [];
+        // Each player gets sp.qPerPlayer questions, cycling round-robin
+        const activePlayers = SP_PLAYERS.filter((_,i)=>sp.lives[i]>0||sp.mode!=='survivor');
+        for(let q=0;q<sp.qPerPlayer;q++){
+            for(let p=0;p<SP_PLAYERS.length;p++){
+                out.push({ playerIdx: p, word: pool[(q*SP_PLAYERS.length+p) % pool.length] });
+            }
+        }
+        sp.totalQs = out.length;
+        return out;
+    }
+
+    function spMakeOptions(correctWord, cat){
+        const pool = spGetPool(sp.cat==='all'?cat:sp.cat).filter(w=>w.es!==correctWord.es);
+        const wrong = spShuffle(pool).slice(0,3).map(w=>w.es);
+        const opts = spShuffle([correctWord.es,...wrong]);
+        return opts;
+    }
+
+    // ---- Render dispatcher ----
+    function spRender(screen){
+        sp.screen = screen;
+        const el = document.getElementById('spGame');
+        if(!el) return;
+        const renders = { lobby: spRenderLobby, hotseat: spRenderHotseat, question: spRenderQuestion,
+            flash: spRenderFlash, steal: spStartSteal, result: spRenderResult,
+            roundend: spRenderGameOver, gameover: spRenderGameOver };
+        if(renders[screen]) renders[screen](el);
+    }
+
+    // ---- LOBBY ----
+    function spRenderLobby(el){
+        const ts = spGetTotalScores();
+        const badges = spGetBadges();
+        const totalBadges = Object.values(badges).filter(Boolean).length;
+        el.innerHTML = `
+        <div class="sp-view sp-active">
+            <!-- All-time leaderboard pill -->
+            ${Object.keys(ts).length?`<div style="background:rgba(0,0,0,0.5);border:1px solid rgba(0,255,255,0.15);border-radius:12px;padding:0.8rem 1rem;margin-bottom:1.2rem;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;">
+                <span style="font-family:'Orbitron';font-size:0.6rem;color:#ff007f;text-transform:uppercase;letter-spacing:2px;">All-Time</span>
+                ${SP_PLAYERS.map((n,i)=>`<span style="font-size:0.8rem;font-weight:700;color:${SP_COLORS[i]};">${n} <span style="color:#fff;">${ts[n]||0}</span></span>`).join('')}
+                <span style="font-size:0.75rem;color:#555;">${totalBadges} badge${totalBadges!==1?'s':''}</span>
+            </div>`:''}
+
+            <!-- Mode select -->
+            <p style="font-family:'Orbitron';font-size:0.65rem;color:#aaa;text-transform:uppercase;letter-spacing:2px;margin-bottom:0.6rem;">Choose Your Mode</p>
+            <div class="sp-mode-grid">
+                <div class="sp-mode-card ${sp.mode==='choice'?'sp-sel':''}" onclick="spSetMode('choice',this)">
+                    <div class="sp-mode-icon">🎯</div>
+                    <div class="sp-mode-name">Multiple Choice</div>
+                    <div class="sp-mode-desc">4 options, 10-second timer. Hot-seat round robin — your turn, your question.</div>
+                </div>
+                <div class="sp-mode-card ${sp.mode==='flash'?'sp-sel':''}" onclick="spSetMode('flash',this)">
+                    <div class="sp-mode-icon">⚡</div>
+                    <div class="sp-mode-name">Flash Duel</div>
+                    <div class="sp-mode-desc">Flip the card, shout the answer. First to buzz in and get it right wins the points.</div>
+                </div>
+                <div class="sp-mode-card ${sp.mode==='survivor'?'sp-sel':''}" onclick="spSetMode('survivor',this)">
+                    <div class="sp-mode-icon">💀</div>
+                    <div class="sp-mode-name">Streak Survivor</div>
+                    <div class="sp-mode-desc">3 lives each ❤️❤️❤️. Wrong answers cost a life. Last one standing wins.</div>
+                </div>
+            </div>
+
+            <!-- Category -->
+            <p style="font-family:'Orbitron';font-size:0.65rem;color:#aaa;text-transform:uppercase;letter-spacing:2px;margin:1rem 0 0.4rem;">Category</p>
+            <div class="sp-cat-row">
+                <div class="sp-cat-btn ${sp.cat==='all'?'sp-sel':''}" onclick="spSetCat('all',this)">🌎 All Topics</div>
+                ${Object.entries(SP_VOCAB).map(([k,v])=>`<div class="sp-cat-btn ${sp.cat===k?'sp-sel':''}" onclick="spSetCat('${k}',this)">${v.label}</div>`).join('')}
+            </div>
+
+            <!-- Questions per player -->
+            <p style="font-family:'Orbitron';font-size:0.65rem;color:#aaa;text-transform:uppercase;letter-spacing:2px;margin:1rem 0 0.4rem;">Questions Per Player</p>
+            <div class="sp-q-count-row">
+                ${[3,5,8,10].map(n=>`<div class="sp-qc-btn ${sp.qPerPlayer===n?'sp-sel':''}" onclick="spSetQCount(${n},this)">${n}</div>`).join('')}
+            </div>
+            <p style="font-size:0.72rem;color:#555;margin-top:0.3rem;">${SP_PLAYERS.length} players × ${sp.qPerPlayer} = ${SP_PLAYERS.length*sp.qPerPlayer} questions total</p>
+
+            <!-- Player turn order -->
+            <p style="font-family:'Orbitron';font-size:0.65rem;color:#aaa;text-transform:uppercase;letter-spacing:2px;margin:1.2rem 0 0.5rem;">Turn Order</p>
+            <div class="sp-queue">
+                ${SP_PLAYERS.map((n,i)=>`<span class="sp-chip" style="color:${SP_COLORS[i]};border-color:${SP_COLORS[i]};">${SP_EMOJIS[i]} ${n}</span>`).join('')}
+            </div>
+
+            <!-- Badges preview -->
+            <div class="sp-badge-row" style="margin-top:1.2rem;">
+                ${SP_BADGES.map(b=>`<div class="sp-badge ${(spGetBadges()[b.id])?'sp-earned':''}" title="${b.label}">
+                    <span class="sp-badge-ico">${b.icon}</span>
+                    <span class="sp-badge-lbl">${b.label}</span>
+                </div>`).join('')}
+            </div>
+
+            <button class="vice-btn" style="margin-top:1.5rem;padding:14px 40px;font-size:0.9rem;border-radius:50px;letter-spacing:3px;" onclick="spStart()">
+                ▶ START GAME
+            </button>
+            ${Object.keys(ts).length?`<button class="vice-btn" style="margin-top:0.8rem;margin-left:10px;background:rgba(255,0,127,0.1);border:1px solid #ff007f;color:#ff007f;" onclick="spResetScores()">Reset Scores</button>`:''}
+        </div>`;
+    }
+
+    function spSetMode(m,el){ sp.mode=m; document.querySelectorAll('.sp-mode-card').forEach(c=>c.classList.remove('sp-sel')); el.classList.add('sp-sel'); }
+    function spSetCat(c,el){ sp.cat=c; document.querySelectorAll('.sp-cat-btn').forEach(b=>b.classList.remove('sp-sel')); el.classList.add('sp-sel'); }
+    function spSetQCount(n,el){ sp.qPerPlayer=n; document.querySelectorAll('.sp-qc-btn').forEach(b=>b.classList.remove('sp-sel')); el.classList.add('sp-sel');
+        document.querySelectorAll('.sp-qc-btn').forEach(b=>{ if(b.textContent==n) b.classList.add('sp-sel'); });
+        const p=document.querySelector('.sp-q-count-row+p'); if(p) p.textContent=`${SP_PLAYERS.length} players × ${n} = ${SP_PLAYERS.length*n} questions total`;
+    }
+
+    // ---- START GAME ----
+    function spStart(){
+        sp.queue = spBuildQueue();
+        sp.qNum = 0;
+        sp.roundScores = {};
+        sp.catCorrect = {};
+        sp.speedBonus = {};
+        sp.streaks = {};
+        sp.flashFlipped = false;
+        sp.flashClaimOpen = false;
+        SP_PLAYERS.forEach(n=>{ sp.roundScores[n]=0; sp.streaks[n]=0; sp.speedBonus[n]=0; sp.catCorrect[n]={}; });
+        if(sp.mode==='survivor') SP_PLAYERS.forEach(n=>{ sp.lives[n]=3; });
+        sp.playerIdx = sp.queue[0]?.playerIdx ?? 0;
+        spRender('hotseat');
+    }
+
+    // ---- HOTSEAT ----
+    function spRenderHotseat(el){
+        if(sp.qNum >= sp.queue.length){ spRender('gameover'); return; }
+        const item = sp.queue[sp.qNum];
+        sp.playerIdx = item.playerIdx;
+        const name = SP_PLAYERS[sp.playerIdx];
+        const color = SP_COLORS[sp.playerIdx];
+        const emoji = SP_EMOJIS[sp.playerIdx];
+        const streak = sp.streaks[name]||0;
+        const lives = sp.mode==='survivor'? sp.lives[name]||0 : null;
+
+        // Skip knocked-out survivor players
+        if(sp.mode==='survivor' && lives<=0){ sp.qNum++; spRenderHotseat(el); return; }
+
+        el.innerHTML = `
+        <div class="sp-view sp-active">
+            <div class="sp-hotseat-wrap">
+                <!-- Player queue -->
+                <div class="sp-queue" style="margin-bottom:1.5rem;">
+                    ${SP_PLAYERS.map((n,i)=>{
+                        const isDone = sp.mode==='survivor' && sp.lives[n]<=0;
+                        const isCur  = i===sp.playerIdx;
+                        return `<span class="sp-chip ${isCur?'sp-cur':''} ${isDone?'sp-out':''}" style="color:${SP_COLORS[i]};border-color:${SP_COLORS[i]};${isCur?`box-shadow:0 0 16px ${SP_COLORS[i]};`:''}">
+                            ${SP_EMOJIS[i]} ${n}${isDone?'<span class="sp-ko-badge">KO</span>':''}
+                        </span>`;
+                    }).join('')}
+                </div>
+                <div class="sp-hs-label">Hot Seat</div>
+                <div class="sp-hs-name" style="color:${color};">${emoji} ${name}</div>
+                <div class="sp-hs-streak">${streak>=3?`🔥 ${streak} streak!`:streak>=2?'🔥 On a roll!':''}</div>
+                ${lives!==null?`<div class="sp-lives-row">${'❤️'.repeat(lives)}${'🖤'.repeat(3-lives)}</div>`:''}
+                <p style="font-size:0.8rem;color:#555;margin-top:1rem;">Q ${sp.qNum+1} of ${sp.totalQs} · ${SP_VOCAB[sp.cat]?.label||'All Topics'}</p>
+                <button class="vice-btn" style="margin-top:1.5rem;padding:14px 36px;font-size:0.9rem;border-radius:50px;" onclick="spShowQuestion()">Ready? GO! →</button>
+            </div>
+        </div>`;
+    }
+
+    // ---- QUESTION ----
+    function spShowQuestion(){
+        if(sp.mode==='flash') spRender('flash');
+        else spRender('question');
+    }
+
+    function spRenderQuestion(el){
+        const item = sp.queue[sp.qNum];
+        const word = item.word;
+        const name = SP_PLAYERS[sp.playerIdx];
+        const color= SP_COLORS[sp.playerIdx];
+        const opts = spMakeOptions(word, word.cat||sp.cat);
+        sp._currentOpts = opts;
+        sp._currentWord = word;
+        sp._timeStart = Date.now();
+        sp.timerVal = 10;
+
+        el.innerHTML = `
+        <div class="sp-view sp-active">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem;flex-wrap:wrap;gap:8px;">
+                <span style="background:${color}22;border:1px solid ${color};color:${color};padding:5px 14px;border-radius:16px;font-family:'Orbitron';font-size:0.72rem;font-weight:700;text-transform:uppercase;">${SP_EMOJIS[sp.playerIdx]} ${name}'s turn</span>
+                <button class="sp-audio" onclick="spSpeak('${word.es.replace(/'/g,"\\'")}')">🔊 Hear answer</button>
+            </div>
+            <div class="sp-qcard">
+                <div class="sp-qcard-top">
+                    <span class="sp-qcat">${SP_VOCAB[word.cat||sp.cat]?.label||'Spanish'}</span>
+                    <span class="sp-qprogress">Q ${sp.qNum+1}/${sp.totalQs}</span>
+                </div>
+                <div style="font-size:0.75rem;color:#888;margin-bottom:0.3rem;font-family:'Orbitron';letter-spacing:1px;">HOW DO YOU SAY…</div>
+                <div class="sp-question">"${word.en}"</div>
+                <div class="sp-hint-text" id="spHintText"></div>
+                <div class="sp-timer-rail"><div class="sp-timer-fill" id="spTimerFill" style="width:100%"></div></div>
+                <div class="sp-options">
+                    ${opts.map((o,i)=>`<button class="sp-opt" id="spOpt${i}" onclick="spAnswer(${i})">${o}</button>`).join('')}
+                </div>
+            </div>
+            <div style="display:flex;gap:8px;justify-content:center;margin-top:0.8rem;">
+                <button class="sp-audio" onclick="spHint()">💡 Hint</button>
+            </div>
+        </div>`;
+
+        spStartTimer();
+    }
+
+    function spStartTimer(){
+        clearInterval(sp.timerInt);
+        const maxMs = 10000;
+        const start = Date.now();
+        sp.timerInt = setInterval(()=>{
+            const elapsed = Date.now()-start;
+            const pct = Math.max(0, 100-elapsed/maxMs*100);
+            const fill = document.getElementById('spTimerFill');
+            if(fill){
+                fill.style.width = pct+'%';
+                fill.style.background = pct>50?'linear-gradient(90deg,#00ffff,#ff007f)':pct>20?'linear-gradient(90deg,#ffcc00,#ff8800)':'linear-gradient(90deg,#ff3355,#ff0000)';
+            }
+            if(elapsed>=maxMs){ clearInterval(sp.timerInt); spTimeOut(); }
+        },80);
+    }
+
+    function spTimeOut(){
+        // Mark all wrong, highlight correct
+        const opts = document.querySelectorAll('.sp-opt');
+        opts.forEach((o,i)=>{ o.disabled=true; if(sp._currentOpts[i]===sp._currentWord.es) o.classList.add('sp-correct'); else o.classList.add('sp-wrong'); });
+        sp.streaks[SP_PLAYERS[sp.playerIdx]]=0;
+        setTimeout(()=>spStartSteal(false), 800);
+    }
+
+    function spAnswer(idx){
+        clearInterval(sp.timerInt);
+        const elapsed = Date.now()-sp._timeStart;
+        const correct = sp._currentOpts[idx]===sp._currentWord.es;
+        const opts = document.querySelectorAll('.sp-opt');
+        opts.forEach((o,i)=>{ o.disabled=true; if(sp._currentOpts[i]===sp._currentWord.es) o.classList.add('sp-correct'); else if(i===idx) o.classList.add('sp-wrong'); });
+        if(correct){
+            let pts = 10;
+            if(elapsed<3000) pts+=5; else if(elapsed<5000) pts+=3;
+            const name = SP_PLAYERS[sp.playerIdx];
+            if(elapsed<5000){ sp.speedBonus[name]=(sp.speedBonus[name]||0)+1; }
+            sp.streaks[name]=(sp.streaks[name]||0)+1;
+            if(sp.streaks[name]>=3) pts+=5;
+            sp.roundScores[name]=(sp.roundScores[name]||0)+pts;
+            spTrackBadge(name, sp._currentWord.cat||sp.cat, pts, elapsed);
+            setTimeout(()=>spShowResult(true, name, pts, elapsed), 600);
+        } else {
+            if(sp.mode==='survivor'){ sp.lives[SP_PLAYERS[sp.playerIdx]]--; }
+            sp.streaks[SP_PLAYERS[sp.playerIdx]]=0;
+            setTimeout(()=>spStartSteal(true), 600);
+        }
+    }
+
+    function spHint(){
+        const answer = sp._currentWord.es;
+        const hint = answer[0].toUpperCase()+answer.slice(1,3).replace(/./g,'_')+'...';
+        const el = document.getElementById('spHintText');
+        if(el) el.textContent = '💡 Starts with: '+hint;
+    }
+
+    // ---- FLASH DUEL ----
+    function spRenderFlash(el){
+        const item = sp.queue[sp.qNum];
+        const word = item.word;
+        sp._currentWord = word;
+        sp._timeStart = Date.now();
+        sp.flashFlipped = false;
+        sp.flashClaimOpen = false;
+
+        el.innerHTML = `
+        <div class="sp-view sp-active">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem;flex-wrap:wrap;gap:8px;">
+                <span style="background:${SP_COLORS[sp.playerIdx]}22;border:1px solid ${SP_COLORS[sp.playerIdx]};color:${SP_COLORS[sp.playerIdx]};padding:5px 14px;border-radius:16px;font-family:'Orbitron';font-size:0.72rem;font-weight:700;text-transform:uppercase;">${SP_EMOJIS[sp.playerIdx]} ${SP_PLAYERS[sp.playerIdx]}'s turn</span>
+                <span style="font-family:'Orbitron';font-size:0.62rem;color:#555;">Q ${sp.qNum+1}/${sp.totalQs}</span>
+            </div>
+            <p style="font-size:0.78rem;color:#888;margin-bottom:0.6rem;">Tap the card to flip and reveal the Spanish!</p>
+            <div class="sp-flash-wrap" id="spFlashCard" onclick="spFlipCard()">
+                <div class="sp-flash-inner">
+                    <div class="sp-flash-front">
+                        <div class="sp-flash-word" style="color:#fff;">${word.en}</div>
+                        <div class="sp-flash-sub">Tap to flip → Spanish</div>
+                    </div>
+                    <div class="sp-flash-back">
+                        <div class="sp-flash-word" style="color:#ff007f;">${word.es}</div>
+                        <button class="sp-audio" onclick="event.stopPropagation();spSpeak('${word.es.replace(/'/g,"\\'")}')">🔊 Hear it</button>
+                    </div>
+                </div>
+            </div>
+            <div id="spClaimArea" style="display:none;margin-top:1rem;">
+                <p style="font-size:0.82rem;color:#aaa;margin-bottom:0.6rem;font-family:'Orbitron';font-size:0.65rem;letter-spacing:1px;text-transform:uppercase;">Who said it correctly first?</p>
+                <div class="sp-claim-grid">
+                    ${SP_PLAYERS.map((n,i)=>{
+                        const isOut = sp.mode==='survivor'&&sp.lives[n]<=0;
+                        return `<button class="sp-claim-btn" style="color:${SP_COLORS[i]};border-color:${SP_COLORS[i]};${isOut?'opacity:0.2;pointer-events:none;':''}" onclick="spFlashClaim(${i})">${SP_EMOJIS[i]} ${n}</button>`;
+                    }).join('')}
+                    <button class="sp-nobody-btn" onclick="spFlashNobody()">🤷 Nobody got it</button>
+                </div>
+            </div>
+        </div>`;
+    }
+
+    function spFlipCard(){
+        if(sp.flashFlipped) return;
+        sp.flashFlipped = true;
+        document.getElementById('spFlashCard').classList.add('sp-flipped');
+        setTimeout(()=>{
+            const area = document.getElementById('spClaimArea');
+            if(area) area.style.display='block';
+            sp.flashClaimOpen = true;
+        }, 600);
+    }
+
+    function spFlashClaim(playerIdx){
+        if(!sp.flashClaimOpen) return;
+        sp.flashClaimOpen = false;
+        const elapsed = Date.now()-sp._timeStart;
+        const name = SP_PLAYERS[playerIdx];
+        let pts = playerIdx===sp.playerIdx ? 10 : 5; // stealer gets 5
+        if(elapsed<4000) pts+=3;
+        sp.streaks[name]=(sp.streaks[name]||0)+1;
+        if(sp.streaks[name]>=3) pts+=5;
+        sp.roundScores[name]=(sp.roundScores[name]||0)+pts;
+        spTrackBadge(name, sp._currentWord.cat||sp.cat, pts, elapsed);
+        spShowResult(true, name, pts, elapsed);
+    }
+
+    function spFlashNobody(){
+        sp.flashClaimOpen = false;
+        if(sp.mode==='survivor'){ sp.lives[SP_PLAYERS[sp.playerIdx]]--; }
+        sp.streaks[SP_PLAYERS[sp.playerIdx]]=0;
+        spShowResult(false, SP_PLAYERS[sp.playerIdx], 0, 0);
+    }
+
+    // ---- STEAL ----
+    function spStartSteal(fromWrong){
+        sp.stealVal = 3;
+        sp.stealCorrect = sp._currentWord;
+        const el = document.getElementById('spGame');
+        el.innerHTML = `
+        <div class="sp-view sp-active">
+            <div class="sp-steal-box">
+                <div class="sp-steal-label">⚡ STEAL IT!</div>
+                <div class="sp-steal-countdown" id="spStealTimer">3</div>
+                <div class="sp-steal-answer">Correct answer: <strong style="color:#fff;">${sp.stealCorrect.es}</strong></div>
+            </div>
+            <p style="font-size:0.78rem;color:#888;margin:0.8rem 0;">Someone else buzz in for 5 points!</p>
+            <div class="sp-claim-grid">
+                ${SP_PLAYERS.map((n,i)=>{
+                    const isOriginal = i===sp.playerIdx;
+                    const isOut = sp.mode==='survivor'&&sp.lives[n]<=0;
+                    return `<button class="sp-claim-btn" style="color:${SP_COLORS[i]};border-color:${SP_COLORS[i]};${(isOriginal||isOut)?'opacity:0.25;pointer-events:none;':''}"
+                        onclick="spStealClaim(${i})">${SP_EMOJIS[i]} ${n}</button>`;
+                }).join('')}
+                <button class="sp-nobody-btn" onclick="spStealNobody()">🤷 Nobody steals</button>
+            </div>
+        </div>`;
+
+        sp.stealInt = setInterval(()=>{
+            sp.stealVal--;
+            const t = document.getElementById('spStealTimer');
+            if(t) t.textContent=sp.stealVal;
+            if(sp.stealVal<=0){ clearInterval(sp.stealInt); spStealNobody(); }
+        },1000);
+    }
+
+    function spStealClaim(playerIdx){
+        clearInterval(sp.stealInt);
+        const name = SP_PLAYERS[playerIdx];
+        const pts = 5;
+        sp.streaks[name]=(sp.streaks[name]||0)+1;
+        sp.roundScores[name]=(sp.roundScores[name]||0)+pts;
+        spTrackBadge(name, sp._currentWord.cat||sp.cat, pts, 9999);
+        spShowResult(true, name, pts, 9999, true);
+    }
+
+    function spStealNobody(){
+        clearInterval(sp.stealInt);
+        spShowResult(false, SP_PLAYERS[sp.playerIdx], 0, 0);
+    }
+
+    // ---- RESULT ----
+    function spShowResult(correct, name, pts, elapsed, steal=false){
+        spRender('result');
+        // Pass data via a trick
+        sp._result = {correct,name,pts,elapsed,steal};
+    }
+
+    function spRenderResult(el){
+        const {correct,name,pts,elapsed,steal} = sp._result;
+        const pIdx = SP_PLAYERS.indexOf(name);
+        const color = SP_COLORS[pIdx];
+        const streak = sp.streaks[name]||0;
+        const word = sp._currentWord;
+        const speedMsg = elapsed<3000&&correct?' ⚡ Speed bonus +5!':elapsed<5000&&correct?' ⚡ +3!':'';
+
+        el.innerHTML = `
+        <div class="sp-view sp-active">
+            <div class="sp-result-box ${correct?'sp-win':'sp-lose'}">
+                <div class="sp-result-icon">${correct?'✅':'❌'}</div>
+                <div class="sp-result-who" style="color:${color};">${SP_EMOJIS[pIdx]} ${name}${steal?' stole it!':correct?' got it!':' missed it'}</div>
+                ${correct?`<div class="sp-result-pts">+${pts} pts${speedMsg}</div>`:''}
+                ${streak>=3&&correct?`<div class="sp-result-streak">🔥 ${streak} in a row! Streak bonus +5!</div>`:''}
+                <div class="sp-result-ans">"${word.en}" → <strong>${word.es}</strong></div>
+                <button class="sp-audio" onclick="spSpeak('${word.es.replace(/'/g,"\\'")}')">🔊 ${word.es}</button>
+            </div>
+            <!-- Mini scores -->
+            <div class="sp-score-section">
+                ${spScoreRows(sp.roundScores)}
+            </div>
+            <button class="vice-btn" style="margin-top:1rem;padding:12px 30px;border-radius:50px;" onclick="spNextTurn()">
+                ${sp.qNum+1>=sp.totalQs?'See Final Results →':'Next →'}
+            </button>
+        </div>`;
+    }
+
+    function spScoreRows(scores){
+        const sorted = [...SP_PLAYERS].sort((a,b)=>(scores[b]||0)-(scores[a]||0));
+        const max = Math.max(...sorted.map(n=>scores[n]||0), 1);
+        const ranks = ['🥇','🥈','🥉','4️⃣','5️⃣','6️⃣'];
+        return sorted.map((n,ri)=>{
+            const i = SP_PLAYERS.indexOf(n);
+            const pts = scores[n]||0;
+            const pct = Math.round(pts/max*100);
+            const streak = sp.streaks[n]||0;
+            const lives = sp.mode==='survivor'?sp.lives[n]:null;
+            return `<div class="sp-score-row">
+                <span class="sp-sr-rank">${ranks[ri]}</span>
+                <span class="sp-sr-name" style="color:${SP_COLORS[i]};">${n}</span>
+                <div class="sp-sr-bar"><div class="sp-sr-fill" style="width:${pct}%;background:${SP_COLORS[i]};"></div></div>
+                <span class="sp-sr-streak">${streak>=2?'🔥'+streak:''}</span>
+                ${lives!==null?`<span class="sp-sr-lives">${'❤️'.repeat(Math.max(0,lives))}${'🖤'.repeat(Math.max(0,3-lives))}</span>`:''}
+                <span class="sp-sr-pts" style="color:${SP_COLORS[i]};">${pts}</span>
+            </div>`;
+        }).join('');
+    }
+
+    function spNextTurn(){
+        sp.qNum++;
+        if(sp.qNum>=sp.totalQs){ spRender('gameover'); return; }
+        // Check if all survivors are knocked out
+        if(sp.mode==='survivor'){
+            const alive = SP_PLAYERS.filter(n=>sp.lives[n]>0);
+            if(alive.length<=1){ spRender('gameover'); return; }
+        }
+        spRender('hotseat');
+    }
+
+    // ---- GAME OVER ----
+    function spRenderGameOver(el){
+        // Save scores
+        const ts = spGetTotalScores();
+        SP_PLAYERS.forEach(n=>{ ts[n]=(ts[n]||0)+(sp.roundScores[n]||0); });
+        spSaveTotalScores(ts);
+
+        // Award badges
+        spCheckBadges();
+        const badges = spGetBadges();
+
+        const sorted = [...SP_PLAYERS].sort((a,b)=>(sp.roundScores[b]||0)-(sp.roundScores[a]||0));
+        const winner = sorted[0];
+        const wIdx = SP_PLAYERS.indexOf(winner);
+        const max = Math.max(...sorted.map(n=>sp.roundScores[n]||0),1);
+
+        el.innerHTML = `
+        <div class="sp-view sp-active">
+            <!-- Champion -->
+            <div style="text-align:center;padding:1.5rem 0 1rem;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:1.2rem;">
+                <div style="font-size:3rem;">${SP_EMOJIS[wIdx]} 🏆</div>
+                <div style="font-family:'Orbitron';font-size:0.7rem;color:#ff007f;text-transform:uppercase;letter-spacing:3px;margin:0.4rem 0;">Round Champion</div>
+                <div style="font-family:'Orbitron';font-size:clamp(2rem,7vw,3.5rem);font-weight:700;color:${SP_COLORS[wIdx]};text-shadow:0 0 30px ${SP_COLORS[wIdx]};letter-spacing:3px;text-transform:uppercase;">${winner}</div>
+                <div style="font-size:1.2rem;color:#00ffff;font-weight:800;">${sp.roundScores[winner]} points</div>
+            </div>
+
+            <!-- Scores -->
+            <div class="sp-score-section">
+                ${sorted.map((n,ri)=>{
+                    const i=SP_PLAYERS.indexOf(n); const pts=sp.roundScores[n]||0;
+                    const pct=Math.round(pts/max*100);
+                    return `<div class="sp-score-row">
+                        <span class="sp-sr-rank">${['🥇','🥈','🥉','4️⃣','5️⃣','6️⃣'][ri]}</span>
+                        <span class="sp-sr-name" style="color:${SP_COLORS[i]};">${n}</span>
+                        <div class="sp-sr-bar"><div class="sp-sr-fill" style="width:${pct}%;background:${SP_COLORS[i]};"></div></div>
+                        <span class="sp-sr-pts" style="color:${SP_COLORS[i]};">${pts}</span>
+                        <span style="font-size:0.72rem;color:#aaa;">(all-time: ${ts[n]||0})</span>
+                    </div>`;
+                }).join('')}
+            </div>
+
+            <!-- Badges earned this session -->
+            <p style="font-family:'Orbitron';font-size:0.65rem;color:#ff007f;text-transform:uppercase;letter-spacing:2px;margin:1.2rem 0 0.5rem;">Badges</p>
+            <div class="sp-badge-row">
+                ${SP_BADGES.map(b=>`<div class="sp-badge ${badges[b.id]?'sp-earned':''}" title="${b.label}">
+                    <span class="sp-badge-ico">${b.icon}</span>
+                    <span class="sp-badge-lbl">${b.label}</span>
+                </div>`).join('')}
+            </div>
+
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:1.5rem;">
+                <button class="vice-btn" style="padding:12px 28px;border-radius:50px;" onclick="spStart()">🔄 Play Again</button>
+                <button class="vice-btn cyan" style="padding:12px 28px;border-radius:50px;" onclick="spRender('lobby')">⚙️ Change Mode</button>
+            </div>
+        </div>`;
+    }
+
+    // ---- BADGE TRACKING ----
+    function spTrackBadge(name, cat, pts, elapsed){
+        if(!sp.catCorrect[name]) sp.catCorrect[name]={};
+        sp.catCorrect[name][cat]=(sp.catCorrect[name][cat]||0)+1;
+        if(elapsed<5000) sp.speedBonus[name]=(sp.speedBonus[name]||0)+1;
+    }
+
+    function spCheckBadges(){
+        const badges = spGetBadges();
+        const ts = spGetTotalScores();
+        const totalCorrect = SP_PLAYERS.reduce((acc,n)=>acc+(Object.values(sp.catCorrect[n]||{}).reduce((a,b)=>a+b,0)),0);
+
+        SP_BADGES.forEach(b=>{
+            if(badges[b.id]) return; // already earned
+            if(b.cat!=='all'){
+                // Category badge: any player correct that cat >= need
+                const earned = SP_PLAYERS.some(n=>(sp.catCorrect[n]?.[b.cat]||0)>=b.need);
+                if(earned) badges[b.id]=true;
+            } else if(b.need>0){
+                // Total correct across all players
+                if(totalCorrect>=b.need) badges[b.id]=true;
+            } else if(b.streak){
+                if(Math.max(...SP_PLAYERS.map(n=>sp.streaks[n]||0))>=b.streak) badges[b.id]=true;
+            } else if(b.speed){
+                if(Math.max(...SP_PLAYERS.map(n=>sp.speedBonus[n]||0))>=b.speed) badges[b.id]=true;
+            }
+        });
+        spSaveBadges(badges);
+    }
+
+    function spResetScores(){
+        if(!confirm('Reset all-time scores and badges?')) return;
+        localStorage.removeItem('habloViceScores');
+        localStorage.removeItem('habloViceBadges');
+        spRender('lobby');
+    }
+
+    // ---- SPEECH SYNTHESIS ----
+    function spSpeak(text){
+        if(!('speechSynthesis' in window)) return;
+        window.speechSynthesis.cancel();
+        const utt = new SpeechSynthesisUtterance(text);
+        utt.lang = 'es-MX'; // Mexican Spanish (fits the trip!)
+        utt.rate = 0.85;
+        utt.pitch = 1;
+        window.speechSynthesis.speak(utt);
+    }
+
+    // ---- INIT on section show ----
+    const _origShowSection = showSection;
+    showSection = function(id){
+        _origShowSection(id);
+        if(id==='spanish' && document.getElementById('spGame').innerHTML==='') spRender('lobby');
+    };
+    // Initial render if already visible
+    if(document.getElementById('spanish')?.classList.contains('active')) spRender('lobby');
 
     </script>
 </body>
