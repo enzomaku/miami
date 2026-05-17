@@ -352,29 +352,58 @@
 
         /* ========== BRACKET ========== */
         .bracket-wrapper { overflow-x: auto; padding-bottom: 1rem; }
-        .bracket { display: flex; gap: 0; min-width: 900px; }
+        .bracket { display: flex; gap: 0; }
         .bracket-round { display: flex; flex-direction: column; flex: 1; min-width: 160px; }
         .bracket-round-title { font-family: 'Orbitron', sans-serif; font-size: 0.65rem; color: #ff007f; text-align: center; padding: 8px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(255,0,127,0.2); margin-bottom: 10px; }
         .bracket-slots { display: flex; flex-direction: column; flex: 1; justify-content: space-around; padding: 0 4px; }
         .bracket-matchup { display: flex; flex-direction: column; margin: 6px 0; border: 1px solid rgba(0,255,255,0.15); border-radius: 8px; overflow: hidden; background: rgba(0,0,0,0.75); }
+        .bracket-matchup .match-meta { font-size: 0.6rem; color: #555; padding: 4px 8px 0; font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; }
         .bracket-team { padding: 7px 10px; font-size: 0.75rem; cursor: pointer; transition: 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 6px; color: #00ffff; }
         .bracket-team:last-child { border-bottom: none; }
         .bracket-team:hover { background: rgba(0,255,255,0.12); }
         .bracket-team.winner { background: rgba(255,0,127,0.2); color: #ff007f; font-weight: 700; }
-        .bracket-team.winner::before { content: '★'; font-size: 0.65rem; }
-        .bracket-team input { background: transparent; border: none; color: inherit; font-size: 0.75rem; font-family: 'Poppins', sans-serif; width: 100%; outline: none; }
-        .bracket-team input::placeholder { color: #ff007f; }
+        .bracket-team.winner::before { content: '★ '; font-size: 0.65rem; }
+        .bracket-team.tbd { color: #444; cursor: default; }
         .bracket-champion { text-align: center; padding: 16px; margin: 10px; border: 2px solid #ff007f; border-radius: 12px; background: rgba(255,0,127,0.1); box-shadow: 0 0 20px rgba(255,0,127,0.3); }
         .bracket-champion .champ-label { font-family: 'Orbitron', sans-serif; font-size: 0.65rem; color: #ff007f; }
         .bracket-champion .champ-name { font-size: 1.4rem; font-weight: 800; color: #00ffff; text-shadow: 0 0 10px #00ffff; min-height: 2rem; }
-        .bracket-controls { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; align-items: center; }
-        .bracket-person-select { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+        .bracket-controls { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.2rem; align-items: center; }
         .person-tab { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); color: #ccc; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.78rem; font-family: 'Orbitron', sans-serif; transition: 0.2s; }
         .person-tab.active { background: #ff007f; border-color: #ff007f; color: #fff; }
         .leaderboard-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; font-size: 0.85rem; max-width: 600px; margin: 1.5rem auto 0; }
         .leaderboard-table th { color: #ff007f; font-family: 'Orbitron', sans-serif; font-size: 0.7rem; padding: 8px; border-bottom: 1px solid #444; }
         .leaderboard-table td { padding: 10px 8px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #00ffff; }
         .leaderboard-table tr:first-child td { color: #ff007f; font-weight: 700; }
+
+        /* Group stage grid */
+        .group-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+        .group-card { background: rgba(0,0,0,0.75); border: 1px solid rgba(0,255,255,0.2); border-radius: 12px; overflow: hidden; }
+        .group-card-header { background: rgba(0,255,255,0.08); padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,255,255,0.15); }
+        .group-card-header .g-label { font-family: 'Orbitron', sans-serif; font-size: 0.7rem; color: #ff007f; text-transform: uppercase; letter-spacing: 1px; }
+        .group-card-header .g-teams { font-size: 0.65rem; color: #ff007f; }
+        .group-match { border-bottom: 1px solid rgba(255,255,255,0.04); padding: 2px 0; }
+        .group-match:last-child { border-bottom: none; }
+        .group-match .gm-date { font-size: 0.6rem; color: #ff007f; padding: 4px 10px 0; font-family: 'Orbitron', sans-serif; }
+        .gm-teams { display: flex; }
+        .gm-team { flex: 1; padding: 6px 10px; font-size: 0.78rem; color: #00ffff; cursor: pointer; transition: 0.2s; text-align: center; }
+        .gm-team:hover { background: rgba(0,255,255,0.1); }
+        .gm-team.winner { background: rgba(255,0,127,0.18); color: #ff007f; font-weight: 700; }
+        .gm-team.winner::after { content: ' ★'; font-size: 0.6rem; }
+        .gm-vs { display: flex; align-items: center; padding: 0 4px; font-size: 0.6rem; color: #ff007f; font-family: 'Orbitron', sans-serif; flex-shrink: 0; }
+
+        /* Knockout bracket horizontal flow */
+        .ko-bracket { display: flex; gap: 0; overflow-x: auto; padding-bottom: 1rem; }
+        .ko-round { display: flex; flex-direction: column; min-width: 185px; flex: 1; }
+        .ko-round-title { font-family: 'Orbitron', sans-serif; font-size: 0.62rem; color: #ff007f; text-align: center; padding: 8px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(255,0,127,0.2); margin-bottom: 6px; }
+        .ko-slots { display: flex; flex-direction: column; flex: 1; justify-content: space-around; gap: 6px; padding: 0 4px; }
+        .ko-match { background: rgba(0,0,0,0.75); border: 1px solid rgba(0,255,255,0.15); border-radius: 8px; overflow: hidden; }
+        .ko-match .km-meta { font-size: 0.58rem; color: #ff007f; padding: 3px 8px; font-family: 'Orbitron', sans-serif; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .ko-team { padding: 7px 10px; font-size: 0.74rem; cursor: pointer; transition: 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; color: #ff007f; }
+        .ko-team:last-child { border-bottom: none; }
+        .ko-team:hover:not(.ko-tbd) { background: rgba(255,0,127,0.1); }
+        .ko-team.ko-winner { background: rgba(255,0,127,0.2); color: #ff007f; font-weight: 700; }
+        .ko-team.ko-winner::before { content: '★ '; font-size: 0.6rem; }
+        .ko-team.ko-tbd { color: #ff007f; cursor: default; font-style: italic; opacity: 0.5; }
 
         /* ========== VIBES (SYNTH + PLAYLIST) ========== */
         .synth-panel { background: rgba(0,0,0,0.7); border: 2px solid #00ffff; border-radius: 20px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 0 40px rgba(0,255,255,0.1); }
@@ -689,6 +718,7 @@
                     <h2 class="vice-text" style="color: #ff007f; margin-bottom: 1.5rem;">🌴 Phase 3: Miami Main Event</h2>
                     <div class="day-block"><h3>WED JULY 1: TOUCHDOWN MIAMI</h3><ul><li><strong>Morning:</strong> Breakfast with Gladys. Leave for SoBe 11am.</li><li><strong>Afternoon:</strong> 3pm Check-in. Grocery & Supplies run.</li><li><strong>Night:</strong> Brickell Dinner / Clevelander Drinks</li></ul></div>
                     <div class="day-block"><h3>THU JULY 2: DESIGN & ARTS</h3><ul><li><strong>Day:</strong> Wynwood Art / Superblue Immersive</li><li><strong>Night:</strong> Blackbird / Las Olas Strip</li></ul></div>
+                    <div class="day-block"><h3>FRI JULY 3: BEACH & CLUBS</h3><ul><li><strong>Day:</strong> Ft Lauderdale / Hollwood Beach / Pompano Beach</li><li><strong>Night:</strong> Las Olas Strip</li></ul></div>
                     <div class="day-block" style="border-color:#00ffff; background:rgba(0,255,255,0.1); padding:15px;"><h3>SAT JULY 4: INDEPENDENCE DAY 🇺🇸</h3><ul><li><strong>Afternoon:</strong> ⚪ <strong>ALL WHITE BOAT PARTY</strong></li><li><strong>Evening:</strong> South Beach Fireworks</li></ul></div>
                 </div>
                 <div class="itinerary-phase" style="border-color: #ff007f;">
@@ -1053,10 +1083,10 @@
         </section>
 
         <!-- ==================== WORLD CUP BRACKET ==================== -->
-        <section id="bracket" class="glass-card" style="max-width:1200px;">
+        <section id="bracket" class="glass-card" style="max-width:1400px;">
             <div class="section-header">
                 <h2 class="vice-text" style="color:#ff007f;">🔮 BRACKET PREDICTOR</h2>
-                <p>WHO'S LIFTING THE TROPHY? PICK YOUR WINNERS</p>
+                <p>ALL 104 MATCHES · CLICK A TEAM TO ADVANCE THEM</p>
             </div>
             <div class="bracket-controls">
                 <select class="vice-input" id="bracketPerson" onchange="loadBracket()">
@@ -1065,22 +1095,71 @@
                     <option value="Person 3">Linda</option>
                     <option value="Person 4">Tiago</option>
                     <option value="Person 5">Michael</option>
-					<option value="Person 6">Itai</option>
+                    <option value="Person 6">Itai</option>
                 </select>
                 <button class="vice-btn cyan" onclick="saveBracket()">💾 Save Bracket</button>
                 <button class="vice-btn" onclick="resetBracket()">↺ Reset</button>
             </div>
-            <p style="font-size:0.78rem; color:#aaa; margin-bottom:1rem;">Click a team to advance them. Edit names in R16 fields. Save brackets per person.</p>
-            <div class="bracket-wrapper">
-                <div class="bracket" id="bracketEl">
-                    <!-- Rendered by JS -->
+
+            <!-- Stage tabs -->
+            <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:1.2rem;">
+                <button class="person-tab active" onclick="showBracketStage('group', this)">⚽ Group Stage</button>
+                <button class="person-tab" onclick="showBracketStage('r32', this)">R32</button>
+                <button class="person-tab" onclick="showBracketStage('r16', this)">R16</button>
+                <button class="person-tab" onclick="showBracketStage('qf', this)">Quarter-Finals</button>
+                <button class="person-tab" onclick="showBracketStage('sf', this)">Semi-Finals</button>
+                <button class="person-tab" onclick="showBracketStage('final', this)">🏆 Final</button>
+            </div>
+
+            <p style="font-size:0.78rem; color:#ff007f; margin-bottom:1rem;">
+                Click a team name to mark them as the winner and advance them to the next round. Progress saves per person.
+            </p>
+
+            <!-- GROUP STAGE -->
+            <div id="stage-group" class="bracket-stage">
+                <div id="groupStageEl"></div>
+            </div>
+
+            <!-- R32 -->
+            <div id="stage-r32" class="bracket-stage" style="display:none;">
+                <div class="bracket-wrapper">
+                    <div id="r32El"></div>
                 </div>
             </div>
-            <div style="margin-top:1rem; text-align:center;">
+
+            <!-- R16 -->
+            <div id="stage-r16" class="bracket-stage" style="display:none;">
+                <div class="bracket-wrapper">
+                    <div id="r16El"></div>
+                </div>
+            </div>
+
+            <!-- QF -->
+            <div id="stage-qf" class="bracket-stage" style="display:none;">
+                <div class="bracket-wrapper">
+                    <div id="qfEl"></div>
+                </div>
+            </div>
+
+            <!-- SF -->
+            <div id="stage-sf" class="bracket-stage" style="display:none;">
+                <div class="bracket-wrapper">
+                    <div id="sfEl"></div>
+                </div>
+            </div>
+
+            <!-- FINAL -->
+            <div id="stage-final" class="bracket-stage" style="display:none;">
+                <div class="bracket-wrapper">
+                    <div id="finalEl"></div>
+                </div>
+            </div>
+
+            <div style="margin-top:1.5rem; text-align:center;">
                 <button class="vice-btn" onclick="toggleLeaderboard()" style="background:rgba(0,0,0,0.5); border:1px solid #ff007f; color:#ff007f;">📊 View Group Leaderboard</button>
             </div>
             <div id="leaderboardSection" style="display:none; margin-top:1.5rem; background:rgba(0,0,0,0.75); border:1px solid rgba(0,255,255,0.2); border-radius:12px; padding:1.2rem;">
-                <h3 style="font-family:'Orbitron'; color:#00ffff; font-size:0.9rem; margin-bottom:1rem; text-transform:uppercase;">Group Predictions — All Brackets</h3>
+                <h3 style="font-family:'Orbitron'; color:#00ffff; font-size:0.9rem; margin-bottom:1rem; text-transform:uppercase;">Champion Predictions — All Brackets</h3>
                 <div id="leaderboardContent"></div>
             </div>
         </section>
@@ -1466,137 +1545,396 @@
     renderVotes('all');
 
     // ============================================================
-    // WORLD CUP BRACKET
+    // WORLD CUP BRACKET — Full 104 Match Edition
     // ============================================================
-    const BRACKET_ROUNDS = ['Round of 16','Quarter-Finals','Semi-Finals','Final'];
-    const BRACKET_SIZES  = [16, 8, 4, 2];
-    let bracketData = {};
 
-    function getBracketKey(person) { return 'bracket_' + person; }
+    // ---- DATA ----
+    const WC_GROUPS = {
+        A: { teams: ['Mexico','South Africa','South Korea','Czechia'], matches: [
+            {n:1, date:'Jun 11', t1:'Mexico', t2:'South Africa'},
+            {n:2, date:'Jun 11', t1:'South Korea', t2:'Czechia'},
+            {n:28,date:'Jun 18', t1:'Mexico', t2:'South Korea'},
+            {n:25,date:'Jun 18', t1:'Czechia', t2:'South Africa'},
+            {n:53,date:'Jun 24', t1:'Czechia', t2:'Mexico'},
+            {n:54,date:'Jun 24', t1:'South Africa', t2:'South Korea'},
+        ]},
+        B: { teams: ['Canada','Switzerland','Qatar','Bosnia & Herz.'], matches: [
+            {n:3, date:'Jun 12', t1:'Canada', t2:'Bosnia & Herz.'},
+            {n:8, date:'Jun 13', t1:'Qatar', t2:'Switzerland'},
+            {n:27,date:'Jun 18', t1:'Canada', t2:'Qatar'},
+            {n:26,date:'Jun 18', t1:'Switzerland', t2:'Bosnia & Herz.'},
+            {n:51,date:'Jun 24', t1:'Switzerland', t2:'Canada'},
+            {n:52,date:'Jun 24', t1:'Bosnia & Herz.', t2:'Qatar'},
+        ]},
+        C: { teams: ['Brazil','Morocco','Haiti','Scotland'], matches: [
+            {n:7, date:'Jun 13', t1:'Brazil', t2:'Morocco'},
+            {n:5, date:'Jun 13', t1:'Haiti', t2:'Scotland'},
+            {n:30,date:'Jun 19', t1:'Scotland', t2:'Morocco'},
+            {n:29,date:'Jun 19', t1:'Brazil', t2:'Haiti'},
+            {n:49,date:'Jun 24', t1:'Scotland', t2:'Brazil'},
+            {n:50,date:'Jun 24', t1:'Morocco', t2:'Haiti'},
+        ]},
+        D: { teams: ['USA','Paraguay','Australia','Türkiye'], matches: [
+            {n:4, date:'Jun 12', t1:'USA', t2:'Paraguay'},
+            {n:6, date:'Jun 13', t1:'Australia', t2:'Türkiye'},
+            {n:32,date:'Jun 19', t1:'USA', t2:'Australia'},
+            {n:31,date:'Jun 19', t1:'Türkiye', t2:'Paraguay'},
+            {n:59,date:'Jun 25', t1:'Türkiye', t2:'USA'},
+            {n:60,date:'Jun 25', t1:'Paraguay', t2:'Australia'},
+        ]},
+        E: { teams: ['Germany','Curaçao','Ivory Coast','Ecuador'], matches: [
+            {n:10,date:'Jun 14', t1:'Germany', t2:'Curaçao'},
+            {n:9, date:'Jun 14', t1:'Ivory Coast', t2:'Ecuador'},
+            {n:33,date:'Jun 20', t1:'Germany', t2:'Ivory Coast'},
+            {n:34,date:'Jun 20', t1:'Ecuador', t2:'Curaçao'},
+            {n:56,date:'Jun 25', t1:'Ecuador', t2:'Germany'},
+            {n:55,date:'Jun 25', t1:'Curaçao', t2:'Ivory Coast'},
+        ]},
+        F: { teams: ['Netherlands','Japan','Tunisia','Sweden'], matches: [
+            {n:11,date:'Jun 14', t1:'Netherlands', t2:'Japan'},
+            {n:12,date:'Jun 14', t1:'Sweden', t2:'Tunisia'},
+            {n:35,date:'Jun 20', t1:'Netherlands', t2:'Sweden'},
+            {n:36,date:'Jun 20', t1:'Tunisia', t2:'Japan'},
+            {n:57,date:'Jun 25', t1:'Japan', t2:'Sweden'},
+            {n:58,date:'Jun 25', t1:'Tunisia', t2:'Netherlands'},
+        ]},
+        G: { teams: ['Belgium','Egypt','Iran','New Zealand'], matches: [
+            {n:16,date:'Jun 15', t1:'Belgium', t2:'Egypt'},
+            {n:15,date:'Jun 15', t1:'Iran', t2:'New Zealand'},
+            {n:39,date:'Jun 21', t1:'Belgium', t2:'Iran'},
+            {n:40,date:'Jun 21', t1:'New Zealand', t2:'Egypt'},
+            {n:63,date:'Jun 26', t1:'Egypt', t2:'Iran'},
+            {n:64,date:'Jun 26', t1:'New Zealand', t2:'Belgium'},
+        ]},
+        H: { teams: ['Spain','Cabo Verde','Saudi Arabia','Uruguay'], matches: [
+            {n:14,date:'Jun 15', t1:'Spain', t2:'Cabo Verde'},
+            {n:13,date:'Jun 15', t1:'Saudi Arabia', t2:'Uruguay'},
+            {n:38,date:'Jun 21', t1:'Spain', t2:'Saudi Arabia'},
+            {n:37,date:'Jun 21', t1:'Uruguay', t2:'Cabo Verde'},
+            {n:66,date:'Jun 26', t1:'Uruguay', t2:'Spain'},
+            {n:65,date:'Jun 26', t1:'Cabo Verde', t2:'Saudi Arabia'},
+        ]},
+        I: { teams: ['France','Senegal','Norway','Iraq'], matches: [
+            {n:17,date:'Jun 16', t1:'France', t2:'Senegal'},
+            {n:18,date:'Jun 16', t1:'Iraq', t2:'Norway'},
+            {n:42,date:'Jun 22', t1:'France', t2:'Iraq'},
+            {n:41,date:'Jun 22', t1:'Norway', t2:'Senegal'},
+            {n:61,date:'Jun 26', t1:'Norway', t2:'France'},
+            {n:62,date:'Jun 26', t1:'Senegal', t2:'Iraq'},
+        ]},
+        J: { teams: ['Argentina','Algeria','Austria','Jordan'], matches: [
+            {n:19,date:'Jun 16', t1:'Argentina', t2:'Algeria'},
+            {n:20,date:'Jun 16', t1:'Austria', t2:'Jordan'},
+            {n:43,date:'Jun 22', t1:'Argentina', t2:'Austria'},
+            {n:44,date:'Jun 22', t1:'Jordan', t2:'Algeria'},
+            {n:70,date:'Jun 27', t1:'Jordan', t2:'Argentina'},
+            {n:69,date:'Jun 27', t1:'Algeria', t2:'Austria'},
+        ]},
+        K: { teams: ['Portugal','Uzbekistan','Colombia','Congo DR'], matches: [
+            {n:23,date:'Jun 17', t1:'Portugal', t2:'Congo DR'},
+            {n:24,date:'Jun 17', t1:'Uzbekistan', t2:'Colombia'},
+            {n:47,date:'Jun 23', t1:'Portugal', t2:'Uzbekistan'},
+            {n:48,date:'Jun 23', t1:'Colombia', t2:'Congo DR'},
+            {n:71,date:'Jun 27', t1:'Colombia', t2:'Portugal'},
+            {n:72,date:'Jun 27', t1:'Congo DR', t2:'Uzbekistan'},
+        ]},
+        L: { teams: ['England','Croatia','Ghana','Panama'], matches: [
+            {n:22,date:'Jun 17', t1:'England', t2:'Croatia'},
+            {n:21,date:'Jun 17', t1:'Ghana', t2:'Panama'},
+            {n:45,date:'Jun 23', t1:'England', t2:'Ghana'},
+            {n:46,date:'Jun 23', t1:'Panama', t2:'Croatia'},
+            {n:67,date:'Jun 27', t1:'Panama', t2:'England'},
+            {n:68,date:'Jun 27', t1:'Croatia', t2:'Ghana'},
+        ]},
+    };
+
+    // R32 matches (matches 73–88) — city info for display
+    const R32_MATCHES = [
+        {n:73, label:'A2 vs B2', city:'Los Angeles'},
+        {n:74, label:'E1 vs Best-3rd', city:'Boston'},
+        {n:75, label:'F1 vs C2', city:'Monterrey'},
+        {n:76, label:'C1 vs F2', city:'Houston'},
+        {n:77, label:'I1 vs Best-3rd', city:'New York/NJ'},
+        {n:78, label:'E2 vs I2', city:'Dallas'},
+        {n:79, label:'A1 vs Best-3rd', city:'Mexico City'},
+        {n:80, label:'L1 vs Best-3rd', city:'Atlanta'},
+        {n:81, label:'D1 vs Best-3rd', city:'San Francisco'},
+        {n:82, label:'G1 vs Best-3rd', city:'Seattle'},
+        {n:83, label:'K2 vs L2', city:'Toronto'},
+        {n:84, label:'H1 vs J2', city:'Los Angeles'},
+        {n:85, label:'B1 vs Best-3rd', city:'Vancouver'},
+        {n:86, label:'J1 vs H2', city:'Miami'},
+        {n:87, label:'K1 vs Best-3rd', city:'Kansas City'},
+        {n:88, label:'D2 vs G2', city:'Dallas'},
+    ];
+
+    const R16_MATCHES = [
+        {n:89, label:'M74 vs M77', city:'Philadelphia'},
+        {n:90, label:'M73 vs M75', city:'Houston'},
+        {n:91, label:'M76 vs M78', city:'New York/NJ'},
+        {n:92, label:'M79 vs M80', city:'Mexico City'},
+        {n:93, label:'M83 vs M84', city:'Dallas'},
+        {n:94, label:'M81 vs M82', city:'Seattle'},
+        {n:95, label:'M86 vs M88', city:'Atlanta'},
+        {n:96, label:'M85 vs M87', city:'Vancouver'},
+    ];
+
+    const QF_MATCHES = [
+        {n:97, label:'M89 vs M90', city:'Boston', date:'Jul 9'},
+        {n:98, label:'M93 vs M94', city:'Los Angeles', date:'Jul 10'},
+        {n:99, label:'M91 vs M92', city:'Miami', date:'Jul 11'},
+        {n:100,label:'M95 vs M96', city:'Kansas City', date:'Jul 11'},
+    ];
+
+    const SF_MATCHES = [
+        {n:101, label:'M97 vs M98', city:'Dallas', date:'Jul 14'},
+        {n:102, label:'M99 vs M100', city:'Atlanta', date:'Jul 15'},
+    ];
+
+    // ---- STATE ----
+    let bd = {}; // bracket data — per person, per match number: {t1, t2, winner} winner = 't1'|'t2'|null
+
+    function getBK() { return 'bracketv2_' + document.getElementById('bracketPerson').value; }
 
     function loadBracket() {
-        const person = document.getElementById('bracketPerson').value;
-        const saved = JSON.parse(localStorage.getItem(getBracketKey(person)) || 'null');
-        if(saved) bracketData = saved;
-        else {
-            bracketData = {};
-            for(let r=0;r<4;r++) {
-                bracketData[r] = [];
-                for(let m=0;m<BRACKET_SIZES[r]/2;m++) {
-                    bracketData[r][m] = { teams: [r===0?'':null, r===0?'':null], winner: null };
-                }
-            }
-        }
-        renderBracket();
-    }
-
-    function renderBracket() {
-        const el = document.getElementById('bracketEl');
-        el.innerHTML = '';
-        for(let r=0; r<4; r++) {
-            const col = document.createElement('div');
-            col.className = 'bracket-round';
-            col.innerHTML = `<div class="bracket-round-title">${BRACKET_ROUNDS[r]}</div>`;
-            const slots = document.createElement('div');
-            slots.className = 'bracket-slots';
-            const matchCount = BRACKET_SIZES[r] / 2;
-            for(let m=0; m<matchCount; m++) {
-                const match = bracketData[r]?.[m] || {teams:[null,null],winner:null};
-                const mu = document.createElement('div');
-                mu.className = 'bracket-matchup';
-                [0,1].forEach(ti => {
-                    const teamEl = document.createElement('div');
-                    teamEl.className = 'bracket-team' + (match.winner === ti ? ' winner' : '');
-                    if(r === 0) {
-                        const inp = document.createElement('input');
-                        inp.type = 'text';
-                        inp.placeholder = 'Team ' + (m*2+ti+1);
-                        inp.value = match.teams[ti] || '';
-                        inp.oninput = (e) => {
-                            if(!bracketData[r]) bracketData[r] = [];
-                            if(!bracketData[r][m]) bracketData[r][m] = {teams:[null,null],winner:null};
-                            bracketData[r][m].teams[ti] = e.target.value;
-                        };
-                        teamEl.appendChild(inp);
-                    } else {
-                        teamEl.innerText = match.teams[ti] || '—';
-                    }
-                    teamEl.onclick = () => advanceTeam(r, m, ti);
-                    mu.appendChild(teamEl);
-                });
-                slots.appendChild(mu);
-            }
-            col.appendChild(slots);
-            el.appendChild(col);
-        }
-        // Champion display
-        const champCol = document.createElement('div');
-        champCol.className = 'bracket-round';
-        champCol.innerHTML = `<div class="bracket-round-title">🏆 Champion</div>`;
-        const champSlots = document.createElement('div');
-        champSlots.className = 'bracket-slots';
-        const final = bracketData[3]?.[0];
-        const champ = final?.winner !== null && final?.winner !== undefined ? (final.teams[final.winner] || '?') : '?';
-        champSlots.innerHTML = `<div class="bracket-champion"><div class="champ-label">World Cup Winner</div><div class="champ-name">${champ !== '?' ? champ : '—'}</div></div>`;
-        champCol.appendChild(champSlots);
-        el.appendChild(champCol);
-    }
-
-    function advanceTeam(round, matchIdx, teamIdx) {
-        if(!bracketData[round]) return;
-        if(!bracketData[round][matchIdx]) return;
-        const match = bracketData[round][matchIdx];
-        // Get team name
-        let teamName = match.teams[teamIdx];
-        if(round === 0) {
-            // Read from input fields
-            const inputs = document.querySelectorAll('.bracket-round:nth-child(1) .bracket-matchup')[matchIdx]?.querySelectorAll('input');
-            if(inputs) teamName = inputs[teamIdx]?.value || teamName;
-        }
-        if(!teamName) return;
-        match.winner = teamIdx;
-        // Advance to next round
-        if(round < 3) {
-            if(!bracketData[round+1]) bracketData[round+1] = [];
-            const nextMatch = Math.floor(matchIdx / 2);
-            const nextSlot  = matchIdx % 2;
-            if(!bracketData[round+1][nextMatch]) bracketData[round+1][nextMatch] = {teams:[null,null],winner:null};
-            bracketData[round+1][nextMatch].teams[nextSlot] = teamName;
-        }
-        renderBracket();
+        const saved = JSON.parse(localStorage.getItem(getBK()) || 'null');
+        bd = saved || {};
+        renderAllBracket();
     }
 
     function saveBracket() {
-        const person = document.getElementById('bracketPerson').value;
-        // Also capture R16 input values
-        document.querySelectorAll('.bracket-round:first-child .bracket-matchup').forEach((mu, mi) => {
-            const inputs = mu.querySelectorAll('input');
-            if(!bracketData[0][mi]) bracketData[0][mi] = {teams:[null,null],winner:null};
-            if(inputs[0]) bracketData[0][mi].teams[0] = inputs[0].value;
-            if(inputs[1]) bracketData[0][mi].teams[1] = inputs[1].value;
-        });
-        localStorage.setItem(getBracketKey(person), JSON.stringify(bracketData));
+        localStorage.setItem(getBK(), JSON.stringify(bd));
         const btn = document.querySelector('.bracket-controls .vice-btn.cyan');
-        const orig = btn.innerText;
-        btn.innerText = '✅ Saved!';
+        const orig = btn.innerText; btn.innerText = '✅ Saved!';
         setTimeout(() => btn.innerText = orig, 1500);
     }
 
     function resetBracket() {
-        if(!confirm('Reset this bracket?')) return;
-        bracketData = {};
-        for(let r=0;r<4;r++) {
-            bracketData[r] = [];
-            for(let m=0;m<BRACKET_SIZES[r]/2;m++) {
-                bracketData[r][m] = {teams:[r===0?'':null, r===0?'':null], winner:null};
-            }
-        }
-        renderBracket();
+        if (!confirm('Reset this bracket?')) return;
+        bd = {};
+        renderAllBracket();
     }
 
+    function getMatchWinner(matchNum) {
+        const m = bd[matchNum];
+        if (!m || m.winner === null || m.winner === undefined) return null;
+        return m.winner === 't1' ? m.t1 : m.t2;
+    }
+
+    function pickWinner(matchNum, side, t1, t2) {
+        bd[matchNum] = { t1, t2, winner: side };
+        // cascade winners into knockout rounds
+        cascadeKnockout();
+        renderAllBracket();
+    }
+
+    // After group stage picks are made, build R32 teams from group results
+    // For group stage: track wins per group
+    function getGroupWinners(g) {
+        const grp = WC_GROUPS[g];
+        // Only resolve if all 6 group matches have been picked
+        const allPicked = grp.matches.every(m => bd[m.n] && bd[m.n].winner);
+        if (!allPicked) return [null, null, null, null];
+        const pts = {};
+        grp.teams.forEach(t => { pts[t] = 0; });
+        grp.matches.forEach(m => {
+            const res = bd[m.n];
+            if (res.winner === 't1') pts[m.t1] = (pts[m.t1]||0) + 3;
+            else if (res.winner === 't2') pts[m.t2] = (pts[m.t2]||0) + 3;
+        });
+        const sorted = [...grp.teams].sort((a,b) => (pts[b]||0) - (pts[a]||0));
+        return sorted;
+    }
+
+    function cascadeKnockout() {
+        // Populate R32 teams from group winners
+        const gw = {};
+        'ABCDEFGHIJKL'.split('').forEach(g => { gw[g] = getGroupWinners(g); });
+
+        // R32 team assignments based on bracket structure
+        // Match 73: A2 vs B2
+        setKOTeams(73, gw.A[1], gw.B[1]);
+        setKOTeams(74, gw.E[0], null);
+        setKOTeams(75, gw.F[0], gw.C[1]);
+        setKOTeams(76, gw.C[0], gw.F[1]);
+        setKOTeams(77, gw.I[0], null);
+        setKOTeams(78, gw.E[1], gw.I[1]);
+        setKOTeams(79, gw.A[0], null);
+        setKOTeams(80, gw.L[0], null);
+        setKOTeams(81, gw.D[0], null);
+        setKOTeams(82, gw.G[0], null);
+        setKOTeams(83, gw.K[1], gw.L[1]);
+        setKOTeams(84, gw.H[0], gw.J[1]);
+        setKOTeams(85, gw.B[0], null);
+        setKOTeams(86, gw.J[0], gw.H[1]);
+        setKOTeams(87, gw.K[0], null);
+        setKOTeams(88, gw.D[1], gw.G[1]);
+
+        // R16 from R32 winners
+        setKOTeams(89, getMatchWinner(74), getMatchWinner(77));
+        setKOTeams(90, getMatchWinner(73), getMatchWinner(75));
+        setKOTeams(91, getMatchWinner(76), getMatchWinner(78));
+        setKOTeams(92, getMatchWinner(79), getMatchWinner(80));
+        setKOTeams(93, getMatchWinner(83), getMatchWinner(84));
+        setKOTeams(94, getMatchWinner(81), getMatchWinner(82));
+        setKOTeams(95, getMatchWinner(86), getMatchWinner(88));
+        setKOTeams(96, getMatchWinner(85), getMatchWinner(87));
+
+        // QF from R16 winners
+        setKOTeams(97, getMatchWinner(89), getMatchWinner(90));
+        setKOTeams(98, getMatchWinner(93), getMatchWinner(94));
+        setKOTeams(99, getMatchWinner(91), getMatchWinner(92));
+        setKOTeams(100, getMatchWinner(95), getMatchWinner(96));
+
+        // SF from QF winners
+        setKOTeams(101, getMatchWinner(97), getMatchWinner(98));
+        setKOTeams(102, getMatchWinner(99), getMatchWinner(100));
+
+        // Final
+        setKOTeams(104, getMatchWinner(101), getMatchWinner(102));
+        // 3rd place
+        setKOTeams(103, getLoser(101), getLoser(102));
+    }
+
+    function setKOTeams(matchNum, t1, t2) {
+        if (!bd[matchNum]) bd[matchNum] = { t1: null, t2: null, winner: null };
+        // Update teams; reset winner if teams changed
+        const prev = bd[matchNum];
+        if (prev.t1 !== t1 || prev.t2 !== t2) {
+            bd[matchNum] = { t1: t1 || null, t2: t2 || null, winner: null };
+        }
+    }
+
+    function getLoser(matchNum) {
+        const m = bd[matchNum];
+        if (!m || !m.winner) return null;
+        return m.winner === 't1' ? m.t2 : m.t1;
+    }
+
+    // ---- RENDER ----
+    function renderAllBracket() {
+        renderGroupStage();
+        renderKOStage('r32El', R32_MATCHES);
+        renderKOStage('r16El', R16_MATCHES);
+        renderKOStage('qfEl', QF_MATCHES);
+        renderKOStage('sfEl', SF_MATCHES);
+        renderFinalStage();
+    }
+
+    function renderGroupStage() {
+        const el = document.getElementById('groupStageEl');
+        el.innerHTML = '<div class="group-grid">' +
+            Object.entries(WC_GROUPS).map(([g, data]) => `
+            <div class="group-card">
+                <div class="group-card-header">
+                    <span class="g-label">Group ${g}</span>
+                    <span class="g-teams">${data.teams.join(' · ')}</span>
+                </div>
+                ${data.matches.map(m => {
+                    const res = bd[m.n] || {};
+                    const w = res.winner;
+                    return `<div class="group-match">
+                        <div class="gm-date">Match ${m.n} · ${m.date}</div>
+                        <div class="gm-teams">
+                            <div class="gm-team ${w==='t1'?'winner':''}" onclick="pickWinner(${m.n},'t1','${m.t1}','${m.t2}')">${m.t1}</div>
+                            <div class="gm-vs">VS</div>
+                            <div class="gm-team ${w==='t2'?'winner':''}" onclick="pickWinner(${m.n},'t2','${m.t1}','${m.t2}')">${m.t2}</div>
+                        </div>
+                    </div>`;
+                }).join('')}
+            </div>`).join('') + '</div>';
+    }
+
+    function renderKOStage(elId, matches) {
+        const el = document.getElementById(elId);
+        if (!el) return;
+        cascadeKnockout();
+        el.innerHTML = '<div class="ko-bracket"><div class="ko-round">' +
+            '<div class="ko-round-title">' + getStageTitle(elId) + '</div>' +
+            '<div class="ko-slots">' +
+            matches.map(m => {
+                const data = bd[m.n] || { t1: null, t2: null, winner: null };
+                const t1 = data.t1 || (m.label ? m.label.split(' vs ')[0] : '—');
+                const t2 = data.t2 || (m.label ? m.label.split(' vs ')[1] : '—');
+                const w = data.winner;
+                const isTBD1 = !data.t1;
+                const isTBD2 = !data.t2;
+                return `<div class="ko-match">
+                    <div class="km-meta">Match ${m.n} · ${m.city}${m.date?' · '+m.date:''}</div>
+                    <div class="ko-team ${w==='t1'?'ko-winner':''} ${isTBD1?'ko-tbd':''}"
+                         onclick="${!isTBD1?`pickWinner(${m.n},'t1','${escTeam(data.t1)}','${escTeam(data.t2)}')`:''}">${t1}</div>
+                    <div class="ko-team ${w==='t2'?'ko-winner':''} ${isTBD2?'ko-tbd':''}"
+                         onclick="${!isTBD2?`pickWinner(${m.n},'t2','${escTeam(data.t1)}','${escTeam(data.t2)}')`:''}">${t2}</div>
+                </div>`;
+            }).join('') +
+            '</div></div></div>';
+    }
+
+    function getStageTitle(elId) {
+        const map = { r32El:'Round of 32', r16El:'Round of 16', qfEl:'Quarter-Finals', sfEl:'Semi-Finals', finalEl:'Final & 3rd Place' };
+        return map[elId] || '';
+    }
+
+    function renderFinalStage() {
+        const el = document.getElementById('finalEl');
+        if (!el) return;
+        cascadeKnockout();
+        const f = bd[104] || { t1: null, t2: null, winner: null };
+        const t3 = bd[103] || { t1: null, t2: null, winner: null };
+        const champion = getMatchWinner(104);
+        const third = getMatchWinner(103);
+
+        el.innerHTML = `<div class="ko-bracket">
+            <div class="ko-round" style="min-width:220px;">
+                <div class="ko-round-title">3rd Place · Jul 18 · Miami</div>
+                <div class="ko-slots">
+                    <div class="ko-match">
+                        <div class="km-meta">Match 103</div>
+                        <div class="ko-team ${t3.winner==='t1'?'ko-winner':''} ${!t3.t1?'ko-tbd':''}"
+                             onclick="${t3.t1?`pickWinner(103,'t1','${escTeam(t3.t1)}','${escTeam(t3.t2)}')`:''}">
+                             ${t3.t1 || 'SF1 Loser'}</div>
+                        <div class="ko-team ${t3.winner==='t2'?'ko-winner':''} ${!t3.t2?'ko-tbd':''}"
+                             onclick="${t3.t2?`pickWinner(103,'t2','${escTeam(t3.t1)}','${escTeam(t3.t2)}')`:''}">
+                             ${t3.t2 || 'SF2 Loser'}</div>
+                    </div>
+                </div>
+                ${third ? `<div style="text-align:center;margin-top:8px;font-size:0.75rem;color:#aaa;">🥉 ${third}</div>` : ''}
+            </div>
+            <div class="ko-round" style="min-width:240px;">
+                <div class="ko-round-title">🏆 Final · Jul 19 · New York/NJ</div>
+                <div class="ko-slots">
+                    <div class="ko-match">
+                        <div class="km-meta">Match 104 · MetLife Stadium</div>
+                        <div class="ko-team ${f.winner==='t1'?'ko-winner':''} ${!f.t1?'ko-tbd':''}"
+                             onclick="${f.t1?`pickWinner(104,'t1','${escTeam(f.t1)}','${escTeam(f.t2)}')`:''}">
+                             ${f.t1 || 'SF1 Winner'}</div>
+                        <div class="ko-team ${f.winner==='t2'?'ko-winner':''} ${!f.t2?'ko-tbd':''}"
+                             onclick="${f.t2?`pickWinner(104,'t2','${escTeam(f.t1)}','${escTeam(f.t2)}')`:''}">
+                             ${f.t2 || 'SF2 Winner'}</div>
+                    </div>
+                </div>
+                ${champion ? `<div class="bracket-champion" style="margin-top:12px;">
+                    <div class="champ-label">🌟 World Cup Champion</div>
+                    <div class="champ-name">${champion}</div>
+                </div>` : ''}
+            </div>
+        </div>`;
+    }
+
+    function escTeam(t) { return (t||'').replace(/'/g, "\\'"); }
+
+    // ---- STAGE TABS ----
+    function showBracketStage(stage, tabEl) {
+        document.querySelectorAll('.bracket-stage').forEach(s => s.style.display = 'none');
+        document.querySelectorAll('#bracket .person-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById('stage-' + stage).style.display = 'block';
+        tabEl.classList.add('active');
+    }
+
+    // ---- LEADERBOARD ----
     function toggleLeaderboard() {
         const sec = document.getElementById('leaderboardSection');
-        if(sec.style.display === 'none') {
+        if (sec.style.display === 'none') {
             sec.style.display = 'block';
             renderLeaderboard();
         } else {
@@ -1605,19 +1943,22 @@
     }
 
     function renderLeaderboard() {
+        const persons = ['Person 1','Person 2','Person 3','Person 4','Person 5','Person 6'];
+        const names   = ['Mandy','Tamelia','Linda','Tiago','Michael','Itai'];
         const content = document.getElementById('leaderboardContent');
-        const people = ['Person 1','Person 2','Person 3','Person 4','Person 5'];
-        let html = `<table class="leaderboard-table"><thead><tr><th>Person</th><th>R16 Champion Pick</th><th>Semi-Finalists</th></tr></thead><tbody>`;
-        people.forEach(p => {
-            const saved = JSON.parse(localStorage.getItem(getBracketKey(p)) || 'null');
-            if(!saved) { html += `<tr><td>${p}</td><td style="color:#ff007f;">No bracket yet</td><td>—</td></tr>`; return; }
-            const final = saved[3]?.[0];
-            const champ = final?.winner !== null && final?.winner !== undefined ? (final.teams[final.winner] || '—') : '—';
-            const sf = (saved[2] || []).map(m => m.winner !== null ? m.teams[m.winner] : '—').filter(x=>x&&x!=='—').join(', ') || '—';
-            html += `<tr><td style="font-family:'Orbitron'; font-size:0.75rem;">${p}</td><td>${champ}</td><td style="color:#00ffff; font-size:0.8rem;">${sf}</td></tr>`;
+        const rows = persons.map((p, i) => {
+            const data = JSON.parse(localStorage.getItem('bracketv2_' + p) || 'null');
+            const champ = data ? (() => {
+                const f = data[104];
+                if (!f || !f.winner) return '—';
+                return f.winner === 't1' ? f.t1 : f.t2;
+            })() : '—';
+            return `<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.05);">
+                <span style="color:#00ffff;font-weight:700;">${names[i]}</span>
+                <span style="color:${champ !== '—' ? '#ff007f' : '#555'};font-size:0.9rem;">${champ !== '—' ? '🏆 ' + champ : '—'}</span>
+            </div>`;
         });
-        html += '</tbody></table>';
-        content.innerHTML = html;
+        content.innerHTML = rows.join('');
     }
 
     loadBracket();
